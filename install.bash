@@ -4,3 +4,5 @@ pushd SDL2-2.0.1
 ./configure
 make
 sudo make install
+sudo apt-get install checkinstall
+sudo checkinstall 
