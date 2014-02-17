@@ -4,41 +4,103 @@
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #include "SDL.h"
+#include "SDL_image.h"
 #include <iostream> 
 
+const int SCREEN_WIDTH  = 640;
+const int SCREEN_HEIGHT = 480;
+
+/**
+* Log an SDL error with some error message to the output stream of our choice
+* @param os The output stream to write the message too
+* @param msg The error message to write, format will be msg error: SDL_GetError()
+*/
+void logSDLError( std::ostream &os, const std::string& msg )
+{
+	os << msg << " error: " << SDL_GetError() << std::endl;
+}
+
+/**
+* Loads an image into a texture on the rendering device
+* @param file The image file to load
+* @param ren The renderer to load the texture onto
+* @return the loaded texture, or nullptr if something went wrong.
+*/
+SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *ren){
+	SDL_Texture *texture = IMG_LoadTexture(ren, file.c_str());
+	if (texture == nullptr)		
+		logSDLError(std::cout, "LoadTexture");
+	return texture;
+}
+
+/**
+* Draw an SDL_Texture to an SDL_Renderer at position x, y, preserving
+* the texture's width and height
+* @param tex The source texture we want to draw
+* @param renderer The renderer we want to draw too
+* @param x The x coordinate to draw too
+* @param y The y coordinate to draw too
+*/
+void renderTexture(SDL_Texture *tex, SDL_Renderer *renderer, int x, int y){
+	//Setup the destination rectangle to be at the position we want
+	SDL_Rect dst;
+	dst.x = x;
+	dst.y = y;
+	//Query the texture to get its width and height to use
+	SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
+	SDL_RenderCopy(renderer, tex, NULL, &dst);
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-int main(int argc, char* argv[]){ 
-
-  SDL_Init(SDL_INIT_EVERYTHING);
+int main(int argc, char* argv[])
+{ 
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+    {
+	    std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
+	    return 1;
+    }
+    SDL_Window *window = SDL_CreateWindow("Hello World!", 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT,SDL_WINDOW_SHOWN);
+    if (window == nullptr)
+    {
+	    std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
+    	return 1;
+    }
   
-  SDL_Window *window;        // Declare a pointer to an SDL_Window 
-  
-  // Create an application window with the following settings: 
-  window = SDL_CreateWindow( 
-    "An SDL2 window",                  //    window title 
-    SDL_WINDOWPOS_UNDEFINED,           //    initial x position 
-    SDL_WINDOWPOS_UNDEFINED,           //    initial y position 
-    640,                               //    width, in pixels 
-    480,                               //    height, in pixels 
-    SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL //    flags - see below 
-  ); 
-  
-  // Check that the window was successfully made 
-  if(window==NULL){    
-    // In the event that the window could not be made... 
-    std::cout << "Could not create window: " << SDL_GetError() << '\n'; 
-    return 1; 
-  } 
-  
-  // The window is open: enter program loop (see SDL_PollEvent) 
-
-  SDL_Delay(3000);  // Pause execution for 3000 milliseconds, for example 
-  
-  // Close and destroy the window 
-  SDL_DestroyWindow(window); 
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 
+	SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (renderer == nullptr)
+    {
+	    std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+    	return 1;
+    }  
+   
+    SDL_Texture *background  = loadTexture("../resources/image/test.bmp", renderer);
+    SDL_Texture *image  = loadTexture("../resources/image/cat.bmp", renderer);
     
-  // Clean up 
-  SDL_Quit(); 
-  return 0;    
+    SDL_RenderClear(renderer);
+     
+    int bW, bH;
+    SDL_QueryTexture(background, NULL, NULL, &bW, &bH);
+    renderTexture(background, renderer, 0, 0);
+    renderTexture(background, renderer, bW, 0);
+    renderTexture(background, renderer, 0, bH);
+    renderTexture(background, renderer, bW, bH);
+     
+   int iW, iH;
+    SDL_QueryTexture(image, NULL, NULL, &iW, &iH);
+    int x = SCREEN_WIDTH / 2 - iW / 2;
+    int y = SCREEN_HEIGHT / 2 - iH / 2;
+    renderTexture(image, renderer, x, y);
+
+    SDL_RenderPresent(renderer);
+    SDL_Delay(2000);
+    
+    SDL_DestroyTexture(background);
+    SDL_DestroyTexture(image);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+
+    return 0;    
   
 }
