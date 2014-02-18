@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
 	    std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 	    return 1;
     }
-    SDL_Window *window = SDL_CreateWindow("Hello World!", 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT,SDL_WINDOW_SHOWN);
+    SDL_Window *window = SDL_CreateWindow("Hello World!", 10, 10, SCREEN_WIDTH, SCREEN_HEIGHT,SDL_WINDOW_SHOWN);
     if (window == nullptr)
     {
 	    std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
     renderTexture(background, renderer, 0, bH);
     renderTexture(background, renderer, bW, bH);
      
-   int iW, iH;
+    int iW, iH;
     SDL_QueryTexture(image, NULL, NULL, &iW, &iH);
     int x = SCREEN_WIDTH / 2 - iW / 2;
     int y = SCREEN_HEIGHT / 2 - iH / 2;
