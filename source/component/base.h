@@ -1,6 +1,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // component/base.h Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma once
 namespace component
 {
     class Base
@@ -10,8 +11,9 @@ namespace component
     protected:
     private:
     // Functions
-        Base();
+        
     public:
+        Base();
     protected:
     private:
     };

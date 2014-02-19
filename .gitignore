@@ -18,6 +18,7 @@
 # Temp folders
 build/
 source/tags
+bin/
 
 # Ctags
 *.tags*

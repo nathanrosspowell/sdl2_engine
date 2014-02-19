@@ -3,9 +3,21 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Standard library.
+#include <iostream>
+#include <cstdint> 
+#include <vector> 
+#include <string>
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// SDL.
 #include "SDL.h"
 #include "SDL_image.h"
-#include <iostream> 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Local
+#include "command_line/base.h"
+#include "game/application.h"
 
 const int SCREEN_WIDTH  = 640;
 const int SCREEN_HEIGHT = 480;
@@ -52,8 +64,19 @@ void renderTexture(SDL_Texture *tex, SDL_Renderer *renderer, int x, int y){
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-int main(int argc, char* argv[])
-{ 
+int main( int argc, const char* const argv[])
+{
+    // Create the arguments class
+    std::vector< std::string > arguments;
+    for ( int i = 0; i < argc; ++i )
+    {
+        arguments.push_back( argv[ i ] );
+    }
+    commandLine::Base cmdLine( arguments );
+    // Create the application.
+    game::Application application( cmdLine );
+    application.update();
+
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
 	    std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -93,7 +116,7 @@ int main(int argc, char* argv[])
     renderTexture(image, renderer, x, y);
 
     SDL_RenderPresent(renderer);
-    SDL_Delay(2000);
+    SDL_Delay(1000);
     
     SDL_DestroyTexture(background);
     SDL_DestroyTexture(image);
@@ -101,6 +124,5 @@ int main(int argc, char* argv[])
     SDL_DestroyWindow(window);
     SDL_Quit();
 
-    return 0;    
-  
+    return 0;
 }

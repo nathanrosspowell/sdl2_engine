@@ -1,6 +1,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // entity/base.h Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma once
 namespace entity
 {
     class Base
@@ -10,8 +11,9 @@ namespace entity
     protected:
     private:
     // Functions
-        Base();
+        
     public:
+        Base();
     protected:
     private:
     };

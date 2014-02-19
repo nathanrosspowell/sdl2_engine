@@ -1,6 +1,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ladder/base.h Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma once
 // STL includes
 #include <vector>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -17,11 +18,12 @@ namespace ladder
     protected:
     private:
         std::vector< RungBase* > m_rungs;
-    
+
     // Functions
-        Ladder();
     public:
-        void addRung( const RungBase* rung );
+        Ladder();
+        void pushRung( const RungBase* rung );
+        void popRung();
     protected:
     private:
     };

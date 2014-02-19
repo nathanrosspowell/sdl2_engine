@@ -23,27 +23,19 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
 
 set( 
     CMAKE_CXX_FLAGS 
-    "${CMAKE_CXX_FLAGS} -std=c++11"
+    "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic-errors"
 )
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # All the source listing files for the component folder. 
-file( GLOB LadderSource "ladder/source_listing/listing_*.cpp" )
-file( GLOB ComponentSource "component/source_listing/listing_*.cpp" )
-file( GLOB PassportSource "passport/source_listing/listing_*.cpp" )
-file( GLOB EntitySource "entity/source_listing/listing_*.cpp" )
-file( GLOB CommandLineSource "command_line/source_listing/listing_*.cpp" )
+file( GLOB LocalSource "${CMAKE_SOURCE_DIR}/*/source_listing/listing_*.cpp" )
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Set all the sources.
 set(
    SOURCES
    "${CMAKE_SOURCE_DIR}/sdl2_engine.cpp"
-   ${LadderSource}
-   ${ComponentSource}
-   ${EntitySource}
-   ${PassportSource}
-   ${CommandLineSource}
+   ${LocalSource}
 )
 
 link_directories(

@@ -1,6 +1,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ladder/base.h Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma once
 namespace ladder
 {
     class RungBase
@@ -10,8 +11,9 @@ namespace ladder
     protected:
     private:
     // Functions
-        RungBase();
+        
     public:
+        RungBase();
     protected:
     private:
     };
