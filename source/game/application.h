@@ -6,9 +6,64 @@
 // Local.
 #include "../command_line/base.h"
 
+
+#include <functional>
+#include <unordered_map>
+
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
+
+class IDataSetup;
+using JsonData = void*;
+using DataSetupLambda = std::function<IDataSetup*(JsonData)>;
+
+class DataSetupFactorty
+{
+public:
+
+    static std::unordered_map< std::string,DataSetupLambda > sm_map;
+
+    static void add( const std::string& classKey, DataSetupLambda factoryFunc )
+    {
+        std::pair< std::string,DataSetupLambda > pair( classKey, factoryFunc );
+        sm_map.insert( pair );
+    }
+
+    static IDataSetup* get( const std::string& classKey, JsonData jsonData )
+    {
+        auto newSetup = sm_map[ classKey ]( jsonData );
+        return newSetup;
+    }
+};
+
+class IDataSetup
+{
+public:
+    virtual void DataSetup( JsonData json ) = 0;
+};
+
+class DataClass : public IDataSetup
+{
+    public:
+    DataClass( JsonData json )
+    {}
+    virtual void DataSetup( JsonData json ) override
+    {
+        
+    }
+};
+
+class DataSetupRegister
+{
+public:
+    DataSetupRegister( const std::string& classKey, DataSetupLambda factoryFunc )
+    {
+        DataSetupFactorty::add( classKey, factoryFunc );
+    }
+};
+
 
 class Application
 {
