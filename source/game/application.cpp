@@ -23,7 +23,8 @@ Application::Application( const commandLine::Base& cmdLine )
     std::function<IDataSetup*(JsonData)> func_obj = [](JsonData d ) 
     { 
         std::cout << d << " BLAMMM" << std::endl;
-        return new DataClass( d ); };
+        return new DataClass( d ); 
+    };
     
     DataSetupRegister blam( "yes", func_obj  );
 

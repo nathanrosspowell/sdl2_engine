@@ -31,6 +31,11 @@ public:
         sm_map.insert( pair );
     }
 
+    static void remove( const std::string& classKey )
+    {
+        sm_map.erase( classKey );
+    }
+
     static IDataSetup* get( const std::string& classKey, JsonData jsonData )
     {
         auto newSetup = sm_map[ classKey ]( jsonData );
@@ -57,10 +62,17 @@ class DataClass : public IDataSetup
 
 class DataSetupRegister
 {
+private:
+    const std::string m_classKey;
 public:
     DataSetupRegister( const std::string& classKey, DataSetupLambda factoryFunc )
+    : m_classKey( classKey )
     {
-        DataSetupFactorty::add( classKey, factoryFunc );
+        DataSetupFactorty::add( m_classKey, factoryFunc );
+    }
+    ~DataSetupRegister()
+    {
+        DataSetupFactorty::remove( m_classKey );
     }
 };
 
