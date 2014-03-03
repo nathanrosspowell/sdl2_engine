@@ -9,8 +9,14 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace commandLine
 {
+
+const int SCREEN_WIDTH  = 640;
+const int SCREEN_HEIGHT = 480;
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Base::Base( const std::vector< std::string >& arguments )
+: m_screenWidth( SCREEN_WIDTH )
+, m_screenHeight( SCREEN_HEIGHT )
 {
 
 }

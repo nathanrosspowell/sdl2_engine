@@ -25,10 +25,6 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
-
-    const int SCREEN_WIDTH  = 640;
-    const int SCREEN_HEIGHT = 480;
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Application::Application( const commandLine::Base& cmdLine )
 : m_cmdLine( cmdLine )
@@ -96,8 +92,8 @@ void Application::startUp()
         m_window = SDL_CreateWindow( "SDL2"
             , 10
             , 10
-            , SCREEN_WIDTH
-            , SCREEN_HEIGHT
+            , m_cmdLine.GetScreenWidth()
+            , m_cmdLine.GetScreenHeight()
             , SDL_WINDOW_SHOWN);
         if ( m_window )
         {

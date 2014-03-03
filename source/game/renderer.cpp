@@ -53,8 +53,10 @@ void Renderer::update()
 
     int iW, iH;
     SDL_QueryTexture( m_image, NULL, NULL, &iW, &iH);
-    int x = SCREEN_WIDTH / 2 - iW / 2;
-    int y = SCREEN_HEIGHT / 2 - iH / 2;
+    int screenWidth = m_cmdLine.GetScreenWidth();
+    int screenHeight = m_cmdLine.GetScreenHeight();
+    int x = screenWidth / 2 - iW / 2;
+    int y = screenHeight / 2 - iH / 2;
 
     x += SDL_GetTicks() % 100;
     y += SDL_GetTicks() % 100;
