@@ -18,19 +18,10 @@
 // Local
 #include "command_line/base.h"
 #include "game/application.h"
+#include "log/log.h"
 
 const int SCREEN_WIDTH  = 640;
 const int SCREEN_HEIGHT = 480;
-
-/**
-* Log an SDL error with some error message to the output stream of our choice
-* @param os The output stream to write the message too
-* @param msg The error message to write, format will be msg error: SDL_GetError()
-*/
-void logSDLError( std::ostream &os, const std::string& msg )
-{
-	os << msg << " error: " << SDL_GetError() << std::endl;
-}
 
 /**
 * Loads an image into a texture on the rendering device
@@ -41,7 +32,7 @@ void logSDLError( std::ostream &os, const std::string& msg )
 SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *ren){
 	SDL_Texture *texture = IMG_LoadTexture(ren, file.c_str());
 	if (texture == nullptr)		
-		logSDLError(std::cout, "LoadTexture");
+		n_log::error(std::cout, SDL_GetError() );
 	return texture;
 }
 
@@ -66,6 +57,8 @@ void renderTexture(SDL_Texture *tex, SDL_Renderer *renderer, int x, int y){
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main( int argc, const char* const argv[])
 {
+    stateStd( "Main start: " << SDL_GetTicks() );
+
     // Create the arguments class
     std::vector< std::string > arguments;
     for ( int i = 0; i < argc; ++i )
@@ -82,6 +75,7 @@ int main( int argc, const char* const argv[])
 	    std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 	    return 1;
     }
+
     SDL_Window *window = SDL_CreateWindow("Hello World!", 10, 10, SCREEN_WIDTH, SCREEN_HEIGHT,SDL_WINDOW_SHOWN);
     if (window == nullptr)
     {
@@ -124,5 +118,6 @@ int main( int argc, const char* const argv[])
     SDL_DestroyWindow(window);
     SDL_Quit();
 
+    stateStd( "Main end: " << SDL_GetTicks() );
     return 0;
 }

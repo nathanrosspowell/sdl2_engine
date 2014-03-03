@@ -5,13 +5,18 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // This header.
 #include "application.h"
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// STL includes.
 #include <iostream>
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Local includes.
+#include "../factory/factory.h"
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
-
-std::unordered_map< std::string,DataSetupLambda >  DataSetupFactorty::sm_map;
-
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Application::Application( const commandLine::Base& cmdLine )
@@ -20,16 +25,17 @@ Application::Application( const commandLine::Base& cmdLine )
 {
     startUp();
 
-    std::function<IDataSetup*(JsonData)> func_obj = [](JsonData d ) 
+    factory::Lambda func_obj = 
+    []( factory::JsonData d ) 
     { 
         std::cout << d << " BLAMMM" << std::endl;
-        return new DataClass( d ); 
+        return new factory::DataClass( d ); 
     };
     
-    DataSetupRegister blam( "yes", func_obj  );
+    factory::Register blam( "yes", func_obj  );
 
-JsonData j = nullptr;
-    auto x = DataSetupFactorty::get( "yes", j );
+    factory::JsonData j = nullptr;
+    auto x = factory::Factory::get( "yes", j );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::update()
