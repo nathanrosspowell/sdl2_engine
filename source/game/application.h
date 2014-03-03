@@ -6,9 +6,13 @@
 // Local.
 #include "../command_line/base.h"
 
+class SDL_Window;
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
+
+class Renderer;
 
 class Application
 {
@@ -29,6 +33,8 @@ protected:
 private:
     const commandLine::Base m_cmdLine;
     State m_state;
+    SDL_Window* m_window;
+    Renderer* m_renderer;
 // Functions
 public:
      explicit Application( const commandLine::Base& arguments );

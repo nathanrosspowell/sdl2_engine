@@ -11,22 +11,34 @@
 #include <iostream>
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// SDL.
+#include "SDL.h"
+#include "SDL_image.h"
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Local includes.
+#include "renderer.h"
 #include "../factory/factory.h"
+#include "../log/log.h"
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
 
+    const int SCREEN_WIDTH  = 640;
+    const int SCREEN_HEIGHT = 480;
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Application::Application( const commandLine::Base& cmdLine )
 : m_cmdLine( cmdLine )
 , m_state( State::Created )
+, m_window( nullptr )
+, m_renderer( nullptr )
 {
     startUp();
 
-    factory::Lambda func_obj = 
-    []( factory::JsonData d ) 
+    factory::Lambda func_obj = []( factory::JsonData d )
     { 
         std::cout << d << " BLAMMM" << std::endl;
         return new factory::DataClass( d ); 
@@ -40,57 +52,103 @@ Application::Application( const commandLine::Base& cmdLine )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::update()
 {
-    switch ( m_state )
+    while ( true )
     {
-    case State::Loading:
+        switch ( m_state )
         {
-            if ( finishedLoading() )
+        case State::Loading:
             {
-                m_state = State::Running;
+                if ( finishedLoading() )
+                {
+                    m_state = State::Running;
+                }
             }
-        }
-        break;
-    case State::Running:
-        {
-            running();
-        }
-        break;
-    case State::ShuttingDown:
-        {
-            if ( finishedShuttingDown() )
+            break;
+        case State::Running:
             {
-                m_state = State::Finished;
+                running();
             }
+            break;
+        case State::ShuttingDown:
+            {
+                if ( finishedShuttingDown() )
+                {
+                    m_state = State::Finished;
+                }
+            }
+            break;
+        case State::Finished:
+            {
+                return;
+            }
+            break;
+        default: break;
         }
-    default: break;
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::startUp()
 {
+    stateStd( "" );
     m_state = State::Loading;
+    if ( SDL_Init( SDL_INIT_EVERYTHING ) == 0 )
+    {
+        m_window = SDL_CreateWindow( "SDL2"
+            , 10
+            , 10
+            , SCREEN_WIDTH
+            , SCREEN_HEIGHT
+            , SDL_WINDOW_SHOWN);
+        if ( m_window )
+        {
+            m_renderer = new Renderer( m_cmdLine, m_window );
+            m_renderer->initalise();
+        }
+        else
+        {
+            errorStd( "SDL_CreateWindow Error: " << SDL_GetError() );
+        }
+    }
+    else
+    {
+        errorStd( "SDL_Init Error: " << SDL_GetError() );
+    }
+
+    if ( m_renderer == nullptr )
+    {
+        shutDown();
+    }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::shutDown()
 {
+    stateStd( "" );
     m_state = State::ShuttingDown;
+    m_renderer->shutDown();
+    SDL_DestroyWindow(m_window);
+    SDL_Quit();
+
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bool Application::finishedLoading()
 {
-
+    return true;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::running()
 {
-
+    m_renderer->update();
+    if ( SDL_GetTicks() > 2000 )
+    {
+        shutDown();
+    }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bool Application::finishedShuttingDown()
 {
-
+    return true;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace game.
 }
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{}

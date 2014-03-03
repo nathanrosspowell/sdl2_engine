@@ -18,7 +18,7 @@
        << "][" << CHANNEL \
        << "][" << __FILE__ \
        << "][" << __LINE__ \
-       << __FUNCTION__ << "]" << FORMAT;\
+       << "][" << __FUNCTION__ << "]" << FORMAT;\
     n_log::error( std::cout, ss.str() );}
 
 #define errorLog( CHANNEL, FORMAT ) baseLog( logError, CHANNEL, FORMAT )
