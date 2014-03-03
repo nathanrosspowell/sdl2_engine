@@ -4,25 +4,16 @@
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#include <functional>
-#include <unordered_map>
+#include "factory.h"
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
 
-class ISetup;
-using JsonData = void*;
-using Lambda = std::function<ISetup*(JsonData)>;
-
-class Factory
+class ISetup
 {
 public:
-    static std::unordered_map< std::string,Lambda > sm_map;
-public:
-    static void add( const std::string& classKey, Lambda factoryFunc );
-    static void remove( const std::string& classKey );
-    static ISetup* get( const std::string& classKey, JsonData jsonData );
+    virtual void doSetup( JsonData json ) = 0;
 };
 
 }

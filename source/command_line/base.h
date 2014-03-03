@@ -22,10 +22,8 @@ namespace commandLine
     // Functions
     public:
         explicit Base( const std::vector< std::string >& arguments );
-
         int GetScreenWidth() const { return m_screenWidth; }
         int GetScreenHeight() const { return m_screenHeight; }
-
     protected:
     private:
     };

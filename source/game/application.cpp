@@ -18,9 +18,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Local includes.
 #include "renderer.h"
-#include "../factory/factory.h"
 #include "../log/log.h"
-
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
@@ -33,17 +31,6 @@ Application::Application( const commandLine::Base& cmdLine )
 , m_renderer( nullptr )
 {
     startUp();
-
-    factory::Lambda func_obj = []( factory::JsonData d )
-    { 
-        std::cout << d << " BLAMMM" << std::endl;
-        return new factory::DataClass( d ); 
-    };
-    
-    factory::Register blam( "yes", func_obj  );
-
-    factory::JsonData j = nullptr;
-    auto x = factory::Factory::get( "yes", j );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::update()
@@ -109,7 +96,6 @@ void Application::startUp()
     {
         errorStd( "SDL_Init Error: " << SDL_GetError() );
     }
-
     if ( m_renderer == nullptr )
     {
         shutDown();
