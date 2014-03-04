@@ -1,17 +1,25 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// passport/base.h Authored by Nathan Ross Powell
+// entity/base.h Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace passport
+#pragma once
+
+#include "../passport/passport.h"
+namespace entity
 {
-    class Base
+    class Entity
     {
+    public:
+    using IdentityType = unsigned int;
+    using Id = passport::Passport< Entity >;
     // Variables
     public:
     protected:
     private:
+        Id m_id;
     // Functions
-        Base();
+        
     public:
+        Entity();
     protected:
     private:
     };
