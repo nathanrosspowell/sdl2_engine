@@ -51,7 +51,7 @@
 			"file": "source/entity/entity.h",
 			"settings":
 			{
-				"buffer_size": 560,
+				"buffer_size": 639,
 				"line_ending": "Unix"
 			}
 		},
@@ -64,10 +64,42 @@
 			}
 		},
 		{
+			"file": "source/passport/identity_factory.h",
+			"settings":
+			{
+				"buffer_size": 1201,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "source/passport/passport.h",
 			"settings":
 			{
-				"buffer_size": 1194,
+				"buffer_size": 1260,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/game/application.h",
+			"settings":
+			{
+				"buffer_size": 1057,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/game/renderer.h",
+			"settings":
+			{
+				"buffer_size": 1632,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/game/renderer.cpp",
+			"settings":
+			{
+				"buffer_size": 4153,
 				"line_ending": "Unix"
 			}
 		}
@@ -175,7 +207,7 @@
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -189,6 +221,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"m_T",
+			"m_IdentityCounter",
+			"m_TentityCounter",
+			"();",
+			"TentityType",
+			"getNewTentity",
+			"TentityFactory",
+			"ID",
+			"ISSUE",
+			"MyId",
 			"\n    ",
 			"MyId",
 			"\n#",
@@ -216,6 +258,15 @@
 		"regex": false,
 		"replace_history":
 		[
+			"m_id",
+			"m_identityCounter",
+			"m_IdentityCounter",
+			"IdentityType",
+			"getNewIdentity",
+			"IdentityFactory",
+			"T",
+			"ID",
+			"ISSUE::IdentityType",
 			"typename ISSUE::IdentityType",
 			"Factory",
 			"Lambda",
@@ -237,7 +288,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -246,15 +297,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 560,
+						"buffer_size": 639,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								517,
-								517
+								300,
+								300
 							]
 						],
 						"settings":
@@ -267,7 +318,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -283,8 +334,8 @@
 						"selection":
 						[
 							[
-								352,
-								352
+								437,
+								437
 							]
 						],
 						"settings":
@@ -295,24 +346,54 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "source/passport/passport.h",
+					"file": "source/passport/identity_factory.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1194,
+						"buffer_size": 1201,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								390,
-								390
+								442,
+								442
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/passport/passport.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								722,
+								722
 							]
 						],
 						"settings":
@@ -326,6 +407,96 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/game/application.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1057,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								462,
+								462
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "source/game/renderer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1632,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "source/game/renderer.cpp",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -373,7 +544,7 @@
 	"project": "sdl2_engine.sublime-project",
 	"replace":
 	{
-		"height": 84.0
+		"height": 66.0
 	},
 	"save_all_on_build": true,
 	"select_file":

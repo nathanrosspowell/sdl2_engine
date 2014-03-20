@@ -4,7 +4,7 @@ set (CMAKE_VERBOSE_MAKEFILE ON)
 
 set (App_Name "sdl2_engine")
 if(App_Name STREQUAL "")
-	message(FATAL_ERROR "You Must set the App_Name varable")
+    message(FATAL_ERROR "You Must set the App_Name varable")
 endif()
 
 project (${App_Name})
@@ -25,7 +25,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
 
 set( 
     CMAKE_CXX_FLAGS 
-    "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic-errors"
+    "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic-errors -lglut -lGLEW -lGLU -lGL"
 )
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,38 +40,49 @@ set(
    ${LocalSource}
 )
 
-link_directories(
-)
-
-include_directories(
-	${CMAKE_SOURCE_DIR}/include
-)
-
-
 #################################################################3
 find_package(SDL2)
 if (NOT SDL2_FOUND)
-	message (FATAL_ERROR "SDL not found!")
+    message (FATAL_ERROR "SDL not found!")
 endif (NOT SDL2_FOUND)
 
 find_package(SDL2_image)
 if (NOT SDL2IMAGE_FOUND)
-	message (FATAL_ERROR "SDL_Image not found!")
+    message (FATAL_ERROR "SDL_Image not found!")
 endif (NOT SDL2IMAGE_FOUND)
 
 find_package(SDL2_ttf)
 if (NOT SDL2TTF_FOUND)
-	message (FATAL_ERROR "SDL_ttf not found!")
+    message (FATAL_ERROR "SDL_ttf not found!")
 endif (NOT SDL2TTF_FOUND)
 
 find_package(SDL2_mixer)
 if (NOT SDL2MIXER_FOUND)
-	message (FATAL_ERROR "SDL_mixer not found!")
+    message (FATAL_ERROR "SDL_mixer not found!")
 endif (NOT SDL2MIXER_FOUND)
 
+find_package(GL)
+if (NOT HAVE_GL)
+    message (FATAL_ERROR "GL not found!")
+endif (NOT HAVE_GL)
+
+find_package(GLU)
+if (NOT HAVE_GLU)
+    message (FATAL_ERROR "GLU not found!")
+endif (NOT HAVE_GLU)
+
+find_package(GLEW)
+if (NOT HAVE_GLEW)
+    message (FATAL_ERROR "GLEW not found!")
+endif (NOT HAVE_GLEW)
+
 include_directories(
-	${SDL2_INCLUDE_DIR}
-	${INCLUDE_DIRECTORIES}
+    ${CMAKE_SOURCE_DIR}/include
+    ${SDL2_INCLUDE_DIR}
+    ${INCLUDE_DIRECTORIES}
+    ${GL_INCLUDE_DIR}
+    ${GLU_INCLUDE_DIR}
+    ${GLEW_INCLUDE_DIR}
 )
 
 # Final executable.
@@ -84,15 +95,24 @@ add_executable(
 
 target_link_libraries(
     ${App_Name}
-	${SDL2_LIBRARY}
-	${SDL2MAIN_LIBRARY}
-	${SDL2IMAGE_LIBRARY}
-	${SDL2MIXER_LIBRARY}
-	${SDL2MAIN_LIBRARY}
-	${SDL2IMAGE_LIBRARY}
-	${SDL2TTF_LIBRARY}
-	${TARGET_LINK_LIBRARIES}
+    GL
+    ${GL_LIBRARIES}
+    ${GLU_LIBRARIES}
+    ${GLEW_LIBRARIES}
+    ${SDL2_LIBRARY}
+    ${SDL2MAIN_LIBRARY}
+    ${SDL2IMAGE_LIBRARY}
+    ${SDL2MIXER_LIBRARY}
+    ${SDL2MAIN_LIBRARY}
+    ${SDL2IMAGE_LIBRARY}
+    ${SDL2TTF_LIBRARY}
+    ${TARGET_LINK_LIBRARIES}
 )
 
+
+get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+foreach(dir ${dirs})
+  message(STATUS "dir='${dir}'")
+endforeach()
 
 
