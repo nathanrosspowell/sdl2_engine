@@ -35,6 +35,12 @@ private:
     SDL_Window* m_window;
     SDL_Texture* m_background;
     SDL_Texture* m_image;
+    SDL_GLContext m_context;
+    GLuint m_programIDbo = 0;
+    GLint m_vertexPos2DLocation = -1;
+    GLuint m_vbo = 0;
+    GLuint m_ibo = 0;
+
 // Functions
 public:
     
