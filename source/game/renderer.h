@@ -6,6 +6,11 @@
 // Local.
 #include "../command_line/base.h"
 
+#include <GL/glew.h>
+#include <GL/glu.h>
+#include <SDL_opengl.h>
+
+
 class SDL_Window;
 class SDL_Renderer;
 class SDL_Texture;
@@ -28,11 +33,28 @@ protected:
 private:
     const commandLine::Base& m_cmdLine;
     SDL_Window* m_window;
-    SDL_Renderer* m_renderer;
     SDL_Texture* m_background;
     SDL_Texture* m_image;
 // Functions
 public:
+    
+    bool init();
+
+    //Initializes rendering program and clear color
+    bool initGL();
+
+    //Input handler
+    void handleKeys( unsigned char key, int x, int y );
+    //Renders quad to the screen
+    void render();
+
+    //Frees media and shuts down SDL
+    void close();
+//Shader loading utility programs
+void printProgramLog( GLuint program );
+void printShaderLog( GLuint shader );
+
+
     Renderer( const commandLine::Base& arguments, SDL_Window* window );
     bool initalise();
     bool shutDown();

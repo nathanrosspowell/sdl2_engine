@@ -81,7 +81,7 @@ void Application::startUp()
             , 10
             , m_cmdLine.GetScreenWidth()
             , m_cmdLine.GetScreenHeight()
-            , SDL_WINDOW_SHOWN);
+            , SDL_WINDOW_OPENGL|SDL_WINDOW_SHOWN);
         if ( m_window )
         {
             m_renderer = new Renderer( m_cmdLine, m_window );
