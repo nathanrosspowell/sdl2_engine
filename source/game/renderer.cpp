@@ -13,6 +13,9 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
+
+SDL_Event event;
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Renderer::Renderer( const commandLine::Base& cmdLine, SDL_Window* window )
 : m_cmdLine( cmdLine )
@@ -64,12 +67,13 @@ bool Renderer::initalise()
     }
     return success;
 }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bool Renderer::initGL()
 {
     //Generate program
     m_programId = glCreateProgram();
     //Create vertex shader
-    std::string vertexPath = "../source/shaders/vertex/basic.glvs";
+    std::string vertexPath = "../source/shaders/vertex/vert_0.glvs";
     GLuint vertexId = loadShaderFromFile( vertexPath, GL_VERTEX_SHADER );
     if( vertexId == 0 )
     {
@@ -81,7 +85,7 @@ bool Renderer::initGL()
         glAttachShader( m_programId, vertexId );
     }
     //Create vertex shader
-    std::string fragmentPath = "../source/shaders/fragment/basic.glfs";
+    std::string fragmentPath = "../source/shaders/fragment/frag_0.glfs";
     GLuint fragmentId = loadShaderFromFile( fragmentPath, GL_FRAGMENT_SHADER );
     if( fragmentId == 0 )
     {
@@ -113,10 +117,10 @@ bool Renderer::initGL()
     //VBO data
     GLfloat vertexData[] =
     {
-        -0.5f, -0.5f,
-        0.5f, -0.5f,
-        0.5f,  0.5f,
-        -0.5f,  0.2f
+        -1.5f, -1.5f,
+        -0.5f, -1.5f,
+        -0.5f,  -0.5f,
+        -1.5f,  -0.2f
     };
     //IBO data
     GLuint indexData[] = { 0, 1, 2, 3 };
@@ -136,7 +140,7 @@ bool Renderer::initGL()
       , GL_STATIC_DRAW );
     return true;
 }
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bool Renderer::shutDown()
 {
     stateStd( "" );
@@ -151,12 +155,85 @@ void Renderer::update()
     render();
     //Update screen
     SDL_GL_SwapWindow( m_window );
+
+
+    /****** Check for Key & System input ******/    
+    while(SDL_PollEvent(&event))
+    {
+        switch ( event.type )
+        {
+        case SDL_KEYDOWN:
+            {
+                auto keyPressed = event.key.keysym.sym;
+                switch ( keyPressed )
+                {
+                case SDLK_UP: rotate_x += 5; break;
+                case SDLK_DOWN: rotate_x -= 5; break;
+                case SDLK_LEFT: rotate_y += 5; break;
+                case SDLK_RIGHT: rotate_y -= 5; break;
+                }
+            }
+          break;
+        }
+    }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void  Renderer::render()
 {
     //Clear color buffer
-    glClear( GL_COLOR_BUFFER_BIT );
+    glClear( GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT );
+
+    // Reset transformations
+    glLoadIdentity();
+     
+    // Rotate when user changes rotate_x and rotate_y
+    glRotatef( rotate_x, 1.0, 0.0, 0.0 );
+    glRotatef( rotate_y, 0.0, 1.0, 0.0 );
+
+    // White side - BACK
+    glBegin(GL_POLYGON);
+    glColor3f(   1.0,  1.0, 1.0 );
+    glVertex3f(  0.5, -0.5, 0.5 );
+    glVertex3f(  0.5,  0.5, 0.5 );
+    glVertex3f( -0.5,  0.5, 0.5 );
+    glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+    // Purple side - RIGHT
+    glBegin(GL_POLYGON);
+    glColor3f(  1.0,  0.0,  1.0 );
+    glVertex3f( 0.5, -0.5, -0.5 );
+    glVertex3f( 0.5,  0.5, -0.5 );
+    glVertex3f( 0.5,  0.5,  0.5 );
+    glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+    // Green side - LEFT
+    glBegin(GL_POLYGON);
+    glColor3f(   0.0,  1.0,  0.0 );
+    glVertex3f( -0.5, -0.5,  0.5 );
+    glVertex3f( -0.5,  0.5,  0.5 );
+    glVertex3f( -0.5,  0.5, -0.5 );
+    glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    // Blue side - TOP
+    glBegin(GL_POLYGON);
+    glColor3f(   0.0,  0.0,  1.0 );
+    glVertex3f(  0.5,  0.5,  0.5 );
+    glVertex3f(  0.5,  0.5, -0.5 );
+    glVertex3f( -0.5,  0.5, -0.5 );
+    glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+    // Red side - BOTTOM
+    glBegin(GL_POLYGON);
+    glColor3f(   1.0,  0.0,  0.0 );
+    glVertex3f(  0.5, -0.5, -0.5 );
+    glVertex3f(  0.5, -0.5,  0.5 );
+    glVertex3f( -0.5, -0.5,  0.5 );
+    glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    glEnd();
+    glLoadIdentity();
+
     //Bind program
     glUseProgram( m_programId );
     //Enable vertex position
@@ -188,7 +265,7 @@ SDL_Surface* Renderer::loadBmpToSurface( const std::string& file )
     return surface;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void  Renderer::printProgramLog( GLuint program )
+void Renderer::printProgramLog( GLuint program )
 {
     //Make sure name is shader
     if( glIsProgram( program ) )
@@ -243,11 +320,12 @@ void Renderer::printShaderLog( GLuint shader )
         errorStd( "Name " << shader << " is not a shader" );
     }
 }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 GLuint Renderer::loadShaderFromFile( std::string path, GLenum shaderType )
 {
     GLuint shaderId = 0;
     std::ifstream sourceFile( path.c_str() );
-    if( sourceFile )
+    if ( sourceFile )
     {
         auto stream = std::istreambuf_iterator< char >( sourceFile );
         auto iterator = std::istreambuf_iterator< char >();
@@ -259,10 +337,12 @@ GLuint Renderer::loadShaderFromFile( std::string path, GLenum shaderType )
         glCompileShader( shaderId );
         GLint shaderCompiled = GL_FALSE;
         glGetShaderiv( shaderId, GL_COMPILE_STATUS, &shaderCompiled );
-        if( shaderCompiled != GL_TRUE )
+        if ( shaderCompiled != GL_TRUE )
         {
-            errorStd( "Can't compile shader. Id:" << shaderId << 
-              "Source:" << shaderSource );
+            errorStd( "Can't compile shader. Id:" 
+                << shaderId 
+                << "Source:" 
+                << shaderSource );
             printShaderLog( shaderId );
             glDeleteShader( shaderId );
             shaderId = 0;

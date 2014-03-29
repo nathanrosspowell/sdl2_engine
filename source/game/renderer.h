@@ -41,6 +41,8 @@ private:
     GLuint m_vbo;
     GLuint m_ibo;
 
+    int rotate_x = 0;
+    int rotate_y = 0;
 
 // Functions
 public:

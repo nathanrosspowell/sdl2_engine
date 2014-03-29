@@ -120,7 +120,7 @@ bool Application::finishedLoading()
 void Application::running()
 {
     m_renderer->update();
-    if ( SDL_GetTicks() > 2000 )
+    if ( SDL_GetTicks() > 10000 )
     {
         shutDown();
     }
