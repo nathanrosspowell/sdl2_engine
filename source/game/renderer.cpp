@@ -113,8 +113,12 @@ bool Renderer::initGL()
         return false;
     }
     //Initialize clear color
-    glClearColor( 0.f, 0.f, 0.f, 1.f );
-    //VBO data
+    glClearColor(0.1f, 0.2f, 0.0f, 1.0f); //make the window background a blue-ish tone
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_COLOR_MATERIAL);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_NORMALIZE);//VBO data
     GLfloat vertexData[] =
     {
         -1.5f, -1.5f,
@@ -138,7 +142,7 @@ bool Renderer::initGL()
       , 4 * sizeof(GLuint)
       , indexData
       , GL_STATIC_DRAW );
-    return true;
+        return true;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bool Renderer::shutDown()
