@@ -167,6 +167,7 @@ void Renderer::update()
     /****** Check for Key & System input ******/    
     while(SDL_PollEvent(&event))
     {
+        const float speed = 0.01f;
         switch ( event.type )
         {
         case SDL_KEYDOWN:
@@ -174,10 +175,17 @@ void Renderer::update()
                 auto keyPressed = event.key.keysym.sym;
                 switch ( keyPressed )
                 {
-                case SDLK_UP: rotate_x += 5; break;
-                case SDLK_DOWN: rotate_x -= 5; break;
-                case SDLK_LEFT: rotate_y += 5; break;
-                case SDLK_RIGHT: rotate_y -= 5; break;
+                case SDLK_i: rotate_x += 5; break;
+                case SDLK_k: rotate_x -= 5; break;
+                case SDLK_j: rotate_y += 5; break;
+                case SDLK_l: rotate_y -= 5; break;
+                
+                case SDLK_w: m_translateZ += speed; break;
+                case SDLK_s: m_translateZ -= speed; break;
+                case SDLK_y: m_translateY += speed; break;
+                case SDLK_h: m_translateY -= speed; break;
+                case SDLK_a: m_translateX += speed; break;
+                case SDLK_d: m_translateX -= speed; break;
                 }
             }
           break;
@@ -193,6 +201,7 @@ void  Renderer::render()
     // Reset transformations
     glLoadIdentity();
      
+    glTranslatef( m_translateX, m_translateY, m_translateZ );
     // Rotate when user changes rotate_x and rotate_y
     glRotatef( rotate_x, 1.0, 0.0, 0.0 );
     glRotatef( rotate_y, 0.0, 1.0, 0.0 );

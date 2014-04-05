@@ -3,5 +3,5 @@
 # run.bash Authored by Nathan Ross Powell.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 pushd bin
-./sdl2_engine
+./sdl2_engine "$@"
 popd

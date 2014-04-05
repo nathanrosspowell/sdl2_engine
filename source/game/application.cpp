@@ -79,8 +79,8 @@ void Application::startUp()
         m_window = SDL_CreateWindow( "SDL2"
             , 10
             , 10
-            , m_cmdLine.GetScreenWidth()
-            , m_cmdLine.GetScreenHeight()
+            , m_cmdLine.getScreenWidth()
+            , m_cmdLine.getScreenHeight()
             , SDL_WINDOW_OPENGL|SDL_WINDOW_SHOWN);
         if ( m_window )
         {
@@ -120,7 +120,8 @@ bool Application::finishedLoading()
 void Application::running()
 {
     m_renderer->update();
-    if ( SDL_GetTicks() > 10000 )
+    if ( m_cmdLine.hasSetAutoCloseTimer() &&
+         SDL_GetTicks() > m_cmdLine.getAutoCloseTimer() )
     {
         shutDown();
     }
