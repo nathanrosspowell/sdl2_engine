@@ -198,8 +198,8 @@ void  Renderer::render()
     glRotatef( rotate_y, 0.0, 1.0, 0.0 );
 
     gl_helpers::primitives::cube( 1.0, 0.0f, 0.0f, 0.0f );
-    gl_helpers::primitives::cube( 0.3, -1.1f, 0.0f, 0.0f );
-    gl_helpers::primitives::cube( 0.3, 1.1f, 0.0f, 0.0f );
+    gl_helpers::primitives::cuboid( 0.5f, 0.1f, 0.1f,  -1.1f, 0.0f, 0.0f );
+    gl_helpers::primitives::cuboid( 0.1f, 0.5f, 0.1f,  1.1f, 0.0f, 0.0f );
 
     glLoadIdentity();
 

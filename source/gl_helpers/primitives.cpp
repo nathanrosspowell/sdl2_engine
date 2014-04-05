@@ -17,13 +17,20 @@ namespace primitives
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void cube( float size, float x, float y, float z )
 {
-    const float hs = size / 2; // Half size.
-    const float xp = x + hs; // X positive
-    const float xn = x - hs; // X negative
-    const float yp = y + hs; // Y positive
-    const float yn = y - hs; // Y negative
-    const float zp = z + hs; // Z positive
-    const float zn = z - hs; // Z negative
+    cuboid( size, size, size, x, y, z );
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void cuboid( float h, float w, float d, float x, float y, float z )
+{
+    const float hh = h / 2; // Half height.
+    const float hw = w / 2; // Half width.
+    const float hd = d / 2; // Half depth.
+    const float xp = x + hw; // X positive
+    const float xn = x - hw; // X negative
+    const float yp = y + hh; // Y positive
+    const float yn = y - hh; // Y negative
+    const float zp = z + hd; // Z positive
+    const float zn = z - hd; // Z negative
     // White side - BACK
     glBegin(GL_POLYGON);
     glColor3f(   1.0,  1.0, 1.0 );
