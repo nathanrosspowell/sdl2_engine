@@ -11,6 +11,9 @@
 // STD library.
 #include <fstream>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// gl_helpers.
+#include "../gl_helpers/primitives.h"
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
 
@@ -113,7 +116,7 @@ bool Renderer::initGL()
         return false;
     }
     //Initialize clear color
-    glClearColor(0.1f, 0.2f, 0.0f, 1.0f); //make the window background a blue-ish tone
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); //make the window background a blue-ish tone
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_COLOR_MATERIAL);
     glEnable(GL_LIGHTING);
@@ -194,48 +197,10 @@ void  Renderer::render()
     glRotatef( rotate_x, 1.0, 0.0, 0.0 );
     glRotatef( rotate_y, 0.0, 1.0, 0.0 );
 
-    // White side - BACK
-    glBegin(GL_POLYGON);
-    glColor3f(   1.0,  1.0, 1.0 );
-    glVertex3f(  0.5, -0.5, 0.5 );
-    glVertex3f(  0.5,  0.5, 0.5 );
-    glVertex3f( -0.5,  0.5, 0.5 );
-    glVertex3f( -0.5, -0.5, 0.5 );
-    glEnd();
-    // Purple side - RIGHT
-    glBegin(GL_POLYGON);
-    glColor3f(  1.0,  0.0,  1.0 );
-    glVertex3f( 0.5, -0.5, -0.5 );
-    glVertex3f( 0.5,  0.5, -0.5 );
-    glVertex3f( 0.5,  0.5,  0.5 );
-    glVertex3f( 0.5, -0.5,  0.5 );
-    glEnd();
-    // Green side - LEFT
-    glBegin(GL_POLYGON);
-    glColor3f(   0.0,  1.0,  0.0 );
-    glVertex3f( -0.5, -0.5,  0.5 );
-    glVertex3f( -0.5,  0.5,  0.5 );
-    glVertex3f( -0.5,  0.5, -0.5 );
-    glVertex3f( -0.5, -0.5, -0.5 );
-    glEnd();
-    // Blue side - TOP
-    glBegin(GL_POLYGON);
-    glColor3f(   0.0,  0.0,  1.0 );
-    glVertex3f(  0.5,  0.5,  0.5 );
-    glVertex3f(  0.5,  0.5, -0.5 );
-    glVertex3f( -0.5,  0.5, -0.5 );
-    glVertex3f( -0.5,  0.5,  0.5 );
-    glEnd();
-    // Red side - BOTTOM
-    glBegin(GL_POLYGON);
-    glColor3f(   1.0,  0.0,  0.0 );
-    glVertex3f(  0.5, -0.5, -0.5 );
-    glVertex3f(  0.5, -0.5,  0.5 );
-    glVertex3f( -0.5, -0.5,  0.5 );
-    glVertex3f( -0.5, -0.5, -0.5 );
-    glEnd();
-     
-    glEnd();
+    gl_helpers::primitives::cube( 1.0, 0.0f, 0.0f, 0.0f );
+    gl_helpers::primitives::cube( 0.3, -1.1f, 0.0f, 0.0f );
+    gl_helpers::primitives::cube( 0.3, 1.1f, 0.0f, 0.0f );
+
     glLoadIdentity();
 
     //Bind program
