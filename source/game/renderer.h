@@ -41,11 +41,14 @@ private:
     GLuint m_vbo;
     GLuint m_ibo;
 
+    // This needs to be in input handling and camera management.
     float m_translateX = 0;
     float m_translateY = 0;
     float m_translateZ = 0;
     float rotate_x = 0;
     float rotate_y = 0;
+    SDL_Event m_event;
+    bool m_userQuit = false;
 
 // Functions
 public:
@@ -60,6 +63,7 @@ public:
     void printProgramLog( GLuint program );
     void printShaderLog( GLuint shader );
     GLuint loadShaderFromFile( std::string path, GLenum shaderType );
+    bool userQuit() const { return m_userQuit; }
 protected:
 private:
 };

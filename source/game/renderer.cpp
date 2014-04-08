@@ -17,7 +17,6 @@
 namespace game
 {
 
-SDL_Event event;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Renderer::Renderer( const commandLine::CmdLine& cmdLine, SDL_Window* window )
@@ -165,14 +164,14 @@ void Renderer::update()
 
 
     /****** Check for Key & System input ******/    
-    while(SDL_PollEvent(&event))
+    while ( SDL_PollEvent( &m_event ) )
     {
         const float speed = 0.01f;
-        switch ( event.type )
+        switch ( m_event.type )
         {
         case SDL_KEYDOWN:
             {
-                auto keyPressed = event.key.keysym.sym;
+                auto keyPressed = m_event.key.keysym.sym;
                 switch ( keyPressed )
                 {
                 case SDLK_i: rotate_x += 5; break;
@@ -188,7 +187,11 @@ void Renderer::update()
                 case SDLK_d: m_translateX -= speed; break;
                 }
             }
-          break;
+            break;
+        case SDL_QUIT:
+            stateStd( "User Quit" );
+            m_userQuit = true;
+            break;
         }
     }
 }
