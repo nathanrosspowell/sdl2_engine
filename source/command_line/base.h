@@ -27,7 +27,7 @@ private:
     int m_screenHeight = 400;
 public:
     virtual ~ScreenDimensions(){}
-    static std::string cmdName() { return "ScreenDimensions"; }
+    static std::string cmdName() { return "screenDimensions"; }
     virtual std::string getCommandName() const override { return cmdName(); }
     virtual void dispatch( const Strings& arguments ) override;
     int getScreenWidth() const { return m_screenWidth; }
@@ -40,7 +40,7 @@ private:
     int m_autoCloseTimer = 0;
 public:
     virtual ~AutoCloseTimer(){}
-    static std::string cmdName() { return "AutoCloseTimer"; }
+    static std::string cmdName() { return "autoCloseTimer"; }
     virtual std::string getCommandName() const override { return cmdName(); }
     virtual void dispatch( const Strings& arguments ) override;
     bool hasSetAutoCloseTimer() const { return m_autoCloseTimer > 0; }
