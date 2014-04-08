@@ -41,7 +41,7 @@ void AutoCloseTimer::dispatch( const Strings& arguments )
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Base::Base( const std::vector< std::string >& arguments )
+CmdLine::CmdLine( const std::vector< std::string >& arguments )
     : m_entries({
          new ScreenDimensions()
        , new AutoCloseTimer()
@@ -50,12 +50,20 @@ Base::Base( const std::vector< std::string >& arguments )
     parse( arguments );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Base::add( const std::string& name, IEntry* entry )
+CmdLine::~CmdLine()
 {
-//    m_entries[ name ] = entry;
+    // for ( auto entry : m_entries )
+    // {
+    //     if ( entry )
+    //     {    stateStd( "Delete stuff " << entry->getCommandName() );
+    //     delete entry;
+    //     }else
+    //      {   stateStd( "null wut?? " << entry );
+    //     }
+    // }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Base::parse( const Strings& arguments )
+void CmdLine::parse( const Strings& arguments )
 {
     const std::string seperator( "-" );
     std::string command;
@@ -84,7 +92,7 @@ void Base::parse( const Strings& arguments )
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Base::dispatch( const std::string& name, const Strings& arguments )
+void CmdLine::dispatch( const std::string& name, const Strings& arguments )
 {
     stateStd( name << " " << arguments.size() );
     if ( auto entry = find( name ) )
@@ -97,7 +105,7 @@ void Base::dispatch( const std::string& name, const Strings& arguments )
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const IEntry& Base::find( const std::string& name ) const
+const IEntry& CmdLine::find( const std::string& name ) const
 {
     auto iter = std::find_if( m_entries.begin(), m_entries.end(), 
         [name] ( const IEntry* entry )
@@ -108,7 +116,7 @@ const IEntry& Base::find( const std::string& name ) const
     return *(*iter);
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-IEntry* Base::find( const std::string& name )
+IEntry* CmdLine::find( const std::string& name )
 {
     IEntry* entry = nullptr;
     auto iter = std::find_if( m_entries.begin(), m_entries.end(), 

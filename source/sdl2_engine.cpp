@@ -26,7 +26,7 @@ int main( int argc, const char* const argv[])
     {
         arguments.push_back( argv[ i ] );
     }
-    commandLine::Base cmdLine( arguments );
+    commandLine::CmdLine cmdLine( arguments );
     game::Application application( cmdLine );
     application.update();
     stateStd( "Main end: " << SDL_GetTicks() );

@@ -18,7 +18,7 @@
 namespace game
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Application::Application( const commandLine::Base& cmdLine )
+Application::Application( const commandLine::CmdLine& cmdLine )
 : m_cmdLine( cmdLine )
 , m_state( State::Created )
 , m_window( nullptr )

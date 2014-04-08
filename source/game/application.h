@@ -31,13 +31,13 @@ private:
 public:
 protected:
 private:
-    const commandLine::Base m_cmdLine;
+    const commandLine::CmdLine m_cmdLine;
     State m_state;
     SDL_Window* m_window;
     Renderer* m_renderer;
 // Functions
 public:
-     explicit Application( const commandLine::Base& arguments );
+     explicit Application( const commandLine::CmdLine& arguments );
      void update();
 protected:
 private:

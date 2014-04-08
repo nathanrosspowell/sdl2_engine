@@ -20,7 +20,7 @@ namespace game
 SDL_Event event;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Renderer::Renderer( const commandLine::Base& cmdLine, SDL_Window* window )
+Renderer::Renderer( const commandLine::CmdLine& cmdLine, SDL_Window* window )
 : m_cmdLine( cmdLine )
 , m_window( window )
 , m_surfaceLoul( nullptr )

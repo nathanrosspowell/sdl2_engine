@@ -48,7 +48,7 @@ public:
 };
   
 
-    class Base
+    class CmdLine
     {
     // Variables
     public:
@@ -60,7 +60,8 @@ public:
         int m_autoCloseTimer;
     // Functions
     public:
-        explicit Base( const Strings& arguments );
+        explicit CmdLine( const Strings& arguments );
+        ~CmdLine();
         template < class T >
         const T& get() const
         {
@@ -68,7 +69,6 @@ public:
         }
     protected:
     private:
-        void add( const std::string& name, IEntry* entry );
         void parse( const Strings& arguments );
         void dispatch( const std::string& name, const Strings& arguments );
         const IEntry& find( const std::string& name ) const;

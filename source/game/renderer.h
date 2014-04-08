@@ -31,7 +31,7 @@ private:
 public:
 protected:
 private:
-    const commandLine::Base& m_cmdLine;
+    const commandLine::CmdLine& m_cmdLine;
     SDL_Window* m_window;
     SDL_Surface* m_surfaceLoul;
     SDL_Surface* m_surfaceCat;
@@ -49,7 +49,7 @@ private:
 
 // Functions
 public:
-    Renderer( const commandLine::Base& arguments, SDL_Window* window );
+    Renderer( const commandLine::CmdLine& arguments, SDL_Window* window );
     bool initalise();
     bool initGL();
     bool shutDown();
