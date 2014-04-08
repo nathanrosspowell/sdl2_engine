@@ -3,20 +3,56 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // This header.
 #include "base.h"
+// Standard library.
+#include <algorithm> 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// SDL.
+#include "SDL.h"
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Log.
 #include "../log/log.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace commandLine
 {
-const int SCREEN_WIDTH  = 640;
-const int SCREEN_HEIGHT = 480;
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void ScreenDimensions::dispatch( const Strings& arguments )
+{
+    if ( arguments.size() == 2 )
+    {
+        std::istringstream width( arguments[ 0 ] );
+        width >> m_screenWidth;
+        std::istringstream height( arguments[ 1 ] );
+        height >> m_screenHeight;
+        stateStd( "New screen dimensions: " 
+            << m_screenWidth 
+            << "x" 
+            << m_screenHeight );
+    }
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void AutoCloseTimer::dispatch( const Strings& arguments )
+{
+    if ( arguments.size() == 1 )
+    {
+        std::istringstream timer( arguments[ 0 ] );
+        timer >> m_autoCloseTimer;
+        stateStd( "New auto close timer: " << m_autoCloseTimer );
+    }
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Base::Base( const std::vector< std::string >& arguments )
-: m_screenWidth( SCREEN_WIDTH )
-, m_screenHeight( SCREEN_HEIGHT )
-, m_autoCloseTimer( 300 )
+    : m_entries({
+         new ScreenDimensions()
+       , new AutoCloseTimer()
+    } )
 {
     parse( arguments );
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Base::add( const std::string& name, IEntry* entry )
+{
+//    m_entries[ name ] = entry;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Base::parse( const Strings& arguments )
@@ -51,43 +87,40 @@ void Base::parse( const Strings& arguments )
 void Base::dispatch( const std::string& name, const Strings& arguments )
 {
     stateStd( name << " " << arguments.size() );
-#define testCase( CMD, FUNC ) \
-    else if ( name.compare( CMD ) == 0 ) \
-    {   FUNC( arguments );   }
-
-    if ( name.empty() )
+    if ( auto entry = find( name ) )
     {
-        errorStd( "WHAT?" );
+        entry->dispatch( arguments );
     }
-    testCase( "screenDimensions", setScreenDimensions )
-    testCase( "autoCloseTimer", setAutoCloseTimer )
     else
     {
-        errorStd( "No match for " << name );
-    }
-#undef testCase
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Base::setScreenDimensions( const Strings& arguments )
-{
-    if ( arguments.size() == 2 )
-    {
-        std::istringstream width( arguments[ 0 ] );
-        width >> m_screenWidth;
-        std::istringstream height( arguments[ 1 ] );
-        height >> m_screenHeight;
-        stateStd( "New Dimensions: " << m_screenWidth << "x" << m_screenHeight );
+        errorStd( "No match for: " << name );
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Base::setAutoCloseTimer( const Strings& arguments )
+const IEntry& Base::find( const std::string& name ) const
 {
-    if ( arguments.size() == 1 )
+    auto iter = std::find_if( m_entries.begin(), m_entries.end(), 
+        [name] ( const IEntry* entry )
+        {
+            return entry->getCommandName().compare( name ) == 0;
+        } );
+    SDL_assert( iter != m_entries.end() );
+    return *(*iter);
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+IEntry* Base::find( const std::string& name )
+{
+    IEntry* entry = nullptr;
+    auto iter = std::find_if( m_entries.begin(), m_entries.end(), 
+        [name] ( const IEntry* entry )
+        {
+            return entry->getCommandName().compare( name ) == 0;
+        } );
+    if ( iter != m_entries.end() )
     {
-        std::istringstream timer( arguments[ 0 ] );
-        timer >> m_autoCloseTimer;
-        stateStd( "New auto close timer: " << m_autoCloseTimer );
+        entry = *iter;
     }
+    return entry;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace commandLine

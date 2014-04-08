@@ -21,7 +21,7 @@
 int main( int argc, const char* const argv[])
 {
     stateStd( "Main start: " << SDL_GetTicks() );
-    commandLine::Base::Strings arguments;
+    commandLine::Strings arguments;
     for ( int i = 0; i < argc; ++i )
     {
         arguments.push_back( argv[ i ] );

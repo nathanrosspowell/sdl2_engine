@@ -1,25 +1,19 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // entity/base.cpp Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // This header.
 #include "application.h"
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // STL includes.
 #include <iostream>
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // SDL.
 #include "SDL.h"
 #include "SDL_image.h"
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Local includes.
 #include "renderer.h"
 #include "../log/log.h"
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
@@ -76,11 +70,15 @@ void Application::startUp()
     m_state = State::Loading;
     if ( SDL_Init( SDL_INIT_EVERYTHING ) == 0 )
     {
+        auto screen = m_cmdLine.get< commandLine::ScreenDimensions >();
+        int screenWidth = screen.getScreenWidth();
+        int screenHeigth = screen.getScreenHeight();
+
         m_window = SDL_CreateWindow( "SDL2"
             , 10
             , 10
-            , m_cmdLine.getScreenWidth()
-            , m_cmdLine.getScreenHeight()
+            , screenWidth
+            , screenHeigth
             , SDL_WINDOW_OPENGL|SDL_WINDOW_SHOWN);
         if ( m_window )
         {
@@ -120,8 +118,11 @@ bool Application::finishedLoading()
 void Application::running()
 {
     m_renderer->update();
-    if ( m_cmdLine.hasSetAutoCloseTimer() &&
-         SDL_GetTicks() > m_cmdLine.getAutoCloseTimer() )
+
+    // Remove debug...
+    auto closeTimer = m_cmdLine.get< commandLine::AutoCloseTimer >();
+    if ( closeTimer.hasSetAutoCloseTimer() && 
+         SDL_GetTicks() > closeTimer.getAutoCloseTimer() )
     {
         shutDown();
     }
