@@ -2,44 +2,22 @@
 // component/base.cpp Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // This header.
-#include "base.h"
+#include "cmd_line.h"
 // Standard library.
 #include <algorithm> 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // SDL.
 #include "SDL.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// command line.
+#include "auto_close_timer.h"
+#include "screen_dimensions.h"
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Log.
 #include "../log/log.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace commandLine
 {
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void ScreenDimensions::dispatch( const Strings& arguments )
-{
-    if ( arguments.size() == 2 )
-    {
-        std::istringstream width( arguments[ 0 ] );
-        width >> m_screenWidth;
-        std::istringstream height( arguments[ 1 ] );
-        height >> m_screenHeight;
-        stateStd( "New screen dimensions: " 
-            << m_screenWidth 
-            << "x" 
-            << m_screenHeight );
-    }
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void AutoCloseTimer::dispatch( const Strings& arguments )
-{
-    if ( arguments.size() == 1 )
-    {
-        std::istringstream timer( arguments[ 0 ] );
-        timer >> m_autoCloseTimer;
-        stateStd( "New auto close timer: " << m_autoCloseTimer );
-    }
-}
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CmdLine::CmdLine( const std::vector< std::string >& arguments )
     : m_entries({

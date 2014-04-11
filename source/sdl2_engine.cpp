@@ -13,7 +13,7 @@
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Local
-#include "command_line/base.h"
+#include "command_line/cmd_line.h"
 #include "game/application.h"
 #include "log/log.h"
 

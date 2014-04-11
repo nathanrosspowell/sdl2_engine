@@ -4,7 +4,7 @@
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Local.
-#include "../command_line/base.h"
+#include "../command_line/cmd_line.h"
 
 class SDL_Window;
 

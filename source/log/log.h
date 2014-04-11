@@ -6,7 +6,7 @@
 // Standard library.
 #include <iostream>
 #include <sstream>
-#include <string.h>
+#include <string>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Logging channels.
 #define logError "ERROR"

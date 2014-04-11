@@ -14,6 +14,11 @@
 // Local includes.
 #include "renderer.h"
 #include "../log/log.h"
+// Local.
+#include "../command_line/auto_close_timer.h"
+#include "../command_line/screen_dimensions.h"
+
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
@@ -99,7 +104,7 @@ void Application::startUp()
         shutDown();
     }
 }
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::shutDown()
 {
     stateStd( "" );
