@@ -76,6 +76,12 @@ if (NOT HAVE_GLEW)
     message (FATAL_ERROR "GLEW not found!")
 endif (NOT HAVE_GLEW)
 
+find_package(GLM)
+if (NOT GLM_FOUND)
+    message (FATAL_ERROR "GLM not found!")
+endif (NOT GLM_FOUND)
+
+
 include_directories(
     ${CMAKE_SOURCE_DIR}/include
     ${SDL2_INCLUDE_DIR}
@@ -83,13 +89,14 @@ include_directories(
     ${GL_INCLUDE_DIR}
     ${GLU_INCLUDE_DIR}
     ${GLEW_INCLUDE_DIR}
+    ${GLM_INCLUDE_DIRS}
 )
 
 # Final executable.
 add_executable(
    ${App_Name}
    #WIN32 # Only if you don't want the DOS prompt to appear in the background in Windows
-   #MACOSX_BUNDLE
+   #MACOSX_BUNDLE   
    ${SOURCES} # We could've listed the source files here directly instead of using a variable to store them
 )
 

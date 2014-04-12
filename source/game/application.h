@@ -6,6 +6,7 @@
 // Local.
 #include "../command_line/cmd_line.h"
 
+#include "../camera/manager.h"
 class SDL_Window;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,6 +36,7 @@ private:
     State m_state;
     SDL_Window* m_window;
     Renderer* m_renderer;
+    camera::Manager m_camera;
 // Functions
 public:
      explicit Application( const commandLine::CmdLine& arguments );

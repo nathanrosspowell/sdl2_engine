@@ -7,3 +7,5 @@ sudo apt-get install libglib2.0-dev
 sudo apt-get install freeglut3-dev freeglut-devel
 
 sudo apt-get install libglew libglew-dev glew-utils
+
+sudo apt-get install libglm-dev
