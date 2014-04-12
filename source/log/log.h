@@ -7,6 +7,10 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <string.h>
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// SDL
+#include "SDL.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Logging channels.
 #define logError "ERROR"
@@ -23,7 +27,8 @@
             : __FILE__ )
 #define baseLog( SEVERITY, CHANNEL, FORMAT )\
 {   std::ostringstream ss;\
-    ss << "[" << SEVERITY \
+    ss << "[" << SDL_GetTicks() \
+       << "][" << SEVERITY \
        << "][" << CHANNEL \
        << "][" << logFile \
        << "][" << __LINE__ \

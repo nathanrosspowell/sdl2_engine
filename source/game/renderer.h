@@ -5,6 +5,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Local.
 #include "../command_line/cmd_line.h"
+#include "../camera/manager.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // SDL and GL.
 #include <GL/glew.h>
@@ -42,30 +43,29 @@ private:
     GLuint m_ibo;
 
     // This needs to be in input handling and camera management.
-    float m_translateX = 0;
-    float m_translateY = 0;
-    float m_translateZ = 0;
-    float rotate_x = 0;
-    float rotate_y = 0;
     SDL_Event m_event;
     bool m_userQuit = false;
+    camera::Manager m_camMan;
 
 // Functions
 public:
     Renderer( const commandLine::CmdLine& arguments, SDL_Window* window );
     bool initalise();
-    bool initGL();
+    
     bool shutDown();
     void update();
-    void render();
     SDL_Texture* loadTexture( const std::string &file );
     SDL_Surface* loadBmpToSurface( const std::string &file );
-    void printProgramLog( GLuint program );
-    void printShaderLog( GLuint shader );
-    GLuint loadShaderFromFile( std::string path, GLenum shaderType );
+    
     bool userQuit() const { return m_userQuit; }
 protected:
 private:
+    void printProgramLog( GLuint program );
+    void printShaderLog( GLuint shader );
+    GLuint loadShaderFromFile( std::string path, GLenum shaderType );
+    bool initGL();
+    void render();
+    void setMatrix( const camera::Camera& camera );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace game.

@@ -3,26 +3,29 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Local.
-#include "camera.h"
+// GLM
+#include "../types/glm.hxx" 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace camera
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-class Manager
+class Camera
 {
 // Variables
 public:
 protected:
 private:
+    Vec3 m_position;
+    Quat m_rotation;
 // Functions
 public:
-    Manager();
-    const Camera& getCamera() const { return m_currentCam; }
-    Camera& getCameraForEdit() { return m_currentCam; }
+    const Vec3& getPos() const { return m_position; }
+    const Quat& getRot() const { return m_rotation; }
+    Mat4 getMatrix() const;
+    void translate( const Vec3& vector );
+    void rotate( const Vec3& eulerRotation );
 protected:
 private:
-    Camera m_currentCam;
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }

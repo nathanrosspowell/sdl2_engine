@@ -14,12 +14,13 @@
 // gl_helpers.
 #include "../gl_helpers/primitives.h"
 #include "../command_line/auto_close_timer.h"
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// GLM.
+#include "../types/glm.hxx"
+#include <glm/gtc/type_ptr.hpp>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
-
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Renderer::Renderer( const commandLine::CmdLine& cmdLine, SDL_Window* window )
 : m_cmdLine( cmdLine )
@@ -117,7 +118,7 @@ bool Renderer::initGL()
         return false;
     }
     //Initialize clear color
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); //make the window background a blue-ish tone
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_COLOR_MATERIAL);
     glEnable(GL_LIGHTING);
@@ -159,12 +160,8 @@ bool Renderer::shutDown()
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Renderer::update()
 {
-    //Render quad
-    render();
-    //Update screen
-    SDL_GL_SwapWindow( m_window );
-
-
+    Vec3 pos( 0.0f );
+    Vec3 rot( 0.0f );
     /****** Check for Key & System input ******/    
     while ( SDL_PollEvent( &m_event ) )
     {
@@ -176,17 +173,16 @@ void Renderer::update()
                 auto keyPressed = m_event.key.keysym.sym;
                 switch ( keyPressed )
                 {
-                case SDLK_i: rotate_x += 5; break;
-                case SDLK_k: rotate_x -= 5; break;
-                case SDLK_j: rotate_y += 5; break;
-                case SDLK_l: rotate_y -= 5; break;
-                
-                case SDLK_w: m_translateZ += speed; break;
-                case SDLK_s: m_translateZ -= speed; break;
-                case SDLK_y: m_translateY += speed; break;
-                case SDLK_h: m_translateY -= speed; break;
-                case SDLK_a: m_translateX += speed; break;
-                case SDLK_d: m_translateX -= speed; break;
+                case SDLK_w: pos.z += speed; break;
+                case SDLK_s: pos.z -= speed; break;
+                case SDLK_y: pos.y += speed; break;
+                case SDLK_h: pos.y -= speed; break;
+                case SDLK_a: pos.x += speed; break;
+                case SDLK_d: pos.x -= speed; break;
+                case SDLK_i: rot.x += speed; break;
+                case SDLK_k: rot.x -= speed; break;
+                case SDLK_j: rot.y += speed; break;
+                case SDLK_l: rot.y -= speed; break;
                 }
             }
             break;
@@ -196,27 +192,31 @@ void Renderer::update()
             break;
         }
     }
+    auto& cam = m_camMan.getCameraForEdit();
+    cam.rotate( rot );
+    cam.translate( pos );
+    //Render quad
+    render();
+    //Update screen
+    SDL_GL_SwapWindow( m_window );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void  Renderer::render()
 {
     //Clear color buffer
     glClear( GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT );
-
     // Reset transformations
     glLoadIdentity();
-     
-    glTranslatef( m_translateX, m_translateY, m_translateZ );
-    // Rotate when user changes rotate_x and rotate_y
-    glRotatef( rotate_x, 1.0, 0.0, 0.0 );
-    glRotatef( rotate_y, 0.0, 1.0, 0.0 );
 
+    setMatrix( m_camMan.getCamera() );
+
+
+    // Draw cubes.
     gl_helpers::primitives::cube( 1.0, 0.0f, 0.0f, 0.0f );
     gl_helpers::primitives::cuboid( 0.5f, 0.1f, 0.1f,  -1.1f, 0.0f, 0.0f );
     gl_helpers::primitives::cuboid( 0.1f, 0.5f, 0.1f,  1.1f, 0.0f, 0.0f );
-
+    // Set Camera.
     glLoadIdentity();
-
     //Bind program
     glUseProgram( m_programId );
     //Enable vertex position
@@ -336,6 +336,12 @@ GLuint Renderer::loadShaderFromFile( std::string path, GLenum shaderType )
         errorStd( "Unable to open file:" << path.c_str() );
     }
     return shaderId;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Renderer::setMatrix( const camera::Camera& camera )
+{
+    Mat4 matrix = camera.getMatrix();
+    glLoadMatrixf( glm::value_ptr( matrix ) );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace game.
