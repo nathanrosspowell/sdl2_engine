@@ -5,16 +5,19 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Local.
 #include "../command_line/cmd_line.h"
-
 #include "../camera/manager.h"
+#include "../component/manager.h"
+#include "../passport/identity_factory.h"
+#include "../passport/passport.h"
+#include "../entity/entity.h"
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class SDL_Window;
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class Renderer;
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class Application
 {
 public:
@@ -36,7 +39,12 @@ private:
     State m_state;
     SDL_Window* m_window;
     Renderer* m_renderer;
+    // Managers
     camera::Manager m_camera;
+    component::Manager m_componentMan;
+    // Factories
+    passport::IdentityFactory< entity::Entity > m_entityIdFactory;
+    entity::Id m_entityPassport;
 // Functions
 public:
      explicit Application( const commandLine::CmdLine& arguments );
@@ -49,5 +57,6 @@ private:
     void running();
     bool finishedShuttingDown();
 };
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

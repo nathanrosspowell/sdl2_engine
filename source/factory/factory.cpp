@@ -10,24 +10,26 @@
 namespace factory
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-std::unordered_map< std::string,Lambda > Factory::sm_map;
+std::unordered_map< String,Lambda > Factory::sm_map;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*static*/ void Factory::add( const std::string& classKey, Lambda factoryFunc )
+/*static*/ void Factory::add( const String& classKey, Lambda factoryFunc )
 {
-    std::pair< std::string,Lambda > pair( classKey, factoryFunc );
+    std::pair< String,Lambda > pair( classKey, factoryFunc );
     sm_map.insert( pair );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*static*/ 
-void Factory::remove( const std::string& classKey )
+void Factory::remove( const String& classKey )
 {
     sm_map.erase( classKey );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*static*/ 
-ISetup* Factory::get( const std::string& classKey, JsonData jsonData )
+ISetup* Factory::get( const String& classKey
+    , JsonData jsonData
+    , const entity::Id& id )
 {
-    auto newSetup = sm_map[ classKey ]( jsonData );
+    ISetup* newSetup = sm_map[ classKey ]( jsonData, id );
     return newSetup;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -14,11 +14,10 @@
 // Local includes.
 #include "renderer.h"
 #include "../log/log.h"
-// Local.
 #include "../command_line/auto_close_timer.h"
 #include "../command_line/screen_dimensions.h"
-
-
+#include "../component/render.h"
+#include "../factory/factory.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
@@ -103,8 +102,21 @@ void Application::startUp()
     {
         shutDown();
     }
+    // Game play tests
+    m_entityPassport = m_entityIdFactory.getNewIdentity();
+    {
+        factory::JsonData data = nullptr;
+        factory::Factory::get( component::Render::getRegistrtyName(), data, m_entityPassport );
+    }
+    {
+        auto myComp = m_componentMan.get<component::Render>( m_entityPassport );
+        if ( myComp )
+        {
+            myComp->setTest( 666 ); 
+        }
+    }
 }
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::shutDown()
 {
     stateStd( "" );
@@ -123,7 +135,7 @@ bool Application::finishedLoading()
 void Application::running()
 {
     m_renderer->update();
-
+    m_componentMan.update( 0 );
     // Remove debug...
     auto closeTimer = m_cmdLine.get< commandLine::AutoCloseTimer >();
     if ( closeTimer.hasSetAutoCloseTimer() && 

@@ -3,26 +3,23 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#include <functional>
+// Local includes.
+#include "types.hxx"
+#include "../types/stl.hxx"
+// STL includes.
 #include <unordered_map>
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
-
-class ISetup;
-using JsonData = void*;
-using Lambda = std::function<ISetup*(JsonData)>;
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class Factory
 {
 public:
-    static std::unordered_map< std::string,Lambda > sm_map;
+    static std::unordered_map< String, Lambda > sm_map;
 public:
-    static void add( const std::string& classKey, Lambda factoryFunc );
-    static void remove( const std::string& classKey );
-    static ISetup* get( const std::string& classKey, JsonData jsonData );
+    static void add( const String& classKey, Lambda factoryFunc );
+    static void remove( const String& classKey );
+    static ISetup* get( const String& classKey, JsonData data, const entity::Id& id );
 };
 
 }

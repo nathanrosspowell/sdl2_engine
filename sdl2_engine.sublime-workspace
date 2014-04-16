@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"Iden",
+				"IdentityFactory"
+			],
+			[
+				"en",
+				"entity"
+			],
+			[
+				"inc",
+				"inc	#include \"…\""
+			],
+			[
+				"ite",
+				"itemPtr"
+			],
+			[
+				"trans",
+				"translate"
+			],
+			[
+				"vec",
+				"vector	std::vector"
+			],
+			[
+				"m_",
+				"m_position"
+			],
+			[
 				"m",
 				"m_screenHeight"
 			],
@@ -14,10 +42,6 @@
 			[
 				"be",
 				"begin"
-			],
-			[
-				"m_",
-				"m_entries"
 			],
 			[
 				"Aur",
@@ -124,100 +148,34 @@
 	"buffers":
 	[
 		{
-			"file": "source/command_line/screen_dimensions.h",
+			"file": "source/component/base.h",
 			"settings":
 			{
-				"buffer_size": 1234,
+				"buffer_size": 1038,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "source/command_line/cmd_line.h",
+			"file": "source/passport/identity_factory.h",
 			"settings":
 			{
-				"buffer_size": 1098,
+				"buffer_size": 1313,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "source/command_line/cmd_line.cpp",
+			"file": "source/game/application.cpp",
 			"settings":
 			{
-				"buffer_size": 3634,
+				"buffer_size": 4405,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 48 files for \"line/base\" (case sensitive)\n\n/home/nathan/projects/sdl2/source/sdl2_engine.cpp:\n   14  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n   15  // Local\n   16: #include \"command_line/base.h\"\n   17  #include \"game/application.h\"\n   18  #include \"log/log.h\"\n\n/home/nathan/projects/sdl2/source/command_line/cmd_line.h:\n    1  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    2: // command_line/base.h Authored by Nathan Ross Powell\n    3  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    4  #pragma once\n\n/home/nathan/projects/sdl2/source/game/application.h:\n    5  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    6  // Local.\n    7: #include \"../command_line/base.h\"\n    8  \n    9  class SDL_Window;\n\n/home/nathan/projects/sdl2/source/game/renderer.h:\n    5  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    6  // Local.\n    7: #include \"../command_line/base.h\"\n    8  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    9  // SDL and GL.\n\n4 matches across 4 files\n",
+			"file": "source/passport/passport.h",
 			"settings":
 			{
-				"buffer_size": 1190,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "source/game/renderer.h",
-			"settings":
-			{
-				"buffer_size": 2208,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/game/application.h",
-			"settings":
-			{
-				"buffer_size": 1067,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/sdl2_engine.cpp",
-			"settings":
-			{
-				"buffer_size": 1120,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/command_line/screen_dimensions.cpp",
-			"settings":
-			{
-				"buffer_size": 1152,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/command_line/auto_close_timer.cpp",
-			"settings":
-			{
-				"buffer_size": 1005,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/command_line/source_listing/listing_0000.cpp",
-			"settings":
-			{
-				"buffer_size": 309,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/command_line/auto_close_timer.h",
-			"settings":
-			{
-				"buffer_size": 1215,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/command_line/i_entry.h",
-			"settings":
-			{
-				"buffer_size": 680,
+				"buffer_size": 1670,
 				"line_ending": "Unix"
 			}
 		}
@@ -277,24 +235,61 @@
 	},
 	"file_history":
 	[
+		"/home/nathan/projects/sdl2/source/factory/types.hxx",
+		"/home/nathan/projects/sdl2/source/passport/identity_factory.h",
+		"/home/nathan/projects/sdl2/source/passport/passport.h",
+		"/home/nathan/projects/sdl2/source/entity/entity.h",
+		"/home/nathan/projects/sdl2/source/entity/types.hxx",
+		"/home/nathan/projects/sdl2/source/game/application.h",
+		"/home/nathan/projects/sdl2/source/game/application.cpp",
+		"/home/nathan/projects/sdl2/source/entity/entity.cpp",
+		"/home/nathan/projects/sdl2/source/sdl2_engine.cpp",
+		"/home/nathan/projects/sdl2/source/factory/register.cpp",
+		"/home/nathan/projects/sdl2/source/component/render.cpp",
+		"/home/nathan/projects/sdl2/source/component/base.cpp",
+		"/home/nathan/projects/sdl2/source/component/base.h",
+		"/home/nathan/projects/sdl2/source/component/render.h",
+		"/home/nathan/projects/sdl2/source/factory/factory.cpp",
+		"/home/nathan/projects/sdl2/source/factory/factory.h",
+		"/home/nathan/projects/sdl2/source/component/component_list.h",
+		"/home/nathan/projects/sdl2/source/CMakeLists.txt",
+		"/home/nathan/projects/sdl2/source/game/renderer.cpp",
+		"/home/nathan/projects/sdl2/source/game/renderer.h",
+		"/home/nathan/projects/sdl2/source/factory/source_listing/listing_0000.cpp",
+		"/home/nathan/projects/sdl2/source/passport/passport.hxx",
+		"/home/nathan/projects/sdl2/source/passport/passport.cpp",
+		"/home/nathan/projects/sdl2/source/factory/register.h",
+		"/home/nathan/projects/sdl2/source/passport/source_listing/listing_0000.cpp",
+		"/home/nathan/projects/sdl2/source/passport/base.cpp",
+		"/home/nathan/projects/sdl2/source/factory/setup.h",
+		"/home/nathan/projects/sdl2/source/component/manager.h",
+		"/home/nathan/projects/sdl2/source/component/component_list.cpp",
+		"/home/nathan/projects/sdl2/source/types/stl.hxx",
+		"/home/nathan/projects/sdl2/source/component/manager.cpp",
+		"/home/nathan/projects/sdl2/source/types/glm.hxx",
+		"/home/nathan/projects/sdl2/source/command_line/cmd_line.h",
+		"/home/nathan/projects/sdl2/source/component/source_listing/listing_0000.cpp",
+		"/home/nathan/projects/sdl2/source/camera/source_listing/listing_0000.cpp",
+		"/home/nathan/projects/sdl2/source/camera/manager.h",
+		"/home/nathan/projects/sdl2/source/camera/manager.cpp",
+		"/home/nathan/projects/sdl2/source/camera/camera.h",
+		"/home/nathan/projects/sdl2/source/camera/camera.cpp",
+		"/home/nathan/projects/sdl2/source/log/log.h",
+		"/home/nathan/projects/sdl2/source/command_line/auto_close_timer.cpp",
+		"/home/nathan/projects/sdl2/source/command_line/i_entry.h",
+		"/home/nathan/projects/sdl2/source/types/types.hxx",
+		"/home/nathan/projects/sdl2/types.hxx",
+		"/home/nathan/projects/sdl2/cmake/FindGLM.cmake",
+		"/home/nathan/projects/sdl2/install/install_dependencies.bash",
+		"/home/nathan/projects/sdl2/source/command_line/cmd_line.cpp",
+		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.h",
+		"/home/nathan/projects/sdl2/source/command_line/auto_close_timer.h",
+		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.cpp",
+		"/home/nathan/projects/sdl2/source/command_line/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/base.h",
 		"/home/nathan/projects/sdl2/source/command_line/base.cpp",
-		"/home/nathan/projects/sdl2/source/game/application.h",
-		"/home/nathan/projects/sdl2/source/command_line/i_entry.h",
-		"/home/nathan/projects/sdl2/source/game/renderer.cpp",
-		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.cpp",
-		"/home/nathan/projects/sdl2/source/command_line/auto_close_timer.h",
-		"/home/nathan/projects/sdl2/source/log/log.h",
-		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.h",
-		"/home/nathan/projects/sdl2/source/game/application.cpp",
-		"/home/nathan/projects/sdl2/source/game/renderer.h",
-		"/home/nathan/projects/sdl2/source/command_line/cmd_line.cpp",
 		"/home/nathan/projects/sdl2/error.txt",
-		"/home/nathan/projects/sdl2/source/sdl2_engine.cpp",
 		"/home/nathan/projects/sdl2/source/shaders/vertex/vert_0.glvs",
-		"/home/nathan/projects/sdl2/source/command_line/cmd_line.h",
-		"/home/nathan/projects/sdl2/source/command_line/auto_close_timer.cpp",
-		"/home/nathan/projects/sdl2/source/command_line/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/i_entry.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/screen_resolution.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/screen_resolution.h",
@@ -303,41 +298,23 @@
 		"/home/nathan/projects/sdl2/run.bash",
 		"/home/nathan/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/nathan/projects/sdl2/source/gl_helpers/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/passport/identity_factory.h",
 		"/home/nathan/.config/sublime-text-3/Packages/cmd/cmd.py",
 		"/home/nathan/projects/sdl2/source/shaders/fragment/basic.glfs",
 		"/home/nathan/Downloads/51_SDL_and_modern_opengl/51_SDL_and_modern_opengl.cpp",
 		"/tmp/part2.cpp",
 		"/home/nathan/.cache/.fr-r8NaS0/30_loading_text_file_shaders/LShaderProgram.cpp",
 		"/home/nathan/projects/sdl2/source/shaders/vertex/basic.glvs",
-		"/home/nathan/projects/sdl2/source/factory/register.cpp",
 		"/home/nathan/projects/sdl2/cmake/FindGLEW.cmake",
 		"/home/nathan/projects/sdl2/cmake/FindGL.cmake",
-		"/home/nathan/projects/sdl2/source/CMakeLists.txt",
 		"/home/nathan/projects/sdl2/cmake/FindGLU.cmake",
-		"/home/nathan/projects/sdl2/install/install_dependencies.bash",
 		"/home/nathan/Desktop/ubi.txt",
 		"/home/nathan/projects/sdl2/cmake/FindSDL2.cmake",
 		"/home/nathan/Downloads/50_SDL_and_opengl_2/50_SDL_and_opengl_2.cpp",
-		"/home/nathan/projects/sdl2/source/passport/passport.h",
-		"/home/nathan/projects/sdl2/source/entity/entity.h",
-		"/home/nathan/projects/sdl2/source/passport/passport.cpp",
-		"/home/nathan/projects/sdl2/source/factory/register.h",
-		"/home/nathan/projects/sdl2/source/factory/setup.h",
 		"/home/nathan/projects/sdl2/source/log/log.cpp",
-		"/home/nathan/projects/sdl2/source/passport/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/passport/passport.hxx",
-		"/home/nathan/projects/sdl2/source/passport/base.cpp",
-		"/home/nathan/projects/sdl2/source/entity/entity.cpp",
-		"/home/nathan/projects/sdl2/source/factory/factory.h",
 		"/home/nathan/projects/sdl2/source/entity/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/entity/base.cpp",
 		"/home/nathan/projects/sdl2/source/game/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/factory/factory.cpp",
 		"/home/nathan/projects/sdl2/source/log/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/component/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/factory/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/component/base.h",
 		"/home/nathan/projects/sdl2/source/entity/base.h",
 		"/home/nathan/projects/sdl2/source/ladder/ladder.h",
 		"/home/nathan/projects/sdl2/source/ladder/rung_base.h",
@@ -347,7 +324,6 @@
 		"/home/nathan/projects/sdl2/source/passport/base.h",
 		"/home/nathan/projects/sdl2/source/CMakeLists.sublime-workspace",
 		"/home/nathan/projects/sdl2/source/ladder/ladder.cpp",
-		"/home/nathan/projects/sdl2/source/component/base.cpp",
 		"/home/nathan/projects/sdl2/source/ladder/rung_base.cpp",
 		"/home/nathan/projects/sdl2/source/ladder/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/ladder/ladder_base.cpp",
@@ -363,7 +339,7 @@
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -380,6 +356,16 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"entity/type",
+			"binary",
+			"registry",
+			"template",
+			"SDL",
+			"translate",
+			"setMatrix",
+			"using",
+			"GLU",
+			"};\n",
 			"line/base",
 			"autoClos",
 			"command_line/base",
@@ -491,6 +477,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"GLM",
 			"glHelpers",
 			"commandLine::CmdLine",
 			"CmdLine::",
@@ -546,144 +533,29 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "source/command_line/screen_dimensions.h",
+					"file": "source/component/base.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1234,
+						"buffer_size": 1038,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								723,
-								723
+								860,
+								860
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "source/command_line/cmd_line.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1098,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								104,
-								104
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "source/command_line/cmd_line.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3634,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								247,
-								247
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1190,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										232,
-										241
-									],
-									[
-										475,
-										484
-									],
-									[
-										812,
-										821
-									],
-									[
-										1042,
-										1051
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								1034,
-								1034
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -693,20 +565,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "source/game/renderer.h",
+					"buffer": 1,
+					"file": "source/passport/identity_factory.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2208,
+						"buffer_size": 1313,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								345,
-								345
+								744,
+								744
 							]
 						],
 						"settings":
@@ -714,27 +586,27 @@
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 96.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "source/game/application.h",
+					"buffer": 2,
+					"file": "source/game/application.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1067,
+						"buffer_size": 4405,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								345,
-								345
+								3044,
+								3044
 							]
 						],
 						"settings":
@@ -742,178 +614,38 @@
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1076.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "source/sdl2_engine.cpp",
+					"buffer": 3,
+					"file": "source/passport/passport.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1120,
+						"buffer_size": 1670,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								576,
-								576
+								725,
+								725
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 250.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "source/command_line/screen_dimensions.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1152,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								808,
-								808
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "source/command_line/auto_close_timer.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1005,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "source/command_line/source_listing/listing_0000.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 309,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								233,
-								233
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "source/command_line/auto_close_timer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1215,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								742,
-								742
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "source/command_line/i_entry.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 680,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								562,
-								562
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -970,15 +702,75 @@
 		"selected_items":
 		[
 			[
+				"enti",
+				"entity/entity.h"
+			],
+			[
+				"entype",
+				"entity/types.hxx"
+			],
+			[
+				"copbase",
+				"component/base.cpp"
+			],
+			[
+				"appli",
+				"game/application.cpp"
+			],
+			[
 				"base",
-				"command_line/base.cpp"
+				"component/base.h"
+			],
+			[
+				"redn",
+				"component/render.cpp"
+			],
+			[
+				"render",
+				"component/render.cpp"
+			],
+			[
+				"fac",
+				"factory/factory.h"
+			],
+			[
+				"mana",
+				"component/manager.h"
+			],
+			[
+				"stl",
+				"types/stl.hxx"
+			],
+			[
+				"app",
+				"game/application.cpp"
+			],
+			[
+				"a",
+				"game/application.cpp"
 			],
 			[
 				"appl",
 				"game/application.cpp"
 			],
 			[
-				"render",
+				"",
+				"types/glm.hxx"
+			],
+			[
+				"glm",
+				"types/glm.hxx"
+			],
+			[
+				"type",
+				"types/glm.hxx"
+			],
+			[
+				"sdl",
+				"sdl2_engine.cpp"
+			],
+			[
+				"rend",
 				"game/renderer.cpp"
 			],
 			[
@@ -990,20 +782,8 @@
 				"command_line/screen_dimensions.cpp"
 			],
 			[
-				"sdl",
-				"sdl2_engine.cpp"
-			],
-			[
-				"rend",
-				"game/renderer.cpp"
-			],
-			[
 				"red",
 				"game/renderer.h"
-			],
-			[
-				"app",
-				"game/application.cpp"
 			],
 			[
 				"commandl",
@@ -1043,7 +823,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 274.0,
+	"side_bar_width": 267.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

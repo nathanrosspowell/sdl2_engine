@@ -17,24 +17,40 @@ class Passport
 public:
 protected:
 private:
-    const typename T::IdentityType m_id;
+    typename T::IdentityType m_id;
 // Functions
 public:
     Passport();
+    Passport( Passport< T >&& newId ) = default;
+    Passport< T >& operator = ( Passport< T >&& rhs ) = default;
     bool operator == ( const Passport< T >& rhs ) const
     {
         return this->m_id == rhs.m_id;
     }
+    const typename T::IdentityType& getIdentity()
+    {
+        return m_id;
+    } 
+    bool isValid( const Passport< T >& rhs )
+    {
+        return rhs.m_id != Passport< T >();
+    }
 protected:
 private:
-public:
-    explicit Passport(  const typename T::IdentityType& newT );
+    // Only friends use this constructor.
+    explicit Passport( const typename T::IdentityType& newId );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
 template< class T >
 Passport< T >::Passport()
-: m_id( IdentityFactory< T >::sm_identityZero ) 
+: m_id( IdentityFactory< T >::getInvalidIdentity() ) 
+{}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+template< class T >
+Passport< T >::Passport( const typename T::IdentityType& newId )
+: m_id( newId ) 
 {}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

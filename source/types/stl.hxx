@@ -6,5 +6,7 @@
 #include <string>
 #include <vector>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-using Strings = std::vector< std::string >;
+template<class T> using Vector = std::vector< T >;
+using String = std::string;
+using Strings = Vector< std::string >;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
