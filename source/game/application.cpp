@@ -103,13 +103,13 @@ void Application::startUp()
         shutDown();
     }
     // Game play tests
-    m_entityPassport = m_entityIdFactory.getNewIdentity();
+    m_entityId = m_entityIdFactory.getNewIdentity();
     {
         factory::JsonData data = nullptr;
-        factory::Factory::get( component::Render::getRegistrtyName(), data, m_entityPassport );
+        factory::Factory::get( component::Render::getRegistrtyName(), data, m_entityId );
     }
     {
-        auto myComp = m_componentMan.get<component::Render>( m_entityPassport );
+        auto myComp = m_componentMan.get<component::Render>( m_entityId );
         if ( myComp )
         {
             myComp->setTest( 666 ); 

@@ -44,7 +44,7 @@ private:
     component::Manager m_componentMan;
     // Factories
     passport::IdentityFactory< entity::Entity > m_entityIdFactory;
-    entity::Id m_entityPassport;
+    entity::Id m_entityId;
 // Functions
 public:
      explicit Application( const commandLine::CmdLine& arguments );
