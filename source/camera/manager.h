@@ -18,8 +18,7 @@ private:
 // Functions
 public:
     Manager();
-    void update( int frameDelta ){}
-    
+    void update( int frameDelta );
     const Camera& getCamera() const { return m_currentCam; }
     Camera& getCameraForEdit() { return m_currentCam; }
 protected:

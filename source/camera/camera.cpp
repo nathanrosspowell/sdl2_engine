@@ -13,6 +13,11 @@
 namespace camera
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Camera::update( int frameDelta )
+{
+    frameDelta++;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Mat4 Camera::getMatrix() const
 {
     const Mat4 rot = glm::toMat4( getRot() );

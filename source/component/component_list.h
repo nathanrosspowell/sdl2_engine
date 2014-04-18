@@ -23,7 +23,7 @@ public:
     ComponentList( factory::Factory& fact )
         : m_registry( fact
             , T::getRegistrtyName()
-            , [this]( game::Hopper& hop, factory::JsonData data, const entity::Id& id  )
+            , [this]( game::Hopper& hop, const entity::Id& id  )
             {
                 Component item( hop, id );
                 m_components.push_back( item );

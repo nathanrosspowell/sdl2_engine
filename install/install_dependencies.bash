@@ -9,3 +9,7 @@ sudo apt-get install freeglut3-dev freeglut-devel
 sudo apt-get install libglew libglew-dev glew-utils
 
 sudo apt-get install libglm-dev
+
+sudo apt-get install clang-3.4 lldb-3.4
+
+sudo apt-get install gcc-4.7-multilib g++-4.7-multilib

@@ -24,7 +24,7 @@ private:
 public:
     Manager( game::Hopper& hop );
     void update( int frameDelta );
-    template < class T > T* get( const entity::Id& id ) { return nullptr; }
+    template < class T > T* get( const entity::Id& id );
 protected:
 private:
     ComponentList< Render > m_renderComps;

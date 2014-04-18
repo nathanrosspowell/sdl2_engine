@@ -25,22 +25,22 @@ Render::Render( game::Hopper& hop, const entity::Id& id )
     );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*virtual*/void Render::doSetup( factory::JsonData json )
+/*virtual*/void Render::doSetup( factory::JsonData /*json*/ )
 {
 
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*virtual*/ void Render::added( const String& name, ISetup* added )
+/*virtual*/ void Render::added( const String& /*name*/, ISetup* /*added*/ )
 {
     
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*virtual*/ void Render::deleted( const String& name, ISetup* deleted )
+/*virtual*/ void Render::deleted( const String& /*name*/, ISetup* /*deleted*/ )
 {
 
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Render::update( int frameDelta )
+void Render::update( int /*frameDelta*/ )
 {
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

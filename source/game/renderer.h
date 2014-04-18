@@ -13,12 +13,12 @@
 #include <SDL_opengl.h>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Forward decleration.
-class SDL_Window;
-class SDL_Renderer;
-class SDL_Texture;
-class SDL_Surface;
-class SDL_Rect;
-class SDL_Color;
+struct SDL_Window;
+struct SDL_Renderer;
+struct SDL_Texture;
+struct SDL_Surface;
+struct SDL_Rect;
+struct SDL_Color;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {

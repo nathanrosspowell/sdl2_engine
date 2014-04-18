@@ -18,7 +18,7 @@ namespace factory
 class ISetup;
 using JsonData = void*;
 using Lambda = std::function
-    <ISetup*(game::Hopper&,JsonData,const entity::Id&)>;
+    <ISetup*(game::Hopper&,const entity::Id&)>;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

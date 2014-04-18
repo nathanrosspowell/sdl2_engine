@@ -16,9 +16,6 @@ public:
 protected:
 private:
     std::vector< IEntry* > m_entries;
-    int m_screenWidth;
-    int m_screenHeight;
-    int m_autoCloseTimer;
 // Functions
 public:
     explicit CmdLine( const Strings& arguments );

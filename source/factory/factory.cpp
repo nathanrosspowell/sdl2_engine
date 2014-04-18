@@ -24,7 +24,8 @@ ISetup* Factory::get( const String& classKey
     , JsonData jsonData
     , const entity::Id& id )
 {
-    ISetup* newSetup = sm_map[ classKey ]( hop, jsonData, id );
+    ISetup* newSetup = sm_map[ classKey ]( hop, id );
+    newSetup->doSetup( jsonData );
     return newSetup;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

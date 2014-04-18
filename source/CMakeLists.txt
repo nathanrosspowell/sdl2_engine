@@ -23,9 +23,12 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
 
+set( MAKE_C_COMPILER clang )
+set( CMAKE_CXX_COMPILER clang++ )
+
 set( 
     CMAKE_CXX_FLAGS 
-    "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic-errors -lglut -lGLEW -lGLU -lGL -Weverything"
+    "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Werror"
 )
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -81,6 +84,11 @@ if (NOT GLM_FOUND)
     message (FATAL_ERROR "GLM not found!")
 endif (NOT GLM_FOUND)
 
+find_package(CPPCONFIG)
+if (NOT CPPCONFIG_FOUND)
+    message (FATAL_ERROR "CPPCONFIG not found!")
+endif (NOT CPPCONFIG_FOUND)
+
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/include
@@ -90,6 +98,7 @@ include_directories(
     ${GLU_INCLUDE_DIR}
     ${GLEW_INCLUDE_DIR}
     ${GLM_INCLUDE_DIRS}
+    ${CPPCONFIG_INCLUDE_DIRS}
 )
 
 # Final executable.

@@ -168,6 +168,7 @@ bool Renderer::shutDown()
     SDL_FreeSurface( m_surfaceLoul );
     SDL_FreeSurface( m_surfaceCat );
     glDeleteProgram( m_programId );
+    return true;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Renderer::update()

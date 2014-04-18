@@ -19,7 +19,7 @@ private:
     Quat m_rotation;
 // Functions
 public:
-    void update( int frameDelta ){}
+    void update( int frameDelta );
     const Vec3& getPos() const { return m_position; }
     const Quat& getRot() const { return m_rotation; }
     Mat4 getMatrix() const;

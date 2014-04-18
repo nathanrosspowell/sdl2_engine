@@ -15,7 +15,7 @@ namespace commandLine
 class AutoCloseTimer : public IEntry
 {
 private:
-    int m_autoCloseTimer = 0;
+    unsigned int m_autoCloseTimer = 0;
 public:
     AutoCloseTimer(){}
     virtual ~AutoCloseTimer(){}
@@ -23,7 +23,7 @@ public:
     virtual String getCommandName() const override { return cmdName(); }
     virtual void dispatch( const Strings& arguments ) override;
     bool hasSetAutoCloseTimer() const { return m_autoCloseTimer > 0; }
-    int getAutoCloseTimer() const { return m_autoCloseTimer; }
+    unsigned int getAutoCloseTimer() const { return m_autoCloseTimer; }
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }
