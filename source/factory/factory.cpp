@@ -5,7 +5,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // This header.
 #include "factory.h"
-
+#include "../game/hopper.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
@@ -26,10 +26,11 @@ void Factory::remove( const String& classKey )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*static*/ 
 ISetup* Factory::get( const String& classKey
+    , game::Hopper& hop
     , JsonData jsonData
     , const entity::Id& id )
 {
-    ISetup* newSetup = sm_map[ classKey ]( jsonData, id );
+    ISetup* newSetup = sm_map[ classKey ]( hop, jsonData, id );
     return newSetup;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

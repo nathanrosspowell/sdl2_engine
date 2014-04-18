@@ -19,8 +19,8 @@ private:
 public:
     AutoCloseTimer(){}
     virtual ~AutoCloseTimer(){}
-    static std::string cmdName() { return "autoCloseTimer"; }
-    virtual std::string getCommandName() const override { return cmdName(); }
+    static String cmdName() { return "autoCloseTimer"; }
+    virtual String getCommandName() const override { return cmdName(); }
     virtual void dispatch( const Strings& arguments ) override;
     bool hasSetAutoCloseTimer() const { return m_autoCloseTimer > 0; }
     int getAutoCloseTimer() const { return m_autoCloseTimer; }

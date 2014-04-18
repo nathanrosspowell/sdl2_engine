@@ -19,7 +19,7 @@
 namespace commandLine
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-CmdLine::CmdLine( const std::vector< std::string >& arguments )
+CmdLine::CmdLine( const std::vector< String >& arguments )
     : m_entries({
          new ScreenDimensions()
        , new AutoCloseTimer()
@@ -43,8 +43,8 @@ CmdLine::~CmdLine()
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void CmdLine::parse( const Strings& arguments )
 {
-    const std::string seperator( "-" );
-    std::string command;
+    const String seperator( "-" );
+    String command;
     Strings commandArgs;
     Strings copyArgs = arguments;
     copyArgs.push_back( "-" );
@@ -57,7 +57,7 @@ void CmdLine::parse( const Strings& arguments )
         {
             if ( gotCommand )
             {
-                std::string cmd( command, 1 );
+                String cmd( command, 1 );
                 dispatch( cmd, commandArgs );
                 commandArgs.clear();
             }
@@ -70,7 +70,7 @@ void CmdLine::parse( const Strings& arguments )
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void CmdLine::dispatch( const std::string& name, const Strings& arguments )
+void CmdLine::dispatch( const String& name, const Strings& arguments )
 {
     stateStd( name << " " << arguments.size() );
     if ( auto entry = find( name ) )
@@ -83,7 +83,7 @@ void CmdLine::dispatch( const std::string& name, const Strings& arguments )
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const IEntry& CmdLine::find( const std::string& name ) const
+const IEntry& CmdLine::find( const String& name ) const
 {
     auto iter = std::find_if( m_entries.begin(), m_entries.end(), 
         [name] ( const IEntry* entry )
@@ -94,7 +94,7 @@ const IEntry& CmdLine::find( const std::string& name ) const
     return *(*iter);
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-IEntry* CmdLine::find( const std::string& name )
+IEntry* CmdLine::find( const String& name )
 {
     IEntry* entry = nullptr;
     auto iter = std::find_if( m_entries.begin(), m_entries.end(), 

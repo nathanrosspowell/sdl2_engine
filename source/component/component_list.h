@@ -23,10 +23,11 @@ public:
     ComponentList()
         : m_registry( 
               T::getRegistrtyName()
-            , [this]( factory::JsonData data, const entity::Id& id  )
+            , [this]( game::Hopper& hop, factory::JsonData data, const entity::Id& id  )
             {
-                Component item( id );
+                Component item( hop, id );
                 item.doSetup( data );
+
                 m_components.push_back( item );
                 Component* itemPtr = &( m_components.back() );
                 return static_cast< factory::ISetup* >( itemPtr );

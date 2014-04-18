@@ -23,7 +23,7 @@ namespace game
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Application::Application( const commandLine::CmdLine& cmdLine )
-: m_cmdLine( cmdLine )
+: m_hopper( cmdLine )
 , m_state( State::Created )
 , m_window( nullptr )
 , m_renderer( nullptr )
@@ -74,7 +74,8 @@ void Application::startUp()
     m_state = State::Loading;
     if ( SDL_Init( SDL_INIT_EVERYTHING ) == 0 )
     {
-        auto screen = m_cmdLine.get< commandLine::ScreenDimensions >();
+        const auto& cmdLine = m_hopper.getCmdLine();
+        auto screen = cmdLine.get< commandLine::ScreenDimensions >();
         int screenWidth = screen.getScreenWidth();
         int screenHeigth = screen.getScreenHeight();
 
@@ -86,7 +87,7 @@ void Application::startUp()
             , SDL_WINDOW_OPENGL|SDL_WINDOW_SHOWN);
         if ( m_window )
         {
-            m_renderer = new Renderer( m_cmdLine, m_window );
+            m_renderer = new Renderer( m_hopper, m_window );
             m_renderer->initalise();
         }
         else
@@ -103,13 +104,15 @@ void Application::startUp()
         shutDown();
     }
     // Game play tests
-    m_entityId = m_entityIdFactory.getNewIdentity();
+    auto& entityIdFactory = m_hopper.getEntityIdFactory();
+    auto& componentMan = m_hopper.getComponentMan();
+    m_entityId = entityIdFactory.getNewIdentity();
     {
         factory::JsonData data = nullptr;
-        factory::Factory::get( component::Render::getRegistrtyName(), data, m_entityId );
+        factory::Factory::get( component::Render::getRegistrtyName(), m_hopper, data, m_entityId );
     }
     {
-        auto myComp = m_componentMan.get<component::Render>( m_entityId );
+        auto myComp = componentMan.get<component::Render>( m_entityId );
         if ( myComp )
         {
             myComp->setTest( 666 ); 
@@ -124,7 +127,6 @@ void Application::shutDown()
     m_renderer->shutDown();
     SDL_DestroyWindow(m_window);
     SDL_Quit();
-
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bool Application::finishedLoading()
@@ -134,10 +136,11 @@ bool Application::finishedLoading()
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::running()
 {
+    m_hopper.update( 0 );
     m_renderer->update();
-    m_componentMan.update( 0 );
     // Remove debug...
-    auto closeTimer = m_cmdLine.get< commandLine::AutoCloseTimer >();
+    const auto& cmdLine = m_hopper.getCmdLine();
+    auto closeTimer = cmdLine.get< commandLine::AutoCloseTimer >();
     if ( closeTimer.hasSetAutoCloseTimer() && 
          SDL_GetTicks() > closeTimer.getAutoCloseTimer() )
     {

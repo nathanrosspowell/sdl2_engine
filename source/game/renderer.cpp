@@ -3,6 +3,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // This header.
 #include "renderer.h"
+#include "hopper.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // SDL.
 #include "SDL.h"
@@ -22,8 +23,9 @@
 namespace game
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Renderer::Renderer( const commandLine::CmdLine& cmdLine, SDL_Window* window )
-: m_cmdLine( cmdLine )
+Renderer::Renderer( Hopper& hopper, SDL_Window* window )
+: m_cmdLine( hopper.getCmdLine() )
+, m_renderMan( hopper.getRenderMan() )
 , m_window( window )
 , m_surfaceLoul( nullptr )
 , m_surfaceCat( nullptr )
@@ -78,7 +80,7 @@ bool Renderer::initGL()
     //Generate program
     m_programId = glCreateProgram();
     //Create vertex shader
-    std::string vertexPath = "../source/shaders/vertex/vert_0.glvs";
+    String vertexPath = "../source/shaders/vertex/vert_0.glvs";
     GLuint vertexId = loadShaderFromFile( vertexPath, GL_VERTEX_SHADER );
     if( vertexId == 0 )
     {
@@ -90,7 +92,7 @@ bool Renderer::initGL()
         glAttachShader( m_programId, vertexId );
     }
     //Create vertex shader
-    std::string fragmentPath = "../source/shaders/fragment/frag_0.glfs";
+    String fragmentPath = "../source/shaders/fragment/frag_0.glfs";
     GLuint fragmentId = loadShaderFromFile( fragmentPath, GL_FRAGMENT_SHADER );
     if( fragmentId == 0 )
     {
@@ -209,12 +211,11 @@ void  Renderer::render()
     glLoadIdentity();
 
     setMatrix( m_camMan.getCamera() );
-
-
     // Draw cubes.
-    gl_helpers::primitives::cube( 1.0, 0.0f, 0.0f, 0.0f );
-    gl_helpers::primitives::cuboid( 0.5f, 0.1f, 0.1f,  -1.1f, 0.0f, 0.0f );
-    gl_helpers::primitives::cuboid( 0.1f, 0.5f, 0.1f,  1.1f, 0.0f, 0.0f );
+    //gl_helpers::primitives::cube( 1.0, 0.0f, 0.0f, 0.0f );
+    //gl_helpers::primitives::cuboid( 0.5f, 0.1f, 0.1f,  -1.1f, 0.0f, 0.0f );
+    //gl_helpers::primitives::cuboid( 0.1f, 0.5f, 0.1f,  1.1f, 0.0f, 0.0f );
+    m_renderMan.update();
     // Set Camera.
     glLoadIdentity();
     //Bind program
@@ -238,7 +239,7 @@ void  Renderer::render()
     glUseProgram( 0 );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-SDL_Surface* Renderer::loadBmpToSurface( const std::string& file )
+SDL_Surface* Renderer::loadBmpToSurface( const String& file )
 {
     SDL_Surface* surface = SDL_LoadBMP( file.c_str() );
     if ( surface == nullptr )
@@ -304,7 +305,7 @@ void Renderer::printShaderLog( GLuint shader )
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-GLuint Renderer::loadShaderFromFile( std::string path, GLenum shaderType )
+GLuint Renderer::loadShaderFromFile( String path, GLenum shaderType )
 {
     GLuint shaderId = 0;
     std::ifstream sourceFile( path.c_str() );
@@ -312,7 +313,7 @@ GLuint Renderer::loadShaderFromFile( std::string path, GLenum shaderType )
     {
         auto stream = std::istreambuf_iterator< char >( sourceFile );
         auto iterator = std::istreambuf_iterator< char >();
-        std::string shaderString;
+        String shaderString;
         shaderString.assign( stream, iterator );
         shaderId = glCreateShader( shaderType );
         const GLchar* shaderSource = shaderString.c_str();

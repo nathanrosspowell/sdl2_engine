@@ -31,8 +31,8 @@ public:
 protected:
 private:
     void parse( const Strings& arguments );
-    void dispatch( const std::string& name, const Strings& arguments );
-    const IEntry& find( const std::string& name ) const;
-    IEntry* find( const std::string& name );
+    void dispatch( const String& name, const Strings& arguments );
+    const IEntry& find( const String& name ) const;
+    IEntry* find( const String& name );
 };
 }

@@ -8,7 +8,7 @@ namespace n_log
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Basic error writing function, can take file or output.
-void error( std::ostream &os, const std::string& msg )
+void error( std::ostream &os, const String& msg )
 {
     os << msg << std::endl;
 }

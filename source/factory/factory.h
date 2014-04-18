@@ -9,6 +9,11 @@
 // STL includes.
 #include <unordered_map>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+namespace game
+{
+    class Hopper;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -19,7 +24,10 @@ public:
 public:
     static void add( const String& classKey, Lambda factoryFunc );
     static void remove( const String& classKey );
-    static ISetup* get( const String& classKey, JsonData data, const entity::Id& id );
+    static ISetup* get( const String& classKey
+        , game::Hopper& hop
+        , JsonData data
+        , const entity::Id& id );
 };
 
 }

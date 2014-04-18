@@ -6,8 +6,9 @@
 namespace component
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Base::Base( const entity::Id& id )
-    : m_entityId( id )
+Base::Base( game::Hopper& hop, const entity::Id& id )
+    : m_hopper( hop )
+    , m_entityId( id )
 {
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

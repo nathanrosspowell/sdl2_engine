@@ -10,6 +10,11 @@
 #include "../factory/types.hxx"
 #include "../entity/entity.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+namespace render
+{
+    class Item;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace component
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -20,14 +25,15 @@ public:
 protected:
 private:
     int m_test = 0;
+    render::Item* const m_item;
 // Functions
 public:
-    Render() = delete;
-    explicit Render( const entity::Id& id );
+    Render( game::Hopper& hop, const entity::Id& id );
     static String getRegistrtyName() { return String( "render" ); }
     void setTest( int x ) { m_test = x; }
 protected:
 private:
+    Render() = delete;
     friend class ComponentList< Render >;
     virtual void doSetup( factory::JsonData json ) override;
     void update( int frameDelta );

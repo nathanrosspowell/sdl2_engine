@@ -22,6 +22,7 @@ class SDL_Color;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
+    class Hopper;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class Renderer
 {
@@ -33,6 +34,7 @@ public:
 protected:
 private:
     const commandLine::CmdLine& m_cmdLine;
+    render::Manager& m_renderMan;
     SDL_Window* m_window;
     SDL_Surface* m_surfaceLoul;
     SDL_Surface* m_surfaceCat;
@@ -49,20 +51,20 @@ private:
 
 // Functions
 public:
-    Renderer( const commandLine::CmdLine& arguments, SDL_Window* window );
+    Renderer( Hopper& hopper, SDL_Window* window );
     bool initalise();
     
     bool shutDown();
     void update();
-    SDL_Texture* loadTexture( const std::string &file );
-    SDL_Surface* loadBmpToSurface( const std::string &file );
+    SDL_Texture* loadTexture( const String &file );
+    SDL_Surface* loadBmpToSurface( const String &file );
     
     bool userQuit() const { return m_userQuit; }
 protected:
 private:
     void printProgramLog( GLuint program );
     void printShaderLog( GLuint shader );
-    GLuint loadShaderFromFile( std::string path, GLenum shaderType );
+    GLuint loadShaderFromFile( String path, GLenum shaderType );
     bool initGL();
     void render();
     void setMatrix( const camera::Camera& camera );

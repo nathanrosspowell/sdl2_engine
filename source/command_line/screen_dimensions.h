@@ -20,8 +20,8 @@ private:
 public:
     ScreenDimensions(){}
     virtual ~ScreenDimensions(){}
-    static std::string cmdName() { return "screenDimensions"; }
-    virtual std::string getCommandName() const override { return cmdName(); }
+    static String cmdName() { return "screenDimensions"; }
+    virtual String getCommandName() const override { return cmdName(); }
     virtual void dispatch( const Strings& arguments ) override;
     int getScreenWidth() const { return m_screenWidth; }
     int getScreenHeight() const { return m_screenHeight; }

@@ -12,7 +12,7 @@ class IEntry
 {
 public:
     virtual ~IEntry(){}
-    virtual std::string getCommandName() const = 0;
+    virtual String getCommandName() const = 0;
     virtual void dispatch( const Strings& arguments ) = 0;
 };
 }

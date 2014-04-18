@@ -6,6 +6,11 @@
 #include "../factory/setup.h"
 #include "../entity/entity.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+namespace game
+{
+    class Hopper;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace component
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -17,11 +22,12 @@ protected:
 private:
 // Functions
 public:
-    Base() = delete;
-    explicit Base( const entity::Id& id );
+    Base( game::Hopper& hop, const entity::Id& id );
     const entity::Id& getEntityId() const { return m_entityId; }
 protected:
 private:
+    Base() = delete;
+    game::Hopper& m_hopper;
     const entity::Id& m_entityId;
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
