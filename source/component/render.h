@@ -34,6 +34,8 @@ private:
     Render() = delete;
     friend class ComponentList< Render >;
     virtual void doSetup( factory::JsonData json ) override;
+    virtual void added( const String& name, ISetup* added );
+    virtual void deleted( const String& name, ISetup* deleted );
     void update( int frameDelta );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

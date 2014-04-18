@@ -28,11 +28,15 @@ Application::Application( const commandLine::CmdLine& cmdLine )
 , m_window( nullptr )
 , m_renderer( nullptr )
 {
+    stateStd( "" );
+
     startUp();
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::update()
 {
+    stateStd( "" );
+
     while ( true )
     {
         switch ( m_state )
@@ -106,11 +110,12 @@ void Application::startUp()
     // Game play tests
     auto& entityIdFactory = m_hopper.getEntityIdFactory();
     auto& componentMan = m_hopper.getComponentMan();
+    auto& componentFactory = m_hopper.getComponentFactory();
     m_entityId = entityIdFactory.getNewIdentity();
     {
         factory::JsonData data = nullptr;
         auto name = component::Render::getRegistrtyName();
-        factory::Factory::get( name, m_hopper, data, m_entityId );
+        componentFactory.get( name, m_hopper, data, m_entityId );
     }
     {
         auto myComp = componentMan.get<component::Render>( m_entityId );

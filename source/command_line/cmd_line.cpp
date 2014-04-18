@@ -68,6 +68,7 @@ void CmdLine::parse( const Strings& arguments )
             commandArgs.push_back( arg );
         }
     }
+    stateStd( "DONE" );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void CmdLine::dispatch( const String& name, const Strings& arguments )

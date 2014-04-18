@@ -12,6 +12,8 @@ class ISetup
 {
 public:
     virtual void doSetup( JsonData json ) = 0;
+    virtual void added( const String& name, ISetup* added ) = 0;
+    virtual void deleted( const String& name, ISetup* deleted ) = 0;
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }

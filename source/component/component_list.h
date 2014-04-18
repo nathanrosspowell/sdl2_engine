@@ -20,14 +20,12 @@ protected:
 private:
 // Functions
 public:
-    ComponentList()
-        : m_registry( 
-              T::getRegistrtyName()
+    ComponentList( factory::Factory& fact )
+        : m_registry( fact
+            , T::getRegistrtyName()
             , [this]( game::Hopper& hop, factory::JsonData data, const entity::Id& id  )
             {
                 Component item( hop, id );
-                item.doSetup( data );
-
                 m_components.push_back( item );
                 Component* itemPtr = &( m_components.back() );
                 return static_cast< factory::ISetup* >( itemPtr );

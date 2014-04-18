@@ -9,8 +9,13 @@ namespace game
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Hopper::Hopper( const commandLine::CmdLine& cmdLine )
-: m_cmdLine( cmdLine )
+    : m_cmdLine( cmdLine )
+    , m_componentFactory()
+    , m_entityIdFactory()
+    , m_cameraMan()
+    , m_componentMan( *this )
 {
+    stateStd( "Hopper create:" );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Hopper::update( int frameDelta )

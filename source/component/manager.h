@@ -9,6 +9,8 @@
 #include "../types/stl.hxx"
 #include "../entity/entity.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+namespace game { class Hopper; }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace component
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -20,7 +22,7 @@ protected:
 private:
 // Functions
 public:
-    Manager();
+    Manager( game::Hopper& hop );
     void update( int frameDelta );
     template < class T > T* get( const entity::Id& id ) { return nullptr; }
 protected:

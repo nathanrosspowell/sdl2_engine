@@ -30,6 +30,16 @@ Render::Render( game::Hopper& hop, const entity::Id& id )
 
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*virtual*/ void Render::added( const String& name, ISetup* added )
+{
+    
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*virtual*/ void Render::deleted( const String& name, ISetup* deleted )
+{
+
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Render::update( int frameDelta )
 {
 }

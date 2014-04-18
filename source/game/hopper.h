@@ -10,11 +10,9 @@
 #include "../passport/identity_factory.h"
 #include "../passport/passport.h"
 #include "../entity/entity.h"
+#include "../factory/factory.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace commandLine
-{
-    class CmdLine;
-}
+namespace commandLine { class CmdLine; }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
@@ -29,12 +27,13 @@ public:
 protected:
 private:
     const commandLine::CmdLine& m_cmdLine;
+    // Factories
+    factory::Factory m_componentFactory;
+    EntityIdFactory m_entityIdFactory;
     // Managers
     camera::Manager m_cameraMan;
     component::Manager m_componentMan;
     render::Manager m_renderMan;
-    // Factories
-    EntityIdFactory m_entityIdFactory;
 // Functions
 public:
     explicit Hopper( const commandLine::CmdLine& arguments );
@@ -43,6 +42,7 @@ public:
     component::Manager& getComponentMan() { return m_componentMan; }
     render::Manager& getRenderMan() { return m_renderMan; }
     EntityIdFactory& getEntityIdFactory() { return m_entityIdFactory; }
+    factory::Factory& getComponentFactory() { return m_componentFactory; }
 protected:
 private:
     Hopper() = delete;

@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"get",
+				"getComponents"
+			],
+			[
+				"Fac",
+				"factory"
+			],
+			[
+				"inc",
+				"inc	#include \"…\""
+			],
+			[
+				"re",
+				"return"
+			],
+			[
 				"ite",
 				"m_item"
 			],
@@ -24,20 +40,12 @@
 				"retVal"
 			],
 			[
-				"re",
-				"retVal"
-			],
-			[
 				"Iden",
 				"IdentityFactory"
 			],
 			[
 				"en",
 				"entity"
-			],
-			[
-				"inc",
-				"inc	#include \"…\""
 			],
 			[
 				"trans",
@@ -164,58 +172,18 @@
 	"buffers":
 	[
 		{
-			"file": "source/component/render.cpp",
+			"file": "source/component/manager.h",
 			"settings":
 			{
-				"buffer_size": 1421,
+				"buffer_size": 1206,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "source/gl_helpers/primitives.h",
+			"file": "source/component/source_listing/listing_0000.cpp",
 			"settings":
 			{
-				"buffer_size": 963,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/component/render.h",
-			"settings":
-			{
-				"buffer_size": 1414,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/render/manager.cpp",
-			"settings":
-			{
-				"buffer_size": 910,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/render/manager.h",
-			"settings":
-			{
-				"buffer_size": 923,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/game/renderer.cpp",
-			"settings":
-			{
-				"buffer_size": 11128,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/game/application.cpp",
-			"settings":
-			{
-				"buffer_size": 4732,
+				"buffer_size": 285,
 				"line_ending": "Unix"
 			}
 		},
@@ -223,7 +191,31 @@
 			"file": "source/game/hopper.cpp",
 			"settings":
 			{
-				"buffer_size": 931,
+				"buffer_size": 965,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/game/application.cpp",
+			"settings":
+			{
+				"buffer_size": 4861,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/factory/register.cpp",
+			"settings":
+			{
+				"buffer_size": 966,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/factory/register.h",
+			"settings":
+			{
+				"buffer_size": 1079,
 				"line_ending": "Unix"
 			}
 		},
@@ -231,39 +223,23 @@
 			"file": "source/game/hopper.h",
 			"settings":
 			{
-				"buffer_size": 1917,
+				"buffer_size": 2061,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "source/game/renderer.h",
+			"file": "source/component/component_list.h",
 			"settings":
 			{
-				"buffer_size": 2213,
+				"buffer_size": 1771,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "source/render/item.cpp",
+			"file": "source/component/manager.cpp",
 			"settings":
 			{
-				"buffer_size": 628,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/render/item.h",
-			"settings":
-			{
-				"buffer_size": 997,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/factory/types.hxx",
-			"settings":
-			{
-				"buffer_size": 1020,
+				"buffer_size": 1301,
 				"line_ending": "Unix"
 			}
 		}
@@ -323,22 +299,33 @@
 	},
 	"file_history":
 	[
-		"/home/nathan/projects/sdl2/source/game/application.h",
-		"/home/nathan/projects/sdl2/source/game/application.cpp",
-		"/home/nathan/projects/sdl2/source/game/renderer.cpp",
 		"/home/nathan/projects/sdl2/source/game/renderer.h",
-		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.cpp",
-		"/home/nathan/projects/sdl2/source/component/render.h",
 		"/home/nathan/projects/sdl2/source/component/render.cpp",
-		"/home/nathan/projects/sdl2/source/factory/factory.h",
-		"/home/nathan/projects/sdl2/source/factory/factory.cpp",
-		"/home/nathan/projects/sdl2/source/factory/types.hxx",
-		"/home/nathan/projects/sdl2/source/component/component_list.h",
-		"/home/nathan/projects/sdl2/source/component/base.h",
-		"/home/nathan/projects/sdl2/source/component/base.cpp",
-		"/home/nathan/projects/sdl2/source/game/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/game/hopper.h",
+		"/home/nathan/projects/sdl2/source/component/manager.cpp",
+		"/home/nathan/projects/sdl2/source/component/manager.h",
+		"/home/nathan/projects/sdl2/source/component/render.h",
+		"/home/nathan/projects/sdl2/source/factory/setup.h",
 		"/home/nathan/projects/sdl2/source/game/hopper.cpp",
+		"/home/nathan/projects/sdl2/source/component/component_list.h",
+		"/home/nathan/projects/sdl2/source/factory/factory.cpp",
+		"/home/nathan/projects/sdl2/source/factory/register.cpp",
+		"/home/nathan/projects/sdl2/source/factory/register.h",
+		"/home/nathan/projects/sdl2/source/factory/factory.h",
+		"/home/nathan/projects/sdl2/source/factory/types.hxx",
+		"/home/nathan/projects/sdl2/source/render/item.h",
+		"/home/nathan/projects/sdl2/source/render/item.cpp",
+		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.h",
+		"/home/nathan/projects/sdl2/source/render/manager.cpp",
+		"/home/nathan/projects/sdl2/source/render/manager.h",
+		"/home/nathan/projects/sdl2/source/game/renderer.cpp",
+		"/home/nathan/projects/sdl2/source/game/application.cpp",
+		"/home/nathan/projects/sdl2/source/component/base.cpp",
+		"/home/nathan/projects/sdl2/source/render/source_listing/listing_0000.cpp",
+		"/home/nathan/projects/sdl2/source/game/application.h",
+		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.cpp",
+		"/home/nathan/projects/sdl2/source/component/base.h",
+		"/home/nathan/projects/sdl2/source/game/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/camera/camera.h",
 		"/home/nathan/projects/sdl2/source/camera/manager.cpp",
 		"/home/nathan/projects/sdl2/source/camera/manager.h",
@@ -349,19 +336,10 @@
 		"/home/nathan/projects/sdl2/source/command_line/cmd_line.h",
 		"/home/nathan/projects/sdl2/source/command_line/i_entry.h",
 		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.h",
-		"/home/nathan/projects/sdl2/source/factory/register.cpp",
-		"/home/nathan/projects/sdl2/source/factory/register.h",
 		"/home/nathan/projects/sdl2/source/log/log.cpp",
 		"/home/nathan/projects/sdl2/source/log/log.h",
-		"/home/nathan/projects/sdl2/source/render/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/render/manager.cpp",
-		"/home/nathan/projects/sdl2/source/render/manager.h",
-		"/home/nathan/projects/sdl2/source/render/item.cpp",
-		"/home/nathan/projects/sdl2/source/render/item.h",
 		"/home/nathan/projects/sdl2/source/render/types.hxx",
 		"/home/nathan/projects/sdl2/make.bash",
-		"/home/nathan/projects/sdl2/source/component/manager.cpp",
-		"/home/nathan/projects/sdl2/source/component/manager.h",
 		"/home/nathan/projects/sdl2/source/entity/entity.h",
 		"/home/nathan/projects/sdl2/source/passport/passport.h",
 		"/home/nathan/projects/sdl2/source/passport/identity_factory.h",
@@ -374,7 +352,6 @@
 		"/home/nathan/projects/sdl2/source/passport/passport.cpp",
 		"/home/nathan/projects/sdl2/source/passport/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/passport/base.cpp",
-		"/home/nathan/projects/sdl2/source/factory/setup.h",
 		"/home/nathan/projects/sdl2/source/component/component_list.cpp",
 		"/home/nathan/projects/sdl2/source/component/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/camera/source_listing/listing_0000.cpp",
@@ -393,7 +370,6 @@
 		"/home/nathan/projects/sdl2/source/command_line/screen_resolution.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/screen_resolution.h",
 		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.cpp",
-		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.h",
 		"/home/nathan/projects/sdl2/run.bash",
 		"/home/nathan/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/nathan/projects/sdl2/source/gl_helpers/source_listing/listing_0000.cpp",
@@ -436,7 +412,7 @@
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -453,6 +429,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"static",
+			"Factory",
 			"game",
 			"std::string",
 			"cmdLi",
@@ -635,24 +613,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "source/component/render.cpp",
+					"file": "source/component/manager.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1421,
+						"buffer_size": 1206,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								872,
-								872
+								798,
+								798
 							]
 						],
 						"settings":
@@ -660,307 +638,27 @@
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 12.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "source/gl_helpers/primitives.h",
-					"semi_transient": false,
+					"file": "source/component/source_listing/listing_0000.cpp",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 963,
+						"buffer_size": 285,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								435,
-								435
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "source/component/render.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1414,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								873,
-								873
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 124.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "source/render/manager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 910,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								712,
-								712
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "source/render/manager.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 923,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								684,
-								684
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "source/game/renderer.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11128,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								835,
-								835
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "source/game/application.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4732,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2686,
-								2686
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1033.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "source/game/hopper.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 931,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "source/game/hopper.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1917,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1520,
-								1520
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": -0.0,
-						"translation.y": 292.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "source/game/renderer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2213,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1496,
-								1496
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 306.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "source/render/item.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 628,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "source/render/item.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 997,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								761,
-								761
+								285,
+								285
 							]
 						],
 						"settings":
@@ -975,20 +673,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
-					"file": "source/factory/types.hxx",
+					"buffer": 2,
+					"file": "source/game/hopper.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1020,
+						"buffer_size": 965,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								436,
-								436
+								565,
+								565
 							]
 						],
 						"settings":
@@ -999,7 +697,175 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/game/application.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4861,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3379,
+								3379
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1329.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/factory/register.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 966,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								555,
+								555
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "source/factory/register.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1079,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								655,
+								655
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "source/game/hopper.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2061,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2061,
+								2061
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 292.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "source/component/component_list.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								841,
+								841
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "source/component/manager.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1301,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1223,
+								1223
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 68.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -1047,7 +913,7 @@
 	"project": "sdl2_engine.sublime-project",
 	"replace":
 	{
-		"height": 66.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1056,12 +922,40 @@
 		"selected_items":
 		[
 			[
-				"hop",
-				"game/hopper.cpp"
+				"comp",
+				"component/component_list.h"
+			],
+			[
+				"regis",
+				"factory/register.cpp"
 			],
 			[
 				"appl",
 				"game/application.cpp"
+			],
+			[
+				"compo",
+				"component/component_list.h"
+			],
+			[
+				"hopp",
+				"game/hopper.cpp"
+			],
+			[
+				"compman",
+				"component/manager.h"
+			],
+			[
+				"hop",
+				"game/hopper.h"
+			],
+			[
+				"copren",
+				"component/render.cpp"
+			],
+			[
+				"renderitem",
+				"render/item.h"
 			],
 			[
 				"rendmana",
@@ -1082,10 +976,6 @@
 			[
 				"app",
 				"game/application.cpp"
-			],
-			[
-				"hopp",
-				"game/hopper.cpp"
 			],
 			[
 				"appli",
@@ -1205,7 +1095,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 267.0,
+	"side_bar_width": 255.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

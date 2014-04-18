@@ -9,10 +9,7 @@
 // STL includes.
 #include <unordered_map>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace game
-{
-    class Hopper;
-}
+namespace game { class Hopper; }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
@@ -20,14 +17,16 @@ namespace factory
 class Factory
 {
 public:
-    static std::unordered_map< String, Lambda > sm_map;
+    std::unordered_map< String, Lambda > sm_map;
 public:
-    static void add( const String& classKey, Lambda factoryFunc );
-    static void remove( const String& classKey );
-    static ISetup* get( const String& classKey
+    void add( const String& classKey, Lambda factoryFunc );
+    void remove( const String& classKey );
+    ISetup* get( const String& classKey
         , game::Hopper& hop
         , JsonData data
         , const entity::Id& id );
 };
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// End namespace factory
 }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

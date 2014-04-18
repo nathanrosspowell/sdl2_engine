@@ -3,19 +3,21 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // THIS header.
 #include "register.h"
+#include "factory.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Register::Register( const String& classKey, Lambda factoryFunc )
-: m_classKey( classKey )
+Register::Register( Factory& fact, const String& classKey, Lambda factoryFunc )
+    : m_factory( fact )
+    , m_classKey( classKey )
 {
-    Factory::add( m_classKey, factoryFunc );
+    m_factory.add( m_classKey, factoryFunc );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Register::~Register()
 {
-    Factory::remove( m_classKey );
+    m_factory.remove( m_classKey );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace factory.
