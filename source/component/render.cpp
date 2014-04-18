@@ -32,7 +32,6 @@ Render::Render( game::Hopper& hop, const entity::Id& id )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Render::update( int frameDelta )
 {
-    stateStd( "I will render stuff: " << m_test );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespave component

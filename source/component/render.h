@@ -24,13 +24,11 @@ class Render : public Base
 public:
 protected:
 private:
-    int m_test = 0;
     render::Item* const m_item;
 // Functions
 public:
     Render( game::Hopper& hop, const entity::Id& id );
     static String getRegistrtyName() { return String( "render" ); }
-    void setTest( int x ) { m_test = x; }
 protected:
 private:
     Render() = delete;

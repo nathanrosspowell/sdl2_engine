@@ -109,13 +109,14 @@ void Application::startUp()
     m_entityId = entityIdFactory.getNewIdentity();
     {
         factory::JsonData data = nullptr;
-        factory::Factory::get( component::Render::getRegistrtyName(), m_hopper, data, m_entityId );
+        auto name = component::Render::getRegistrtyName();
+        factory::Factory::get( name, m_hopper, data, m_entityId );
     }
     {
         auto myComp = componentMan.get<component::Render>( m_entityId );
-        if ( myComp )
+        if ( !myComp )
         {
-            myComp->setTest( 666 ); 
+            errorStd( "Couldn't get component::Render!!!1111111111111111111");
         }
     }
 }
