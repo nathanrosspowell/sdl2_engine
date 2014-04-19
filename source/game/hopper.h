@@ -6,6 +6,7 @@
 // Local.
 #include "../camera/manager.h"
 #include "../component/manager.h"
+#include "../component/base.h"
 #include "../render/manager.h"
 #include "../passport/identity_factory.h"
 #include "../passport/passport.h"
@@ -22,6 +23,7 @@ class Hopper
 public:
     friend class Application;
     using EntityIdFactory = passport::IdentityFactory< entity::Entity >;
+    using ComponentIdFactory = passport::IdentityFactory< component::Base >;
 // Variables
 public:
 protected:
@@ -30,6 +32,7 @@ private:
     // Factories
     factory::Factory m_componentFactory;
     EntityIdFactory m_entityIdFactory;
+    ComponentIdFactory m_componentIdFactory;
     // Managers
     camera::Manager m_cameraMan;
     component::Manager m_componentMan;
@@ -42,6 +45,7 @@ public:
     component::Manager& getComponentMan() { return m_componentMan; }
     render::Manager& getRenderMan() { return m_renderMan; }
     EntityIdFactory& getEntityIdFactory() { return m_entityIdFactory; }
+    ComponentIdFactory& getComponentIdFactory() { return m_componentIdFactory; }
     factory::Factory& getComponentFactory() { return m_componentFactory; }
 protected:
 private:

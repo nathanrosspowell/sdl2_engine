@@ -17,6 +17,7 @@
 #include "../command_line/auto_close_timer.h"
 #include "../command_line/screen_dimensions.h"
 #include "../component/render.h"
+#include "../component/location.h"
 #include "../factory/factory.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
@@ -114,8 +115,14 @@ void Application::startUp()
     m_entityId = entityIdFactory.getNewIdentity();
     {
         factory::JsonData data = nullptr;
-        auto name = component::Render::getRegistrtyName();
-        componentFactory.get( name, m_hopper, data, m_entityId );
+        {
+            auto name = component::Render::getRegistrtyName();
+            componentFactory.get( name, m_hopper, data, m_entityId );
+        }
+        {
+            auto name = component::Location::getRegistrtyName();
+            componentFactory.get( name, m_hopper, data, m_entityId );
+        }
     }
     {
         auto myComp = componentMan.get<component::Render>( m_entityId );

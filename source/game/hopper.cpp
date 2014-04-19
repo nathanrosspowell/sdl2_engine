@@ -12,6 +12,7 @@ Hopper::Hopper( const commandLine::CmdLine& cmdLine )
     : m_cmdLine( cmdLine )
     , m_componentFactory()
     , m_entityIdFactory()
+    , m_componentIdFactory()
     , m_cameraMan()
     , m_componentMan( *this )
 {

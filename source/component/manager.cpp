@@ -10,6 +10,7 @@ namespace component
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Manager::Manager( game::Hopper& hop )
     : m_renderComps( hop.getComponentFactory() )
+    , m_locationComps( hop.getComponentFactory() )
 {
 
 }

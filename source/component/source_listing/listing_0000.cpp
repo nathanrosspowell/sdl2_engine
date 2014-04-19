@@ -4,3 +4,4 @@
 #include "../base.cpp"
 #include "../manager.cpp"
 #include "../render.cpp"
+#include "../location.cpp"

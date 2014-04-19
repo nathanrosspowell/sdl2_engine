@@ -8,11 +8,11 @@
 namespace factory
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Register::Register( Factory& fact, const String& classKey, Lambda factoryFunc )
+Register::Register( Factory& fact, const String& classKey, Funcs funcs )
     : m_factory( fact )
     , m_classKey( classKey )
 {
-    m_factory.add( m_classKey, factoryFunc );
+    m_factory.add( m_classKey, funcs );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Register::~Register()

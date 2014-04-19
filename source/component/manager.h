@@ -6,6 +6,7 @@
 // Local includes.
 #include "component_list.h"
 #include "render.h"
+#include "location.h"
 #include "../types/stl.hxx"
 #include "../entity/entity.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,6 +29,7 @@ public:
 protected:
 private:
     ComponentList< Render > m_renderComps;
+    ComponentList< Location > m_locationComps;
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace component.

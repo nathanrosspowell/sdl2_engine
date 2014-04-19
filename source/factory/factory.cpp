@@ -8,15 +8,15 @@
 namespace factory
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Factory::add( const String& classKey, Lambda factoryFunc )
+void Factory::add( const String& classKey, Funcs funcs )
 {
-    std::pair< String,Lambda > pair( classKey, factoryFunc );
-    sm_map.insert( pair );
+    std::pair< String, Funcs > pair( classKey, funcs );
+    m_functionMap.insert( pair );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Factory::remove( const String& classKey )
 {
-    sm_map.erase( classKey );
+    m_functionMap.erase( classKey );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ISetup* Factory::get( const String& classKey
@@ -24,8 +24,23 @@ ISetup* Factory::get( const String& classKey
     , JsonData jsonData
     , const entity::Id& id )
 {
-    ISetup* newSetup = sm_map[ classKey ]( hop, id );
-    newSetup->doSetup( jsonData );
+    ISetup* newSetup = nullptr;
+    auto funcIt = m_functionMap.find( classKey );
+    if ( funcIt != m_functionMap.end() )
+    {
+        newSetup = funcIt->second.Add( hop, id );
+        if ( newSetup )
+        {
+            auto& otherSetupsForId = m_setupMap[ id.getIdentity() ];
+            for ( auto* i : otherSetupsForId )
+            {
+                i->added( classKey, newSetup );
+                newSetup->added( classKey, i );
+            }
+            otherSetupsForId.push_back( newSetup );
+            newSetup->doSetup( jsonData );
+        }
+    }
     return newSetup;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -3,6 +3,8 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// STL includes.
+#include <algorithm>
 // Local includes.
 #include "../types/stl.hxx"
 #include "../factory/factory.h"
@@ -18,19 +20,28 @@ class ComponentList
 public:
 protected:
 private:
+    factory::Funcs m_funcs = 
+    {
+        [this]( game::Hopper& hop, const entity::Id& id )
+        {
+            m_components.push_back( Component( hop, id ) );
+            Component* itemPtr = &( m_components.back() );
+            return static_cast< factory::ISetup* >( itemPtr );
+        }
+        , [this]( game::Hopper& /*hop*/, factory::ISetup* deleted )
+        {
+             T* comp = static_cast< T* >( deleted );
+             const auto& id = comp->getComponentId();
+             auto iter = std::remove_if ( m_components.begin()
+                , m_components.end()
+                , [&]( const T& x ) { return x.getComponentId() == id; } );
+             m_components.erase( iter, m_components.end() );
+        }
+    };
 // Functions
 public:
     ComponentList( factory::Factory& fact )
-        : m_registry( fact
-            , T::getRegistrtyName()
-            , [this]( game::Hopper& hop, const entity::Id& id  )
-            {
-                Component item( hop, id );
-                m_components.push_back( item );
-                Component* itemPtr = &( m_components.back() );
-                return static_cast< factory::ISetup* >( itemPtr );
-            } 
-        )
+        : m_registry( fact, T::getRegistrtyName(), m_funcs )
     {}
     void update( int frameDelta )
     {

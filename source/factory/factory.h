@@ -13,13 +13,19 @@ namespace game { class Hopper; }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
+struct Funcs
+{
+    AddFunc Add;
+    RemoveFunc Remove;
+};
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class Factory
 {
+private:
+    std::unordered_map< String, Funcs > m_functionMap;
+    std::unordered_map< entity::Entity::IdentityType, Vector< ISetup* > > m_setupMap;
 public:
-    std::unordered_map< String, Lambda > sm_map;
-public:
-    void add( const String& classKey, Lambda factoryFunc );
+    void add( const String& classKey, Funcs factoryFunc );
     void remove( const String& classKey );
     ISetup* get( const String& classKey
         , game::Hopper& hop

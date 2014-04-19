@@ -4,6 +4,7 @@
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #include "factory.h"
+#include "../types/stl.hxx"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
@@ -11,6 +12,7 @@ namespace factory
 class ISetup
 {
 public:
+    virtual String classKey() const = 0;
     virtual void doSetup( JsonData json ) = 0;
     virtual void added( const String& name, ISetup* added ) = 0;
     virtual void deleted( const String& name, ISetup* deleted ) = 0;

@@ -27,17 +27,16 @@ public:
     {
         return this->m_id == rhs.m_id;
     }
-    const typename T::IdentityType& getIdentity()
+    const typename T::IdentityType& getIdentity() const
     {
         return m_id;
     } 
-    bool isValid( const Passport< T >& rhs )
+    bool isValid() const
     {
-        return rhs.m_id != Passport< T >();
+        return m_id != Passport< T >();
     }
 protected:
 private:
-    // Only friends use this constructor.
     explicit Passport( const typename T::IdentityType& newId );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
