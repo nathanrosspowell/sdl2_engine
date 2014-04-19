@@ -32,6 +32,8 @@ Application::Application( const commandLine::CmdLine& cmdLine )
     stateStd( "" );
 
     startUp();
+
+    Unique< int > i = makeUnique< int >( 4 );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::update()

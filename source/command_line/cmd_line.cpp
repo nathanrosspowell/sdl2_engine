@@ -20,25 +20,10 @@ namespace commandLine
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CmdLine::CmdLine( const std::vector< String >& arguments )
-    : m_entries({
-         new ScreenDimensions()
-       , new AutoCloseTimer()
-    } )
 {
+    m_entries.push_back( makeUnique< ScreenDimensions >() );
+    m_entries.push_back( makeUnique< AutoCloseTimer >() );
     parse( arguments );
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-CmdLine::~CmdLine()
-{
-    // for ( auto entry : m_entries )
-    // {
-    //     if ( entry )
-    //     {    stateStd( "Delete stuff " << entry->getCommandName() );
-    //     delete entry;
-    //     }else
-    //      {   stateStd( "null wut?? " << entry );
-    //     }
-    // }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void CmdLine::parse( const Strings& arguments )
@@ -87,25 +72,25 @@ void CmdLine::dispatch( const String& name, const Strings& arguments )
 const IEntry& CmdLine::find( const String& name ) const
 {
     auto iter = std::find_if( m_entries.begin(), m_entries.end(), 
-        [name] ( const IEntry* entry )
+        [&] ( const Unique< IEntry >& entry )
         {
             return entry->getCommandName().compare( name ) == 0;
         } );
     SDL_assert( iter != m_entries.end() );
-    return *(*iter);
+    return *( iter->get() );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 IEntry* CmdLine::find( const String& name )
 {
     IEntry* entry = nullptr;
     auto iter = std::find_if( m_entries.begin(), m_entries.end(), 
-        [name] ( const IEntry* entry )
+        [&] ( const Unique< IEntry >& entry )
         {
             return entry->getCommandName().compare( name ) == 0;
         } );
     if ( iter != m_entries.end() )
     {
-        entry = *iter;
+        entry = iter->get();
     }
     return entry;
 }

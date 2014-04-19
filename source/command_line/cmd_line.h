@@ -5,7 +5,7 @@
 #include "i_entry.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Standard library.
-#include <memory>
+#include "../types/stl.hxx"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace commandLine
 {
@@ -15,11 +15,10 @@ class CmdLine
 public:
 protected:
 private:
-    std::vector< IEntry* > m_entries;
+    Vector< Unique< IEntry > > m_entries;
 // Functions
 public:
     explicit CmdLine( const Strings& arguments );
-    ~CmdLine();
     template < class T >
     const T& get() const
     {
