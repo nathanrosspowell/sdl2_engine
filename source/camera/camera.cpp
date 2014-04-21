@@ -20,16 +20,24 @@ void Camera::update( int frameDelta )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Mat4 Camera::getMatrix() const
 {
+    const float _fieldOfView = 45.0f;
+    const float _viewportAspectRatio = 800.0f / 400.0f;
+    const float _nearPlane = 1.0f;
+    const float _farPlane = 200.0f;
+    const Mat4 projectionMatrix = glm::perspective( _fieldOfView
+        , _viewportAspectRatio
+        , _nearPlane
+        , _farPlane );
     const Mat4 rot = glm::toMat4( getRot() );
-    const Mat4 trans = glm::translate( Mat4( 1.0f ), getPos() );
-    const Mat4 final = trans * rot;
+    const Mat4 trans = glm::translate( Mat4( 1.0f ), Vec3( getPos() ) );
+    const Mat4 final = projectionMatrix *  rot * trans;
     return final;
-    return Mat4();
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Camera::translate( const Vec3& translation )
+void Camera::translate( const Vec4& translation )
 {
-    m_position += m_rotation * translation;
+    Mat4 rot = glm::toMat4( getRot() );
+    m_position +=  translation * rot;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Camera::rotate( const Vec3& eulerRotation )

@@ -173,7 +173,7 @@ bool Renderer::shutDown()
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Renderer::update()
 {
-    Vec3 pos( 0.0f );
+    Vec4 pos( 0.0f );
     Vec3 rot( 0.0f );
     /****** Check for Key & System input ******/    
     while ( SDL_PollEvent( &m_event ) )

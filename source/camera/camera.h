@@ -15,15 +15,18 @@ class Camera
 public:
 protected:
 private:
-    Vec3 m_position;
+    Vec4 m_position;
     Quat m_rotation;
 // Functions
 public:
+    Camera()
+        : m_position( 0.0f, 0.0f, -2.0f, 0.0f )
+    {}
     void update( int frameDelta );
-    const Vec3& getPos() const { return m_position; }
+    const Vec4& getPos() const { return m_position; }
     const Quat& getRot() const { return m_rotation; }
     Mat4 getMatrix() const;
-    void translate( const Vec3& vector );
+    void translate( const Vec4& vector );
     void rotate( const Vec3& eulerRotation );
 protected:
 private:

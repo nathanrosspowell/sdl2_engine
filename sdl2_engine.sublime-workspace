@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"in",
+				"inc	#include \"…\""
+			],
+			[
+				"m_",
+				"m_hopper"
+			],
+			[
+				"m",
+				"m_componentId"
+			],
+			[
+				"compo",
+				"component"
+			],
+			[
+				"C",
+				"ComponentList"
+			],
+			[
+				"de",
+				"default"
+			],
+			[
+				"remove",
+				"removeFunc"
+			],
+			[
 				"get",
 				"getComponents"
 			],
@@ -28,10 +56,6 @@
 				"m_componentMan"
 			],
 			[
-				"m_",
-				"m_cameraMan"
-			],
-			[
 				"m_c",
 				"m_componentMan"
 			],
@@ -54,10 +78,6 @@
 			[
 				"vec",
 				"vector	std::vector"
-			],
-			[
-				"m",
-				"m_screenHeight"
 			],
 			[
 				"m_s",
@@ -160,10 +180,6 @@
 				"arguments"
 			],
 			[
-				"in",
-				"include"
-			],
-			[
 				"ar",
 				"argv"
 			]
@@ -172,10 +188,26 @@
 	"buffers":
 	[
 		{
-			"file": "source/component/render.cpp",
+			"file": "source/game/application.cpp",
 			"settings":
 			{
-				"buffer_size": 1690,
+				"buffer_size": 5168,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/command_line/cmd_line.h",
+			"settings":
+			{
+				"buffer_size": 1008,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/command_line/cmd_line.cpp",
+			"settings":
+			{
+				"buffer_size": 3320,
 				"line_ending": "Unix"
 			}
 		}
@@ -239,64 +271,71 @@
 	},
 	"file_history":
 	[
-		"/home/nathan/projects/sdl2/source/component/base.h",
+		"/home/nathan/projects/sdl2/source/types/stl.hxx",
+		"/home/nathan/projects/sdl2/install/install_dependencies.bash",
+		"/home/nathan/projects/sdl2/source/CMakeLists.txt",
+		"/home/nathan/projects/sdl2/source/passport/identity_factory.h",
+		"/home/nathan/projects/sdl2/source/passport/passport.h",
+		"/home/nathan/projects/sdl2/source/game/hopper.h",
 		"/home/nathan/projects/sdl2/source/component/component_list.h",
+		"/home/nathan/projects/sdl2/source/component/base.h",
+		"/home/nathan/projects/sdl2/source/component/location.h",
+		"/home/nathan/projects/sdl2/source/component/render.h",
+		"/home/nathan/projects/sdl2/source/component/base.cpp",
+		"/home/nathan/projects/sdl2/source/game/hopper.cpp",
+		"/home/nathan/projects/sdl2/source/CMakeLists.sublime-project",
+		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.cpp",
+		"/home/nathan/projects/sdl2/source/entity/entity.h",
+		"/home/nathan/projects/sdl2/source/game/application.cpp",
+		"/home/nathan/projects/sdl2/source/factory/register.h",
+		"/home/nathan/projects/sdl2/source/factory/register.cpp",
+		"/home/nathan/projects/sdl2/source/factory/factory.cpp",
 		"/home/nathan/projects/sdl2/source/factory/factory.h",
+		"/home/nathan/projects/sdl2/source/factory/types.hxx",
+		"/home/nathan/projects/sdl2/source/render/types.hxx",
+		"/home/nathan/projects/sdl2/source/types/glm.hxx",
+		"/home/nathan/projects/sdl2/source/game/renderer.h",
 		"/home/nathan/projects/sdl2/source/component/manager.h",
+		"/home/nathan/projects/sdl2/source/component/manager.cpp",
+		"/home/nathan/projects/sdl2/source/factory/setup.h",
+		"/home/nathan/projects/sdl2/source/component/location.cpp",
+		"/home/nathan/projects/sdl2/source/component/render.cpp",
+		"/home/nathan/projects/sdl2/source/game/renderer.cpp",
+		"/home/nathan/projects/sdl2/source/sdl2_engine.cpp",
+		"/home/nathan/projects/sdl2/source/ladder/ladder.cpp",
+		"/home/nathan/projects/sdl2/source/component/source_listing/listing_0000.cpp",
+		"/home/nathan/projects/sdl2/source/component/position.h",
+		"/home/nathan/projects/sdl2/source/component/position.cpp",
 		"/home/nathan/projects/sdl2/source/camera/camera.cpp",
 		"/home/nathan/projects/sdl2/source/camera/camera.h",
 		"/home/nathan/projects/sdl2/source/camera/manager.cpp",
 		"/home/nathan/projects/sdl2/source/camera/manager.h",
-		"/home/nathan/projects/sdl2/source/component/base.cpp",
-		"/home/nathan/projects/sdl2/source/factory/types.hxx",
-		"/home/nathan/projects/sdl2/source/factory/setup.h",
-		"/home/nathan/projects/sdl2/source/component/render.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/cmd_line.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/auto_close_timer.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/auto_close_timer.h",
-		"/home/nathan/projects/sdl2/source/game/renderer.h",
 		"/home/nathan/projects/sdl2/source/command_line/cmd_line.h",
-		"/home/nathan/projects/sdl2/source/factory/factory.cpp",
-		"/home/nathan/projects/sdl2/source/CMakeLists.txt",
 		"/home/nathan/projects/sdl2/source/CMakeLists.sublime-workspace",
-		"/home/nathan/projects/sdl2/source/CMakeLists.sublime-project",
-		"/home/nathan/projects/sdl2/source/passport/identity_factory.h",
-		"/home/nathan/projects/sdl2/source/game/application.cpp",
-		"/home/nathan/projects/sdl2/source/game/renderer.cpp",
-		"/home/nathan/projects/sdl2/source/factory/register.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.cpp",
-		"/home/nathan/projects/sdl2/source/component/render.h",
-		"/home/nathan/projects/sdl2/source/sdl2_engine.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/i_entry.h",
-		"/home/nathan/projects/sdl2/source/component/manager.cpp",
 		"/home/nathan/projects/sdl2/source/game/application.h",
 		"/home/nathan/projects/sdl2/cmake/FindGLU.cmake",
 		"/home/nathan/projects/sdl2/cmake/FindGLM.cmake",
 		"/home/nathan/projects/sdl2/cmake/FindCPPCONFIG.cmake",
 		"/usr/include/c++/4.8/cstdio",
-		"/home/nathan/projects/sdl2/install/install_dependencies.bash",
 		"/home/nathan/projects/sdl2/cmake/FindCPPConfig.cmake",
 		"/home/nathan/projects/sdl2/CMakeLists.txt",
-		"/home/nathan/projects/sdl2/source/game/hopper.cpp",
-		"/home/nathan/projects/sdl2/source/game/hopper.h",
 		"/home/nathan/projects/sdl2/source/render/manager.cpp",
 		"/home/nathan/projects/sdl2/source/render/manager.h",
 		"/home/nathan/projects/sdl2/source/render/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/types/stl.hxx",
 		"/home/nathan/projects/sdl2/source/camera/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/factory/register.h",
 		"/home/nathan/projects/sdl2/source/render/item.h",
 		"/home/nathan/projects/sdl2/source/render/item.cpp",
 		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.h",
 		"/home/nathan/projects/sdl2/source/game/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/types/glm.hxx",
 		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.h",
 		"/home/nathan/projects/sdl2/source/log/log.cpp",
 		"/home/nathan/projects/sdl2/source/log/log.h",
-		"/home/nathan/projects/sdl2/source/render/types.hxx",
 		"/home/nathan/projects/sdl2/make.bash",
-		"/home/nathan/projects/sdl2/source/entity/entity.h",
-		"/home/nathan/projects/sdl2/source/passport/passport.h",
 		"/home/nathan/projects/sdl2/source/entity/types.hxx",
 		"/home/nathan/projects/sdl2/source/entity/entity.cpp",
 		"/home/nathan/projects/sdl2/source/factory/source_listing/listing_0000.cpp",
@@ -305,7 +344,6 @@
 		"/home/nathan/projects/sdl2/source/passport/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/passport/base.cpp",
 		"/home/nathan/projects/sdl2/source/component/component_list.cpp",
-		"/home/nathan/projects/sdl2/source/component/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/types/types.hxx",
 		"/home/nathan/projects/sdl2/types.hxx",
 		"/home/nathan/projects/sdl2/source/command_line/source_listing/listing_0000.cpp",
@@ -316,7 +354,6 @@
 		"/home/nathan/projects/sdl2/source/command_line/i_entry.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/screen_resolution.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/screen_resolution.h",
-		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.cpp",
 		"/home/nathan/projects/sdl2/run.bash",
 		"/home/nathan/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/nathan/projects/sdl2/source/gl_helpers/source_listing/listing_0000.cpp",
@@ -341,7 +378,6 @@
 		"/home/nathan/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
 		"/home/nathan/projects/sdl2/source/application.h",
 		"/home/nathan/projects/sdl2/source/passport/base.h",
-		"/home/nathan/projects/sdl2/source/ladder/ladder.cpp",
 		"/home/nathan/projects/sdl2/source/ladder/rung_base.cpp",
 		"/home/nathan/projects/sdl2/source/ladder/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/ladder/ladder_base.cpp",
@@ -373,6 +409,16 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"getComponentId",
+			"} ",
+			"==",
+			"deleted",
+			"vec",
+			"Lambda",
+			"AddFunc",
+			"game",
+			"Position",
+			"Render",
 			"inc",
 			"JsonData",
 			"glm",
@@ -490,17 +536,7 @@
 			"TentityFactory",
 			"ID",
 			"ISSUE",
-			"MyId",
-			"\n    ",
-			"MyId",
-			"\n#",
-			"\n    ",
-			"renderTexture",
-			"//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-			";\n",
-			"Factorty",
-			"DataSetupLambda",
-			"IFactorySetup"
+			"MyId"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -508,6 +544,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"m_components",
+			"AddFunc",
+			"Location",
+			"Position",
 			"cppconfig",
 			"CPPCONFIG",
 			"String",
@@ -567,32 +607,88 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "source/component/render.cpp",
+					"file": "source/game/application.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1690,
+						"buffer_size": 5168,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1043,
-								1043
+								757,
+								757
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
-						"translation.x": -0.0,
-						"translation.y": 168.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/command_line/cmd_line.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1008,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								80,
+								80
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/command_line/cmd_line.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3320,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3238,
+								3238
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 945.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -652,6 +748,66 @@
 		"selected_items":
 		[
 			[
+				"compre",
+				"component/render.h"
+			],
+			[
+				"lo",
+				"component/location.h"
+			],
+			[
+				"comp",
+				"component/component_list.h"
+			],
+			[
+				"ho",
+				"game/hopper.cpp"
+			],
+			[
+				"pas",
+				"passport/passport.h"
+			],
+			[
+				"hop",
+				"game/hopper.cpp"
+			],
+			[
+				"ty",
+				"factory/types.hxx"
+			],
+			[
+				"reg",
+				"factory/register.cpp"
+			],
+			[
+				"app",
+				"game/application.cpp"
+			],
+			[
+				"fac",
+				"factory/factory.cpp"
+			],
+			[
+				"render",
+				"component/render.cpp"
+			],
+			[
+				"loca",
+				"component/location.h"
+			],
+			[
+				"compren",
+				"component/render.h"
+			],
+			[
+				"setup",
+				"factory/setup.h"
+			],
+			[
+				"loc",
+				"component/location.h"
+			],
+			[
 				"fact",
 				"factory/factory.cpp"
 			],
@@ -666,14 +822,6 @@
 			[
 				"comdl",
 				"command_line/cmd_line.cpp"
-			],
-			[
-				"render",
-				"component/render.cpp"
-			],
-			[
-				"setup",
-				"factory/setup.h"
 			],
 			[
 				"factyp",
@@ -716,28 +864,12 @@
 				"component/render.cpp"
 			],
 			[
-				"hop",
-				"game/hopper.cpp"
-			],
-			[
 				"appl",
 				"game/application.h"
 			],
 			[
-				"app",
-				"game/application.cpp"
-			],
-			[
-				"fac",
-				"factory/factory.cpp"
-			],
-			[
 				"compman",
 				"component/manager.h"
-			],
-			[
-				"comp",
-				"component/component_list.h"
 			],
 			[
 				"regis",
@@ -873,7 +1005,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 255.0,
+	"side_bar_width": 233.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
