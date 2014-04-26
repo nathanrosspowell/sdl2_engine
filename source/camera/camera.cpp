@@ -42,7 +42,7 @@ void Camera::translate( const Vec4& translation )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Camera::rotate( const Vec3& eulerRotation )
 {
-    m_rotation = m_rotation * Quat( eulerRotation );
+    m_rotation = Quat( eulerRotation ) * m_rotation;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace entity
