@@ -173,35 +173,35 @@ bool Renderer::shutDown()
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Renderer::update()
 {
+    const float speed = 0.02f;
     Vec4 pos( 0.0f );
     Vec3 rot( 0.0f );
-    /****** Check for Key & System input ******/    
+    SDL_PumpEvents();
+    auto keystate = SDL_GetKeyboardState( 0 );
+    //continuous-response keys
+    if(keystate[SDL_SCANCODE_W]){ pos.z += speed; }
+    if(keystate[SDL_SCANCODE_S]){ pos.z -= speed; }
+    if(keystate[SDL_SCANCODE_A]){ pos.x += speed; }
+    if(keystate[SDL_SCANCODE_D]){ pos.x -= speed; }
+    if(keystate[SDL_SCANCODE_F]){ pos.y += speed; }
+    if(keystate[SDL_SCANCODE_R]){ pos.y -= speed; }
+
+    if(keystate[SDL_SCANCODE_K]){ rot.x += speed; }
+    if(keystate[SDL_SCANCODE_I]){ rot.x -= speed; }
+    if(keystate[SDL_SCANCODE_L]){ rot.y += speed; }
+    if(keystate[SDL_SCANCODE_J]){ rot.y -= speed; }
+    if(keystate[SDL_SCANCODE_Y]){ rot.z += speed; }
+    if(keystate[SDL_SCANCODE_H]){ rot.z -= speed; }
+
     while ( SDL_PollEvent( &m_event ) )
     {
-        const float speed = 0.01f;
         switch ( m_event.type )
         {
-        case SDL_KEYDOWN:
-            {
-                auto keyPressed = m_event.key.keysym.sym;
-                switch ( keyPressed )
-                {
-                case SDLK_w: pos.z += speed; break;
-                case SDLK_s: pos.z -= speed; break;
-                case SDLK_y: pos.y += speed; break;
-                case SDLK_h: pos.y -= speed; break;
-                case SDLK_a: pos.x += speed; break;
-                case SDLK_d: pos.x -= speed; break;
-                case SDLK_i: rot.x += speed; break;
-                case SDLK_k: rot.x -= speed; break;
-                case SDLK_j: rot.y += speed; break;
-                case SDLK_l: rot.y -= speed; break;
-                }
-            }
-            break;
         case SDL_QUIT:
             stateStd( "User Quit" );
             m_userQuit = true;
+            break;
+        default:
             break;
         }
     }
