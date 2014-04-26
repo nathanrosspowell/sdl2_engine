@@ -4,6 +4,7 @@
 // Standard library.
 #include <vector> 
 #include <string>
+#include <fstream>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // SDL.
 #include "SDL.h"
@@ -18,9 +19,19 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main( int argc, const char* const argv[])
 {
-    YAML::Emitter out;
-    out << "Hello, World!";
-    std::cout << "Here's the output YAML:\n" << out.c_str(); // prints "Hello, World!"
+    
+    std::fstream fin( "../resources/yaml/config.yaml" );
+    YAML::Parser parser( fin );
+    YAML::Node doc;
+    while ( parser.GetNextDocument(doc) )
+    {
+        for ( auto& x : doc )
+        {
+            int val = 0;
+            x >> val;
+            stateStd( "YAML " << val );
+        }
+    }
 
 
     stateStd( "Main start: " << SDL_GetTicks() );
