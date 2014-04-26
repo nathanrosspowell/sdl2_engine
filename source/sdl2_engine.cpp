@@ -12,9 +12,17 @@
 #include "command_line/cmd_line.h"
 #include "game/application.h"
 #include "log/log.h"
+
+#include "yaml-cpp/yaml.h"
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main( int argc, const char* const argv[])
 {
+    YAML::Emitter out;
+    out << "Hello, World!";
+    std::cout << "Here's the output YAML:\n" << out.c_str(); // prints "Hello, World!"
+
+
     stateStd( "Main start: " << SDL_GetTicks() );
     Strings arguments;
     for ( int i = 0; i < argc; ++i )

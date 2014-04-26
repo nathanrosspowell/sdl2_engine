@@ -13,3 +13,5 @@ sudo apt-get install libglm-dev
 sudo apt-get install clang-3.4 lldb-3.4
 
 sudo apt-get install gcc-4.7-multilib g++-4.7-multilib
+
+sudo apt-get install libyaml-cpp-dev
