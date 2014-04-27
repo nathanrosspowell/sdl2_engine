@@ -1,34 +1,32 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// entity/base.h Authored by Nathan Ross Powell
+// data/yaml_helpers.h Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Local includes.
-#include "types.hxx"
+// STL
 #include "../types/stl.hxx"
-#include "../entity/types.hxx"
-// STL includes.
-#include <unordered_map>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace game { class Hopper; }
+// Yaml
+#include "yaml-cpp/yaml.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace factory
+namespace yaml_helpers
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-class Factory
+class Doc
 {
-private:
-    std::unordered_map< String, Funcs > m_functionMap;
-    std::unordered_map< entity::EntityId::IdentityType, Vector< ISetup* > > m_setupMap;
+// Variables
 public:
-    void add( const String& classKey, Funcs factoryFunc );
-    void remove( const String& classKey );
-    ISetup* get( const String& classKey
-        , game::Hopper& hop
-        , JsonData data
-        , const entity::Id& id );
+protected:
+private:
+// Functions
+public:
+    explicit Doc( const String& file );
+    auto begin() { return m_nodes.begin(); };
+    auto end() { return m_nodes.end(); };
+protected:
+private:
+    Vector< Unique< YAML::Node > > m_nodes;
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// End namespace factory
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

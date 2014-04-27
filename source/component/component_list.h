@@ -8,7 +8,9 @@
 // Local includes.
 #include "../types/stl.hxx"
 #include "../factory/factory.h"
+#include "../factory/types.hxx"
 #include "../factory/register.h"
+#include "../entity/types.hxx"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace component
 {

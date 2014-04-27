@@ -34,8 +34,8 @@ private:
     friend class ComponentList< Location >;
     virtual String classKey() const override { return getRegistrtyName(); }
     virtual void doSetup( factory::JsonData json ) override;
-    virtual void added( const String& name, ISetup* added ) override;
-    virtual void deleted( const String& name, ISetup* deleted ) override;
+    virtual void added( const String& name, factory::ISetup* added ) override;
+    virtual void deleted( const String& name, factory::ISetup* deleted ) override;
     void update( int frameDelta );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

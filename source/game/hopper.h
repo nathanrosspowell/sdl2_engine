@@ -10,7 +10,7 @@
 #include "../render/manager.h"
 #include "../passport/identity_factory.h"
 #include "../passport/passport.h"
-#include "../entity/entity.h"
+#include "../entity/entity_id.h"
 #include "../factory/factory.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace commandLine { class CmdLine; }
@@ -22,7 +22,7 @@ class Hopper
 {
 public:
     friend class Application;
-    using EntityIdFactory = passport::IdentityFactory< entity::Entity >;
+    using EntityIdFactory = passport::IdentityFactory< entity::EntityId >;
     using ComponentIdFactory = passport::IdentityFactory< component::Base >;
 // Variables
 public:

@@ -4,30 +4,30 @@
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #include "types.hxx"
-#include "../passport/passport.h"
+#include "../types/stl.hxx"
+#include "../component/manager.h"
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+namespace game { class Hopper; }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace entity
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class Entity
 {
-public:
-    using Id = passport::Passport< Entity >;
-    using IdentityType = unsigned int;
 // Variables
 public:
 protected:
 private:
+//    const component::Manager& m_componentManager;
     Id m_id;
 // Functions
-    
 public:
-    Entity();
+    Entity( game::Hopper& hopper, const String& yamlFile );
+    template < class T > T* get() { return nullptr; }//m_componentManager.get<T>( m_id ); }
 protected:
 private:
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-using Id = Entity::Id;
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// End namespace entity.
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

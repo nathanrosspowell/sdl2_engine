@@ -21,8 +21,8 @@ namespace commandLine
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CmdLine::CmdLine( const std::vector< String >& arguments )
 {
-    m_entries.push_back( makeUnique< ScreenDimensions >() );
-    m_entries.push_back( makeUnique< AutoCloseTimer >() );
+    m_entries.push_back( make_unique< ScreenDimensions >() );
+    m_entries.push_back( make_unique< AutoCloseTimer >() );
     parse( arguments );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +36,6 @@ void CmdLine::parse( const Strings& arguments )
     for ( const auto& arg : copyArgs )
     {
         auto firstChar = arg.substr( 0, 1 );
-        stateStd( arg << " " << firstChar );
         bool gotCommand = !command.empty();
         if ( firstChar == seperator )
         {
@@ -53,12 +52,10 @@ void CmdLine::parse( const Strings& arguments )
             commandArgs.push_back( arg );
         }
     }
-    stateStd( "DONE" );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void CmdLine::dispatch( const String& name, const Strings& arguments )
 {
-    stateStd( name << " " << arguments.size() );
     if ( auto entry = find( name ) )
     {
         entry->dispatch( arguments );

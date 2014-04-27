@@ -33,7 +33,7 @@ Application::Application( const commandLine::CmdLine& cmdLine )
 
     startUp();
 
-    Unique< int > i = makeUnique< int >( 4 );
+    Unique< int > i = make_unique< int >( 4 );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::update()
@@ -132,6 +132,10 @@ void Application::startUp()
         {
             errorStd( "Couldn't get component::Render!!!1111111111111111111");
         }
+    }
+    {
+        entity::Entity myCubey( m_hopper, "../resources/yaml/cubey.yaml" );
+        myCubey.get< component::Render >(); 
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

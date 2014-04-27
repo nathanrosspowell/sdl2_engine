@@ -12,6 +12,7 @@ namespace factory
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class Factory;
+struct Funcs;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class Register
 {
@@ -19,7 +20,7 @@ private:
     Factory& m_factory;
     const String m_classKey;
 public:
-    Register( Factory& hop, const String& classKey, Funcs funcs);
+    Register( Factory& hop, const String& classKey, Funcs& funcs);
     ~Register();
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

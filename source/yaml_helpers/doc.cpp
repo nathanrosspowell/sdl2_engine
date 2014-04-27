@@ -1,25 +1,26 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// factory/register.cpp Authored by Nathan Ross Powell
+// entity/base.cpp Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// THIS header.
-#include "register.h"
-#include "factory.h"
+// This header.
+#include "doc.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace factory
+// STL includes.
+#include <fstream>
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+namespace yaml_helpers
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Register::Register( Factory& fact, const String& classKey, Funcs& funcs )
-    : m_factory( fact )
-    , m_classKey( classKey )
+Doc::Doc( const String& file )
 {
-    m_factory.add( m_classKey, funcs );
+    std::fstream inStream( file );
+    YAML::Parser parser( inStream );
+    YAML::Node node;
+    while ( parser.GetNextDocument( node ) )
+    {
+        m_nodes.push_back( std::move( node.Clone() ) );
+    }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Register::~Register()
-{
-    m_factory.remove( m_classKey );
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// End namespace factory.
+// End namespace game.
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

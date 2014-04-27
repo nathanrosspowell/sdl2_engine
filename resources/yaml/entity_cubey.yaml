@@ -1,0 +1,6 @@
+- position:
+    vec3: [ 0.0f, 0.0f, 0.0f ]
+- render:
+    textures:
+        - "../resources/image/test.bmp"
+        - "../resources/image/cat.bmp"

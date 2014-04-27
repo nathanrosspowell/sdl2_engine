@@ -13,27 +13,22 @@
 #include "command_line/cmd_line.h"
 #include "game/application.h"
 #include "log/log.h"
-
-#include "yaml-cpp/yaml.h"
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// YAML
+#include "yaml_helpers/doc.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main( int argc, const char* const argv[])
 {
-    
-    std::fstream fin( "../resources/yaml/config.yaml" );
-    YAML::Parser parser( fin );
-    YAML::Node doc;
-    while ( parser.GetNextDocument(doc) )
+    yaml_helpers::Doc doc( "../resources/yaml/config.yaml" );
+    for ( const auto& node : doc )
     {
-        for ( auto& x : doc )
+        for ( const auto& number : *node )
         {
-            int val = 0;
-            x >> val;
+            int val;
+            number >> val;
             stateStd( "YAML " << val );
         }
     }
-
-
     stateStd( "Main start: " << SDL_GetTicks() );
     Strings arguments;
     for ( int i = 0; i < argc; ++i )

@@ -8,9 +8,7 @@
 #include "render.h"
 #include "location.h"
 #include "../types/stl.hxx"
-#include "../entity/entity.h"
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace game { class Hopper; }
+#include "../entity/types.hxx"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace component
 {
@@ -25,7 +23,7 @@ private:
 public:
     Manager( game::Hopper& hop );
     void update( int frameDelta );
-    template < class T > T* get( const entity::Id& id );
+    template <class T > T* get( const entity::Id& id );
 protected:
 private:
     ComponentList< Render > m_renderComps;

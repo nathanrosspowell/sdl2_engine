@@ -39,19 +39,12 @@ Renderer::Renderer( Hopper& hopper, SDL_Window* window )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bool Renderer::initalise()
 {
-    stateStd( "" );
     m_surfaceLoul = loadBmpToSurface( "../resources/image/test.bmp" );
-    stateStd( "" );
-    
     m_surfaceCat = loadBmpToSurface( "../resources/image/cat.bmp" );
         //Initialization flag
     bool success = true;
     //Create context
-    stateStd( "" );
-    
     m_context = SDL_GL_CreateContext( m_window );
-    stateStd( "" );
-    
     if( m_context == NULL )
     {
         errorStd( "OpenGL not created! SDL Error:" << SDL_GetError() );
@@ -59,8 +52,6 @@ bool Renderer::initalise()
     }
     else
     {
-    stateStd( "" );
-
         //Initialize GLEW
         glewExperimental = GL_TRUE;
         GLenum error = glewInit();
@@ -80,8 +71,7 @@ bool Renderer::initalise()
             success = false;
         }
     }
-    stateStd( "DONJE" );
-
+    stateStd( "Init done" );
     return success;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -252,15 +242,12 @@ void  Renderer::render()
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 SDL_Surface* Renderer::loadBmpToSurface( const String& file )
 {
-    stateStd( "" );
-
+    stateStd( file );
     SDL_Surface* surface = SDL_LoadBMP( file.c_str() );
     if ( surface == nullptr )
     {
         errorStd( "Missing surface: " << file << " SDL:" << SDL_GetError() );
     }
-    stateStd( "" );
-    
     return surface;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
