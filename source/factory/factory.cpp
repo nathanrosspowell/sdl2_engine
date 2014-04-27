@@ -4,6 +4,7 @@
 // This header.
 #include "factory.h"
 #include "../game/hopper.h"
+#include "../log/log.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
@@ -21,9 +22,10 @@ void Factory::remove( const String& classKey )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ISetup* Factory::get( const String& classKey
     , game::Hopper& hop
-    , JsonData jsonData
+    , SetupNode node
     , const entity::Id& id )
 {
+    stateStd( classKey );
     ISetup* newSetup = nullptr;
     auto funcIt = m_functionMap.find( classKey );
     if ( funcIt != m_functionMap.end() )
@@ -31,15 +33,19 @@ ISetup* Factory::get( const String& classKey
         newSetup = funcIt->second.Add( hop, id );
         if ( newSetup )
         {
+            newSetup->doSetup( node );
             auto& otherSetupsForId = m_setupMap[ id.getIdentity() ];
             for ( auto* i : otherSetupsForId )
             {
                 i->added( classKey, newSetup );
-                newSetup->added( classKey, i );
+                newSetup->added( i->classKey(), i );
             }
             otherSetupsForId.push_back( newSetup );
-            newSetup->doSetup( jsonData );
         }
+    }
+    else
+    {
+        errorStd( "Could not find " << classKey );
     }
     return newSetup;
 }

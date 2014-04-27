@@ -25,7 +25,7 @@ public:
     void remove( const String& classKey );
     ISetup* get( const String& classKey
         , game::Hopper& hop
-        , JsonData data
+        , SetupNode node
         , const entity::Id& id );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

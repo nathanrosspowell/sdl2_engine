@@ -19,16 +19,16 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main( int argc, const char* const argv[])
 {
-    yaml_helpers::Doc doc( "../resources/yaml/config.yaml" );
-    for ( const auto& node : doc )
-    {
-        for ( const auto& number : *node )
+    yaml_helpers::readDoc( "../resources/yaml/config.yaml",
+        []( const YAML::Node& node)
         {
-            int val;
-            number >> val;
-            stateStd( "YAML " << val );
-        }
-    }
+            for ( const auto& number : node )
+            {
+                int val;
+                number >> val;
+                stateStd( "YAML " << val );
+            }
+        } );
     stateStd( "Main start: " << SDL_GetTicks() );
     Strings arguments;
     for ( int i = 0; i < argc; ++i )

@@ -3,38 +3,31 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #include "entity.h"
 #include "../game/hopper.h"
-#include "../component/manager.h"
-
+#include "../yaml_helpers/doc.h"
+#include "../log/log.h"
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// STL includes.
+#include <fstream>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace entity
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Entity::Entity( game::Hopper& hopper, const String& )//yamlFile )
-    : //m_componentManager( hopper.getComponentMan() )
-     m_id( hopper.getEntityIdFactory().getNewIdentity() )
+Entity::Entity( game::Hopper& hopper, const String& yamlFile )
+    : m_componentManager( hopper.getComponentMan() )
+    , m_id( hopper.getEntityIdFactory().getNewIdentity() )
 {
-    /*
-    {
-        auto name = component::Render::getRegistrtyName();
-        componentFactory.get( name, m_hopper, data, m_entityId );
-    }
-    {
-        auto name = component::Location::getRegistrtyName();
-        componentFactory.get( name, m_hopper, data, m_entityId );
-    }
-
-
-        yaml_helpers::Doc doc( "../resources/yaml/config.yaml" );
-    for ( const auto& node : doc )
-    {
-        for ( const auto& number : *node )
+    stateStd( "Construct " << yamlFile );
+    yaml_helpers::readDoc( yamlFile, 
+        [&hopper,this]( const YAML::Node& doc )
         {
-            int val;
-            number >> val;
-            stateStd( "YAML " << val );
-        }
-    }
-*/
+            auto& componentFactory = hopper.getComponentFactory();
+            for ( auto& node : doc )
+            {
+                String name;
+                node[ "name" ] >> name;
+                componentFactory.get( name, hopper, node, m_id );
+            }
+        });
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

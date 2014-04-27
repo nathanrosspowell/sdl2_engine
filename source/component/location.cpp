@@ -9,6 +9,7 @@
 #include "../game/hopper.h"
 #include "../log/log.h"
 #include "../gl_helpers/primitives.h"
+#include "../yaml_helpers/stream.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace component
 {
@@ -19,9 +20,10 @@ Location::Location( game::Hopper& hop, const entity::Id& id )
 
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*virtual*/void Location::doSetup( factory::JsonData /*json*/ )
+/*virtual*/void Location::doSetup( factory::SetupNode node )
 {
-
+    node[ "pos" ] >> m_position;
+    node[ "rot" ] >> m_rotation;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*virtual*/ void Location::added( const String& /*name*/, ISetup* /*added*/ )

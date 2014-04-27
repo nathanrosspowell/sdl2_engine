@@ -15,6 +15,11 @@ namespace gl_helpers
 namespace primitives
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void cube( float size, const Vec3& vec3 )
+{
+    cube( size, vec3.x, vec3.y, vec3.z );
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void cube( float size, float x, float y, float z )
 {
     cuboid( size, size, size, x, y, z );

@@ -9,7 +9,6 @@
 #include "../types/stl.hxx"
 #include "../types/glm.hxx"
 #include "../factory/types.hxx"
-#include "../entity/entity.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace component
 {
@@ -20,6 +19,8 @@ class Location : public Base
 public:
 protected:
 private:
+    Vec3 m_position;
+    Vec3 m_rotation;
     
 // Functions
 public:
@@ -28,12 +29,13 @@ public:
     Location( Location&& ) = default;
     Location& operator = ( Location && ) = default;
     static String getRegistrtyName() { return String( "location" ); }
+    const Vec3& getPos() const { return m_position; }
 protected:
 private:
     Location() = delete;
     friend class ComponentList< Location >;
     virtual String classKey() const override { return getRegistrtyName(); }
-    virtual void doSetup( factory::JsonData json ) override;
+    virtual void doSetup( factory::SetupNode node ) override;
     virtual void added( const String& name, factory::ISetup* added ) override;
     virtual void deleted( const String& name, factory::ISetup* deleted ) override;
     void update( int frameDelta );

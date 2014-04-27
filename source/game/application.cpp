@@ -111,31 +111,9 @@ void Application::startUp()
         shutDown();
     }
     // Game play tests
-    auto& entityIdFactory = m_hopper.getEntityIdFactory();
-    auto& componentMan = m_hopper.getComponentMan();
-    auto& componentFactory = m_hopper.getComponentFactory();
-    m_entityId = entityIdFactory.getNewIdentity();
     {
-        factory::JsonData data = nullptr;
-        {
-            auto name = component::Render::getRegistrtyName();
-            componentFactory.get( name, m_hopper, data, m_entityId );
-        }
-        {
-            auto name = component::Location::getRegistrtyName();
-            componentFactory.get( name, m_hopper, data, m_entityId );
-        }
-    }
-    {
-        auto myComp = componentMan.get<component::Render>( m_entityId );
-        if ( !myComp )
-        {
-            errorStd( "Couldn't get component::Render!!!1111111111111111111");
-        }
-    }
-    {
-        entity::Entity myCubey( m_hopper, "../resources/yaml/cubey.yaml" );
-        myCubey.get< component::Render >(); 
+        entity::Entity myCubey( m_hopper, "../resources/yaml/entity_cubey.yaml" );
+        myCubey.get< component::Render >();
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

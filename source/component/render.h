@@ -9,7 +9,6 @@
 #include "component_list.h"
 #include "../types/stl.hxx"
 #include "../factory/types.hxx"
-#include "../entity/entity.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace render
 {
@@ -39,7 +38,7 @@ private:
     Render() = delete;
     friend class ComponentList< Render >;
     virtual String classKey() const override { return getRegistrtyName(); }
-    virtual void doSetup( factory::JsonData json ) override;
+    virtual void doSetup( factory::SetupNode node ) override;
     virtual void added( const String& name, factory::ISetup* added ) override;
     virtual void deleted( const String& name, factory::ISetup* deleted ) override;
     void update( int frameDelta );

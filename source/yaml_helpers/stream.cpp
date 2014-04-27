@@ -2,7 +2,7 @@
 // entity/base.cpp Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // This header.
-#include "doc.h"
+#include "stream.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // STL includes.
 #include <fstream>
@@ -10,20 +10,10 @@
 // Local includes.
 #include "../log/log.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace yaml_helpers
+void operator >> (const YAML::Node& node, Vec3& vec3 )
 {
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void readDoc( const String& file, ReadFunc readFunc )
-{
-    std::fstream inStream( file );
-    YAML::Parser parser( inStream );
-    YAML::Node doc;
-    while ( parser.GetNextDocument( doc ) )
-    {
-        readFunc( doc );
-    }
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// End namespace game.
+    node[0] >> vec3.x;
+    node[1] >> vec3.y;
+    node[2] >> vec3.z;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

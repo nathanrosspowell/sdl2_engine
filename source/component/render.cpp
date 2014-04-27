@@ -17,23 +17,27 @@ Render::Render( game::Hopper& hop, const entity::Id& id )
     : Base( hop, id )
     , m_item( hop.getRenderMan().makeItem() )
 {
-    m_item->setPolygons( [](){
-            gl_helpers::primitives::cube( 0.5f, 0.0f, 0.0f, 0.0f );
-        } 
-    );
+
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*virtual*/void Render::doSetup( factory::JsonData /*json*/ )
+/*virtual*/void Render::doSetup( factory::SetupNode /*node*/ )
 {
 
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*virtual*/ void Render::added( const String& name, ISetup* added )
 {
+    stateStd( "" << name );
+
     if ( name.compare( Location::getRegistrtyName() ) == 0 )
     {
         stateStd( "Got Location pointer ");
         m_location = static_cast< Location* >( added );
+        m_item->setPolygons( 
+            [this]()
+            {
+                gl_helpers::primitives::cube( 0.5f, m_location->getPos() );
+            } );
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

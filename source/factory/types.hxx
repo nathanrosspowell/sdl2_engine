@@ -8,12 +8,13 @@
 #include <functional>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game { class Hopper; }
+namespace YAML { class Node; }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class ISetup;
-using JsonData = void*;
+using SetupNode = const YAML::Node&;
 using AddFunc = std::function<ISetup*(game::Hopper&,const entity::Id&)>;
 using RemoveFunc = std::function<void(game::Hopper&,ISetup*)>;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
