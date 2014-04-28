@@ -28,7 +28,6 @@ Render::Render( game::Hopper& hop, const entity::Id& id )
 /*virtual*/ void Render::added( const String& name, ISetup* added )
 {
     stateStd( "" << name );
-
     if ( name.compare( Location::getRegistrtyName() ) == 0 )
     {
         stateStd( "Got Location pointer ");

@@ -112,8 +112,7 @@ void Application::startUp()
     }
     // Game play tests
     {
-        entity::Entity myCubey( m_hopper, "../resources/yaml/entity_cubey.yaml" );
-        myCubey.get< component::Render >();
+        entity::Entity myCubey( m_hopper, "../resources/entity/cubey.yaml" );
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
