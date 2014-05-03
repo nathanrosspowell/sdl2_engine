@@ -19,6 +19,7 @@
 #include "../component/render.h"
 #include "../component/location.h"
 #include "../factory/factory.h"
+#include "../yaml_helpers/doc.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
@@ -34,6 +35,15 @@ Application::Application( const commandLine::CmdLine& cmdLine )
     startUp();
 
     Unique< int > i = make_unique< int >( 4 );
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Application::~Application()
+{
+    stateStd( "Clear m_myEnts" );
+
+    // Remove all of these before m_hopper gets destroyed.
+    m_myEnts.clear();
+    stateStd( "Destroy the rest" );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::update()
@@ -112,7 +122,14 @@ void Application::startUp()
     }
     // Game play tests
     {
-        entity::Entity myCubey( m_hopper, "../resources/entity/cubey.yaml" );
+        m_myEnts.emplace_back(entity::Entity( m_hopper, "../resources/entity/cubey.yaml" ) );
+        stateStd( "readUnit ---------------------------" );
+        for ( auto&& ent : yaml_helpers::readUnit( "../resources/loader/unit_0.yaml", m_hopper ) )
+        {
+            m_myEnts.push_back( std::move( ent ) );
+        }
+        stateStd( "readUnit:  DONW ----------------" );
+
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

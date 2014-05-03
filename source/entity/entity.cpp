@@ -1,10 +1,13 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // entity/base.cpp Authored by Nathan Ross Powell
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// THIS include.
 #include "entity.h"
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #include "../game/hopper.h"
 #include "../yaml_helpers/doc.h"
 #include "../log/log.h"
+#include "../entity/entity.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // STL includes.
 #include <fstream>
@@ -25,12 +28,38 @@ Entity::Entity( game::Hopper& hopper, const String& yamlFile )
             {
                 String name;
                 node[ "name" ] >> name;
-                componentFactory.get( name, hopper, node, m_id );
+                componentFactory.make( name, hopper, node, *this );
             }
         });
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Entity::Entity( const Entity&& rhs )
+    : m_componentManager( rhs.m_componentManager )
+    , m_id( std::move( rhs.m_id ) )
+    , m_myComponents( rhs.m_myComponents )
+{
 
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Entity::~Entity()
+{
+
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Entity::doSetup( factory::SetupNode node
+    , const String& classKey
+    , Shared< factory::ISetup>&& newSetup )
+{
+    stateStd( classKey );
+    newSetup->doSetup( node );
+    for ( auto& i : m_myComponents )
+    {
+        i->added( classKey, newSetup.get() );
+        newSetup->added( i->classKey(), &(*i) );
+    }
+    stateStd( "PushBack" );
+    m_myComponents.push_back( std::move( newSetup ) );
+}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace entity
 }

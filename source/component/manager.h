@@ -22,6 +22,7 @@ private:
 // Functions
 public:
     Manager( game::Hopper& hop );
+    ~Manager();
     void update( int frameDelta );
     template <class T > T* get( const entity::Id& id );
 protected:

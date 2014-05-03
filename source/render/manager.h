@@ -16,14 +16,17 @@ class Manager
 public:
 protected:
 private:
+    Vector< Item > m_items;
+    U32 m_nextId;
 // Functions
 public:
     Manager();
-    Item* makeItem();
+    ~Manager();
+    Shared< Item > makeItem();
     void update();
 protected:
 private:
-    Vector< Item > m_items;
+    Shared< Item > makeShared( Item& item );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace render.

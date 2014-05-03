@@ -36,10 +36,12 @@ private:
     State m_state;
     SDL_Window* m_window;
     Renderer* m_renderer;
-    entity::Id m_entityId;
+    Vector< entity::Entity > m_myEnts;
+
 // Functions
 public:
      explicit Application( const commandLine::CmdLine& arguments );
+     ~Application();
      void update();
 protected:
 private:

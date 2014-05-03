@@ -1,0 +1,5 @@
+entities:
+    - "../resources/entity/cubey.yaml"
+    - "../resources/entity/cubey_1.yaml"
+    - "../resources/entity/cubey_2.yaml"
+    - "../resources/entity/cubey_3.yaml"

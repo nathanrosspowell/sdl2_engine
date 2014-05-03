@@ -5,13 +5,14 @@
 #include "factory.h"
 #include "../game/hopper.h"
 #include "../log/log.h"
+#include "../entity/entity.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Factory::add( const String& classKey, Funcs funcs )
+void Factory::add( const String& classKey, AddFunc factoryFunc )
 {
-    std::pair< String, Funcs > pair( classKey, funcs );
+    std::pair< String, AddFunc > pair( classKey, factoryFunc );
     m_functionMap.insert( pair );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -20,34 +21,22 @@ void Factory::remove( const String& classKey )
     m_functionMap.erase( classKey );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ISetup* Factory::get( const String& classKey
+void Factory::make( const String& classKey
     , game::Hopper& hop
     , SetupNode node
-    , const entity::Id& id )
+    , entity::Entity& entity )
 {
     stateStd( classKey );
-    ISetup* newSetup = nullptr;
     auto funcIt = m_functionMap.find( classKey );
     if ( funcIt != m_functionMap.end() )
     {
-        newSetup = funcIt->second.Add( hop, id );
-        if ( newSetup )
-        {
-            newSetup->doSetup( node );
-            auto& otherSetupsForId = m_setupMap[ id.getIdentity() ];
-            for ( auto* i : otherSetupsForId )
-            {
-                i->added( classKey, newSetup );
-                newSetup->added( i->classKey(), i );
-            }
-            otherSetupsForId.push_back( newSetup );
-        }
+        const auto& addFunc = funcIt->second;
+        entity.doSetup( node, classKey, addFunc( hop, entity.getIdentity() ) );
     }
     else
     {
         errorStd( "Could not find " << classKey );
     }
-    return newSetup;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace factory.

@@ -11,6 +11,7 @@
 #include <unordered_map>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game { class Hopper; }
+namespace entity { class Entity; }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace factory
 {
@@ -18,15 +19,14 @@ namespace factory
 class Factory
 {
 private:
-    std::unordered_map< String, Funcs > m_functionMap;
-    std::unordered_map< entity::EntityId::IdentityType, Vector< ISetup* > > m_setupMap;
+    std::unordered_map< String, AddFunc > m_functionMap;
 public:
-    void add( const String& classKey, Funcs factoryFunc );
+    void add( const String& classKey, AddFunc factoryFunc );
     void remove( const String& classKey );
-    ISetup* get( const String& classKey
+    void make( const String& classKey
         , game::Hopper& hop
         , SetupNode node
-        , const entity::Id& id );
+        , entity::Entity& id );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace factory

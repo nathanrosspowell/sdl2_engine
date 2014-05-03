@@ -26,7 +26,12 @@ private:
 // Functions
 public:
     Base( game::Hopper& hop, const entity::Id& id );
-    Base( Base&& ) = default;
+    Base( Base&& rhs )
+    {
+        m_hopper = rhs.m_hopper;
+        m_entityId = rhs.m_entityId;
+        m_componentId = std::move( rhs.m_componentId );
+    }
     Base& operator = ( Base&& rhs )
     {
         m_hopper = rhs.m_hopper;

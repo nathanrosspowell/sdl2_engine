@@ -20,10 +20,17 @@ protected:
 private:
     component::Manager& m_componentManager;
     Id m_id;
+    Vector< Shared< factory::ISetup> > m_myComponents;
 // Functions
 public:
     Entity( game::Hopper& hopper, const String& yamlFile );
+    Entity( const Entity&& rhs );
+    ~Entity();
+    void doSetup( factory::SetupNode node
+        , const String& classKey
+        , Shared< factory::ISetup>&& newSetup );
     template < class T > T* get() { return m_componentManager.get<T>( m_id ); }
+    auto& getIdentity() const { return m_id; } 
 protected:
 private:
 };

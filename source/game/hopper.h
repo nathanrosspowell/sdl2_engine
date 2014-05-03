@@ -40,13 +40,13 @@ private:
 // Functions
 public:
     explicit Hopper( const commandLine::CmdLine& arguments );
-    const commandLine::CmdLine& getCmdLine() const { return m_cmdLine; }
-    camera::Manager& getCameraMan() { return m_cameraMan; }
-    component::Manager& getComponentMan() { return m_componentMan; }
-    render::Manager& getRenderMan() { return m_renderMan; }
-    EntityIdFactory& getEntityIdFactory() { return m_entityIdFactory; }
-    ComponentIdFactory& getComponentIdFactory() { return m_componentIdFactory; }
-    factory::Factory& getComponentFactory() { return m_componentFactory; }
+    const auto& getCmdLine() const { return m_cmdLine; }
+    auto& getCameraMan() { return m_cameraMan; }
+    auto& getComponentMan() { return m_componentMan; }
+    auto& getRenderMan() { return m_renderMan; }
+    auto& getEntityIdFactory() { return m_entityIdFactory; }
+    auto& getComponentIdFactory() { return m_componentIdFactory; }
+    auto& getComponentFactory() { return m_componentFactory; }
 protected:
 private:
     Hopper() = delete;

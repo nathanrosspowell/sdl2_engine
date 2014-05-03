@@ -20,7 +20,7 @@ private:
     Factory& m_factory;
     const String m_classKey;
 public:
-    Register( Factory& hop, const String& classKey, Funcs& funcs);
+    Register( Factory& hop, const String& classKey, AddFunc func );
     ~Register();
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

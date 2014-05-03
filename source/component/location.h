@@ -21,18 +21,19 @@ protected:
 private:
     Vec3 m_position;
     Vec3 m_rotation;
-    
 // Functions
 public:
+    virtual ~Location();
     Location( game::Hopper& hop, const entity::Id& id );
-    Location( Location& ) = default;
     Location( Location&& ) = default;
     Location& operator = ( Location && ) = default;
     static String getRegistrtyName() { return String( "location" ); }
-    const Vec3& getPos() const { return m_position; }
+    Vec3 getPos() const { return m_position; }
 protected:
 private:
     Location() = delete;
+    Location( Location& ) = delete;
+    Location& operator = ( Location & ) = delete;
     friend class ComponentList< Location >;
     virtual String classKey() const override { return getRegistrtyName(); }
     virtual void doSetup( factory::SetupNode node ) override;

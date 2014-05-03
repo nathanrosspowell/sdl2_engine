@@ -3,6 +3,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#include "../types/stl.hxx"
 #include "../entity/types.hxx"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #include <functional>
@@ -15,14 +16,7 @@ namespace factory
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class ISetup;
 using SetupNode = const YAML::Node&;
-using AddFunc = std::function<ISetup*(game::Hopper&,const entity::Id&)>;
-using RemoveFunc = std::function<void(game::Hopper&,ISetup*)>;
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-struct Funcs
-{
-    AddFunc Add;
-    RemoveFunc Remove;
-};
+using AddFunc = std::function<Shared<ISetup>(game::Hopper&,const entity::Id&)>;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace factory
 }

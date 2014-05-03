@@ -24,18 +24,20 @@ class Render : public Base
 public:
 protected:
 private:
-    render::Item* m_item;
+    Shared< render::Item > m_item;
     Location* m_location;
 // Functions
 public:
+    ~Render();
     Render( game::Hopper& hop, const entity::Id& id );
-    Render( Render&& base ) = default;
-    Render& operator = ( Render && ) = default;
-    
+    Render( Render&& base );
+    Render& operator = ( Render && ) = default; 
     static String getRegistrtyName() { return String( "render" ); }
 protected:
 private:
     Render() = delete;
+    Render( Render& base ) = delete;
+    Render& operator = ( Render & ) = delete;
     friend class ComponentList< Render >;
     virtual String classKey() const override { return getRegistrtyName(); }
     virtual void doSetup( factory::SetupNode node ) override;

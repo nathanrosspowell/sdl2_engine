@@ -4,6 +4,7 @@
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #include <functional>
+#include "../types/int.hxx"
 // Local includes.
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace render
@@ -17,11 +18,17 @@ public:
 public:
 protected:
 private:
+    U32 m_id;
 // Functions
 public:
-    Item();
+    explicit Item( U32 id );
+    bool operator == (const Item& rhs )
+    {
+        return this->m_id == rhs.m_id;
+    }
     void setPolygons( PolyFunc func ){ m_polyFunc = func; }
     void drawPolygons() { m_polyFunc(); }
+    auto getId() const { return m_id; };
 protected:
 private:
     PolyFunc m_polyFunc;

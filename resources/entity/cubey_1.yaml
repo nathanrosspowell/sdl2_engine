@@ -1,5 +1,5 @@
 - name: location
-  pos: [ 0.0, 0.0, 0.0 ]
+  pos: [ 2.1, 1.0, 0.0 ]
   rot: [ 0.4, 0.5, 0.6 ]
 - name: render
   textures:

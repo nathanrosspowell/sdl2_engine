@@ -12,12 +12,26 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace component
 {
+Render::~Render()
+{
+    stateStd( "Destroy:" << this );
+}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Render::Render( game::Hopper& hop, const entity::Id& id )
     : Base( hop, id )
     , m_item( hop.getRenderMan().makeItem() )
+    , m_location( nullptr )
 {
+    stateStd( "Create" << this );
 
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Render::Render( Render&& rhs )
+    : Base( std::move( rhs ) )
+    , m_item( rhs.m_item )
+    , m_location( rhs.m_location )
+{
+    stateStd( "Move construct " << this );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*virtual*/void Render::doSetup( factory::SetupNode /*node*/ )
@@ -27,25 +41,31 @@ Render::Render( game::Hopper& hop, const entity::Id& id )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*virtual*/ void Render::added( const String& name, ISetup* added )
 {
-    stateStd( "" << name );
+    stateStd( name << " to " << this );
     if ( name.compare( Location::getRegistrtyName() ) == 0 )
     {
-        stateStd( "Got Location pointer ");
         m_location = static_cast< Location* >( added );
-        m_item->setPolygons( 
-            [this]()
-            {
-                gl_helpers::primitives::cube( 0.5f, m_location->getPos() );
-            } );
+        if ( m_location )
+        {
+            m_item->setPolygons( 
+                [this]()
+                {
+                    if ( m_location )
+                    {
+                        gl_helpers::primitives::cube( 0.5f, m_location->getPos() );
+                    }
+                } );
+        }
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*virtual*/ void Render::deleted( const String& name, ISetup* /*deleted*/ )
 {
+    stateStd( name << " from " << this );
     if ( name.compare( Location::getRegistrtyName() ) == 0 )
     {
-        stateStd( "Removed ");
         m_location = nullptr;
+        m_item = nullptr;
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

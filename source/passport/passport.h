@@ -4,6 +4,7 @@
 #pragma once
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #include "identity_factory.h"
+#include <utility>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace passport
 {
@@ -21,8 +22,13 @@ private:
 // Functions
 public:
     Passport();
-    Passport( Passport< T >&& newId ) = default;
-    Passport< T >& operator = ( Passport< T >&& rhs ) = default;
+    Passport( const Passport< T >& rhs ) : m_id( std::move( rhs.m_id ) ) {}
+    Passport( const Passport< T >&& rhs ) : m_id( std::move( rhs.m_id ) ) {}
+    Passport< T >& operator = ( Passport< T >&& rhs )
+    {
+        m_id = rhs.m_id;
+        return *this;
+    }
     bool operator == ( const Passport< T >& rhs ) const
     {
         return this->m_id == rhs.m_id;
