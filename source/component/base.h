@@ -27,29 +27,16 @@ private:
 public:
     virtual ~Base() = default;
     Base( game::Hopper& hop, const entity::Id& id );
-    Base( Base&& rhs )
-    {
-        m_hopper = rhs.m_hopper;
-        m_entityId = rhs.m_entityId;
-        m_componentId = std::move( rhs.m_componentId );
-    }
-    Base& operator = ( Base&& rhs )
-    {
-        m_hopper = rhs.m_hopper;
-        m_entityId = rhs.m_entityId;
-        m_componentId = std::move( rhs.m_componentId );
-        return *this;
-    }
-    bool operator == ( const Base& rhs ) const
-    {
-        return this->m_componentId == rhs.m_componentId;
-    }
     const entity::Id& getEntityId() const { return *m_entityId; }
     const Id& getComponentId() const { return m_componentId; }
 protected:
     game::Hopper& getHopper() const { return *m_hopper; }
 private:
     Base() = delete;
+    Base( Base& rhs ) = delete;
+    Base( Base&& rhs ) = delete;
+    Base& operator = ( Base&& rhs )  = delete;
+    bool operator == ( const Base& rhs ) const = delete;
     game::Hopper* m_hopper;
     const entity::Id* m_entityId;
     Id m_componentId;

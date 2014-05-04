@@ -26,14 +26,6 @@ Render::Render( game::Hopper& hop, const entity::Id& id )
 
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Render::Render( Render&& rhs )
-    : Base( std::move( rhs ) )
-    , m_item( rhs.m_item )
-    , m_location( rhs.m_location )
-{
-    stateStd( "Move construct " << this );
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*virtual*/void Render::doSetup( factory::SetupNode /*node*/ )
 {
 

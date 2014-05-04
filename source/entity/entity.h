@@ -25,7 +25,6 @@ private:
 public:
     Entity( game::Hopper& hopper, const String& yamlFile );
     Entity( const Entity&& rhs );
-    ~Entity();
     void doSetup( factory::SetupNode node
         , const String& classKey
         , Shared< factory::ISetup>&& newSetup );

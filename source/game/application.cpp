@@ -37,15 +37,6 @@ Application::Application( const commandLine::CmdLine& cmdLine )
     Unique< int > i = make_unique< int >( 4 );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Application::~Application()
-{
-    stateStd( "Clear m_myEnts" );
-
-    // Remove all of these before m_hopper gets destroyed.
-    m_myEnts.clear();
-    stateStd( "Destroy the rest" );
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::update()
 {
     stateStd( "" );
@@ -127,7 +118,6 @@ void Application::startUp()
         {
             m_myEnts.push_back( std::move( ent ) );
         }
-
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

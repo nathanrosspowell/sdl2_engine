@@ -30,8 +30,6 @@ private:
 public:
     virtual ~Render();
     Render( game::Hopper& hop, const entity::Id& id );
-    Render( Render&& base );
-    Render& operator = ( Render && ) = default; 
     static String getRegistrtyName() { return String( "render" ); }
 protected:
 private:

@@ -41,7 +41,6 @@ private:
 // Functions
 public:
      explicit Application( const commandLine::CmdLine& arguments );
-     ~Application();
      void update();
 protected:
 private:

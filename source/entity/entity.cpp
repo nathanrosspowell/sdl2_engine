@@ -41,23 +41,16 @@ Entity::Entity( const Entity&& rhs )
 
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Entity::~Entity()
-{
-
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Entity::doSetup( factory::SetupNode node
     , const String& classKey
     , Shared< factory::ISetup>&& newSetup )
 {
-    stateStd( classKey );
     newSetup->doSetup( node );
     for ( auto& i : m_myComponents )
     {
         i->added( classKey, newSetup.get() );
         newSetup->added( i->classKey(), &(*i) );
     }
-    stateStd( "PushBack" );
     m_myComponents.push_back( std::move( newSetup ) );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
