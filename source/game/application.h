@@ -6,7 +6,7 @@
 // Local.
 #include "hopper.h"
 #include "../passport/passport.h"
-#include "../entity/entity.h"
+#include "../entity/list.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 struct SDL_Window;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,8 +38,7 @@ private:
     State m_state;
     SDL_Window* m_window;
     Renderer* m_renderer;
-    Vector< entity::Entity > m_myEnts;
-
+    entity::List m_myEnts;
 // Functions
 public:
      explicit Application( const commandLine::CmdLine& arguments );

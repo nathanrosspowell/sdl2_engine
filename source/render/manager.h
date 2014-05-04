@@ -26,7 +26,6 @@ public:
     void update();
 protected:
 private:
-    Shared< Item > makeShared( Item* item );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace render.

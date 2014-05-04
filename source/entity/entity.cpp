@@ -18,7 +18,7 @@ namespace entity
 Entity::Entity( game::Hopper& hopper, const String& yamlFile )
     : m_componentManager( hopper.getComponentMan() )
     , m_id( hopper.getEntityIdFactory().getNewIdentity() )
-{
+{       
     stateStd( "Construct " << yamlFile );
     yaml_helpers::readDoc( yamlFile, 
         [&hopper,this]( const YAML::Node& doc )
@@ -38,7 +38,6 @@ Entity::Entity( const Entity&& rhs )
     , m_id( std::move( rhs.m_id ) )
     , m_myComponents( rhs.m_myComponents )
 {
-
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Entity::doSetup( factory::SetupNode node
@@ -52,6 +51,21 @@ void Entity::doSetup( factory::SetupNode node
         newSetup->added( i->classKey(), &(*i) );
     }
     m_myComponents.push_back( std::move( newSetup ) );
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Entity::removeComponents()
+{
+    stateStd( "" );
+    for ( auto& i : m_myComponents )
+    {
+        for ( auto& j : m_myComponents )
+        {
+            if ( i != j )
+            {
+                j->deleted( i->classKey(), i.get() );
+            }
+        }
+    }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace entity

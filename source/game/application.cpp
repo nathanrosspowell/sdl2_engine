@@ -49,9 +49,7 @@ Application::Application( const commandLine::CmdLine& cmdLine )
 , m_renderer( nullptr )
 {
     stateStd( "" );
-
     startUp();
-
     Unique< int > i = make_unique< int >( 4 );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

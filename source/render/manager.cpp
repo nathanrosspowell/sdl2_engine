@@ -16,7 +16,7 @@ Manager::Manager()
 }
 Manager::~Manager()
 {
-    stateStd( "Destroy Render::Manager" << m_nextId );
+    stateStd( "Destroy Render::Manager. m_nextId:" << m_nextId );
     if ( m_items.size() > 0 )
     {
         std::stringstream output;
@@ -35,7 +35,13 @@ Shared< Item > Manager::makeItem()
     stateStd( "Make Item " << m_nextId );
     Item* item = new Item( m_nextId++ );
     m_items.push_back( item );
-    return makeShared( item );
+    return Shared< Item >( item,
+        [this]( Item* item)
+        {
+            auto iter = std::find( m_items.begin(), m_items.end(), item );
+            m_items.erase( iter );
+            delete( item );
+        });
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Manager::update()
@@ -44,17 +50,6 @@ void Manager::update()
     {
         i->drawPolygons();
     }
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Shared< Item > Manager::makeShared( Item* item )
-{
-    return Shared< Item >( item,
-        [this]( Item* item)
-        {
-            auto iter = std::find( m_items.begin(), m_items.end(), item );
-            m_items.erase( iter );
-            delete( item );
-        });
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespave render.
