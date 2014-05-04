@@ -46,9 +46,9 @@ template<> Render* Manager::get<Render>( const entity::Id& id )
     Render* retVal = nullptr;
     for ( auto& x : m_renderComps.getComponentsForEdit() )
     {
-        if ( x.getEntityId() == id )
+        if ( x->getEntityId() == id )
         {
-            retVal = &x;
+            retVal = x;
             break;
         }
     }

@@ -25,6 +25,7 @@ protected:
 private:
 // Functions
 public:
+    virtual ~Base() = default;
     Base( game::Hopper& hop, const entity::Id& id );
     Base( Base&& rhs )
     {

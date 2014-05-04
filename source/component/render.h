@@ -28,7 +28,7 @@ private:
     Location* m_location;
 // Functions
 public:
-    ~Render();
+    virtual ~Render();
     Render( game::Hopper& hop, const entity::Id& id );
     Render( Render&& base );
     Render& operator = ( Render && ) = default; 

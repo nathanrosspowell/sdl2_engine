@@ -16,7 +16,7 @@ class Manager
 public:
 protected:
 private:
-    Vector< Item > m_items;
+    Vector< Item* > m_items;
     U32 m_nextId;
 // Functions
 public:
@@ -26,7 +26,7 @@ public:
     void update();
 protected:
 private:
-    Shared< Item > makeShared( Item& item );
+    Shared< Item > makeShared( Item* item );
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace render.

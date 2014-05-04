@@ -1,0 +1,4 @@
+~/projects/sdl2/build ~/projects/sdl2
+[  7%] Building CXX object CMakeFiles/sdl2_engine.dir/component/source_listing/listing_0000.cpp.o
+~/projects/sdl2
+Time Taken 0:6

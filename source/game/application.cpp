@@ -122,13 +122,11 @@ void Application::startUp()
     }
     // Game play tests
     {
-        m_myEnts.emplace_back(entity::Entity( m_hopper, "../resources/entity/cubey.yaml" ) );
-        stateStd( "readUnit ---------------------------" );
+        m_myEnts.emplace_back( entity::Entity( m_hopper, "../resources/entity/cubey.yaml" ) );
         for ( auto&& ent : yaml_helpers::readUnit( "../resources/loader/unit_0.yaml", m_hopper ) )
         {
             m_myEnts.push_back( std::move( ent ) );
         }
-        stateStd( "readUnit:  DONW ----------------" );
 
     }
 }

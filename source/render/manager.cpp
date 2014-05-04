@@ -33,31 +33,27 @@ Manager::~Manager()
 Shared< Item > Manager::makeItem()
 {
     stateStd( "Make Item " << m_nextId );
-    m_items.push_back( Item( m_nextId++ ) );
-    return makeShared( m_items.back() );
+    Item* item = new Item( m_nextId++ );
+    m_items.push_back( item );
+    return makeShared( item );
 }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Manager::update()
 {
     for ( auto& i : m_items )
     {
-        i.drawPolygons();
+        i->drawPolygons();
     }
 }
-Shared< Item > Manager::makeShared( Item& item )
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Shared< Item > Manager::makeShared( Item* item )
 {
-    return Shared< Item >( &item,
+    return Shared< Item >( item,
         [this]( Item* item)
         {
-            auto iter = std::find( m_items.begin(), m_items.end(), *item );
-            if ( iter != m_items.end() )
-            {
-                 stateStd( "Shared< Item > Delete:Remove Item " << iter->getId() );
-                 m_items.erase( iter );
-            }
-            else
-            {
-                stateStd( "Shared< Item > Delete: Item no longer there" );
-            }
+            auto iter = std::find( m_items.begin(), m_items.end(), item );
+            m_items.erase( iter );
+            delete( item );
         });
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
