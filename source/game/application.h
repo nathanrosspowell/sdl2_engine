@@ -25,6 +25,8 @@ public:
         Running,
         ShuttingDown,
         Finished,
+
+        COUNT
     };
 protected:
 private:
@@ -51,5 +53,9 @@ private:
     bool finishedShuttingDown();
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// End namespace game.
 }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Stream operation for the enum Application::State.
+std::ostream& operator << (std::ostream&, const game::Application::State& );
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

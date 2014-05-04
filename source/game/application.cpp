@@ -6,6 +6,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // STL includes.
 #include <iostream>
+#include <map>
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // SDL.
 #include "SDL.h"
@@ -20,6 +21,23 @@
 #include "../component/location.h"
 #include "../factory/factory.h"
 #include "../yaml_helpers/doc.h"
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+std::ostream& operator << (std::ostream& os
+    , const game::Application::State& theEnum )
+{
+    using Enum = game::Application::State;
+    std::map<Enum, String> map = {
+          {Enum::Created, "Created"}
+        , {Enum::Loading, "Loading"}
+        , {Enum::Running, "Running"}
+        , {Enum::ShuttingDown, "ShuttingDown"}
+        , {Enum::Finished, "Finished"}
+    };
+    // TODO: Make static assert when size() is a constexpr
+    SDL_assert(map.size() == static_cast<size_t>(Enum::COUNT));
+    os << map[ theEnum ];
+    return os;
+}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
@@ -39,9 +57,9 @@ Application::Application( const commandLine::CmdLine& cmdLine )
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::update()
 {
-    stateStd( "" );
-
-    while ( true )
+    stateStd( "Starting main loop:" << m_state );
+    bool loop = true;
+    while ( loop )
     {
         switch ( m_state )
         {
@@ -66,14 +84,18 @@ void Application::update()
                 }
             }
             break;
+        default: break;
+            {
+                errorStd( "Unhandled Apllication::State:" << m_state );
+            }
         case State::Finished:
             {
-                return;
+                loop = false;
             }
             break;
-        default: break;
         }
     }
+    stateStd( "Ended main loop:" << m_state );
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Application::startUp()

@@ -38,10 +38,7 @@ public:
     {}
     void update( int frameDelta )
     {
-        for ( auto& comp : m_components )
-        {
-            comp->update( frameDelta );
-        }
+        for_each(m_components, [=](Component* c){c->update(frameDelta);});
     }
     const Vector< Component* >& getComponents() const { return m_components; };
     Vector< Component* >& getComponentsForEdit() { return m_components; };
