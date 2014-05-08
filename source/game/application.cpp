@@ -22,23 +22,6 @@
 #include "../factory/factory.h"
 #include "../yaml_helpers/doc.h"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-std::ostream& operator << (std::ostream& os
-    , const game::Application::State& theEnum )
-{
-    using Enum = game::Application::State;
-    std::map<Enum, String> map = {
-          {Enum::Created, "Created"}
-        , {Enum::Loading, "Loading"}
-        , {Enum::Running, "Running"}
-        , {Enum::ShuttingDown, "ShuttingDown"}
-        , {Enum::Finished, "Finished"}
-    };
-    // TODO: Make static assert when size() is a constexpr
-    SDL_assert(map.size() == static_cast<size_t>(Enum::COUNT));
-    os << map[ theEnum ];
-    return os;
-}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace game
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -181,4 +164,21 @@ bool Application::finishedShuttingDown()
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // End namespace game.
 }
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{}[]
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+std::ostream& operator << (std::ostream& os
+    , const game::Application::State& theEnum )
+{
+    using Enum = game::Application::State;
+    std::map<Enum, String> map = {
+          {Enum::Created, "Created"}
+        , {Enum::Loading, "Loading"}
+        , {Enum::Running, "Running"}
+        , {Enum::ShuttingDown, "ShuttingDown"}
+        , {Enum::Finished, "Finished"}
+    };
+    // TODO: Make static assert when size() is a constexpr
+    SDL_assert(map.size() == static_cast<size_t>(Enum::COUNT));
+    os << map[ theEnum ];
+    return os;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

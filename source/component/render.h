@@ -8,6 +8,7 @@
 #include "location.h"
 #include "component_list.h"
 #include "../types/stl.hxx"
+#include "../types/int.hxx"
 #include "../factory/types.hxx"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace render
@@ -26,6 +27,7 @@ protected:
 private:
     Shared< render::Item > m_item;
     Location* m_location;
+    int m_type;
 // Functions
 public:
     virtual ~Render();
@@ -42,6 +44,7 @@ private:
     virtual void added( const String& name, factory::ISetup* added ) override;
     virtual void deleted( const String& name, factory::ISetup* deleted ) override;
     void update( int frameDelta );
+    void addItem();
 };
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }

@@ -7,9 +7,11 @@
 namespace render
 {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*static*/const Item::PolyFunc Item::sm_defaultFunc = [](){};
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Item::Item( U32 id )
     : m_id( id )
-    , m_polyFunc( [](){} )
+    , m_polyFunc( sm_defaultFunc )
 {
 
 }

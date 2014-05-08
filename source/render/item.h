@@ -18,6 +18,7 @@ public:
 public:
 protected:
 private:
+    static const PolyFunc sm_defaultFunc;
     U32 m_id;
 // Functions
 public:
@@ -27,6 +28,7 @@ public:
         return this->m_id == rhs.m_id;
     }
     void setPolygons( PolyFunc func ){ m_polyFunc = func; }
+    void resetPolygons() { m_polyFunc = sm_defaultFunc; }
     void drawPolygons() { m_polyFunc(); }
     auto getId() const { return m_id; };
 protected:

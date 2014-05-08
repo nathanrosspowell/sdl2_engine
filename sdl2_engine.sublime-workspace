@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"read",
+				"readUnit"
+			],
+			[
+				"comp",
+				"ComponentList"
+			],
+			[
+				"get",
+				"getComponentsForEdit"
+			],
+			[
+				"m_",
+				"m_componentManager"
+			],
+			[
 				"de",
 				"delete"
 			],
@@ -14,10 +30,6 @@
 			[
 				"en",
 				"entities"
-			],
-			[
-				"m_",
-				"m_position"
 			],
 			[
 				"y",
@@ -50,10 +62,6 @@
 			[
 				"remove",
 				"removeFunc"
-			],
-			[
-				"get",
-				"getComponents"
 			],
 			[
 				"Fac",
@@ -204,66 +212,13 @@
 	"buffers":
 	[
 		{
-			"file": "source/component/render.h",
+			"contents": "id:\n    name: \"Tyrone 'Trigger Finger' Farrel\"\n    race: human\n    occupation: programmer\nstats:\n    rank: 1\n    income: 0c\n    streetcreed:\n        current: 2\n        max: 3\n    xp: 8\n    wonded: -2\n    money: 6350c\nskills:\n    exhausted: 0\n    agility:\n        value: 6\n        skills:\n            lockpicking: 6\n            shooting: 6\n            stealth: 6\n    smarts:\n        value : 8\n        skills:\n            hacking: 10\n            notice: 4\n            streetwise: 6\n            programming: 8\n    strength:\n        value: 6\n        skills: {}\n    vigor:\n        value: 6\n        skills : {}\nattributes:\n    pace: 0\n    running: 0\n    parry: 2\n    tough: 5\n    armour: 3\n    charisma: 0\n    guts: 0\ntap:\n    firewall: 7\n    toughness: 1\n    ams: 0\n    armour: 0\nedges:\n    cutter: \"+1 hacking firewalls\"\n    interface: \"+tap firewall\"\n    hacker: \"if hacking a corp get bonus key information\"\nhinderances:\n    code of honor: \"major hinderence\"\n    bad repuration: \"people know thing went bad\"\n    black listed: \"A corp doesn't like you. (Not chimera)\"\naugments:\n    data carrier: \"offline HDD\"\n    subdermal armour: \"under the skin armour\"\ngear:\n    - name: \"bounty board\" \n      info: \"list of known fugitives\"\n      cost:\"400/cpm\"\n    - namee: \"e-stream\" \n      info: \"entertainment\"\n      cost: \"50/cpm\"\n    - name: \"swapper protect\"\n      info: \"+1 firewall\"\n      cost: \"950/cpm\"\narmaments:\naugmentations:\n    - name: \"data carrier\"\n      stain: 1\n    - name: \"subdermal armour\"\n      strain: 1\nmisc gear:\n    - name: \"harley motorcycle\"\n      info: \"1d4 driving AI\"\n    - name: \"medium cal ammo\"\n      info: \"a normal amount\"\n    - name: \"mesh id jammer\"\n      info: \"anarchy symbol, needs battery\"\nprotection:\n    torso: \"urban punk combat jacket\"\n    ",
+			"file": "/home/nathan/projects/interface_zero/trigger_finger.yaml",
+			"file_size": 1767,
+			"file_write_time": 130439810355047250,
 			"settings":
 			{
-				"buffer_size": 1788,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/render/manager.cpp",
-			"settings":
-			{
-				"buffer_size": 1301,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/CMakeLists.txt",
-			"settings":
-			{
-				"buffer_size": 3382,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/render/manager.h",
-			"settings":
-			{
-				"buffer_size": 968,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/types/stl.hxx",
-			"settings":
-			{
-				"buffer_size": 1000,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/component/render.cpp",
-			"settings":
-			{
-				"buffer_size": 2528,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/render/item.cpp",
-			"settings":
-			{
-				"buffer_size": 655,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/render/item.h",
-			"settings":
-			{
-				"buffer_size": 997,
+				"buffer_size": 1772,
 				"line_ending": "Unix"
 			}
 		}
@@ -327,75 +282,86 @@
 	},
 	"file_history":
 	[
-		"/home/nathan/projects/sdl2/source/render/item.cpp",
-		"/home/nathan/projects/sdl2/source/command_line/i_entry.h",
-		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.cpp",
-		"/home/nathan/projects/sdl2/source/component/render.cpp",
-		"/home/nathan/projects/sdl2/source/component/component_list.h",
-		"/home/nathan/projects/sdl2/source/component/location.h",
-		"/home/nathan/projects/sdl2/source/component/manager.cpp",
-		"/home/nathan/projects/sdl2/source/camera/manager.cpp",
-		"/home/nathan/projects/sdl2/source/component/base.h",
-		"/home/nathan/projects/sdl2/source/game/application.cpp",
-		"/home/nathan/projects/sdl2/source/render/item.h",
-		"/home/nathan/projects/sdl2/source/render/manager.h",
-		"/home/nathan/projects/sdl2/source/render/manager.cpp",
-		"/home/nathan/projects/sdl2/source/component/render.h",
-		"/home/nathan/projects/sdl2/source/component/manager.h",
-		"/home/nathan/projects/sdl2/source/CMakeLists.txt",
-		"/home/nathan/projects/sdl2/source/game/application.h",
-		"/home/nathan/projects/sdl2/resources/yaml/entity_cubey.yaml",
-		"/home/nathan/projects/sdl2/source/entity/entity.h",
 		"/home/nathan/projects/sdl2/resources/entity/cubey_1.yaml",
-		"/home/nathan/projects/sdl2/resources/entity/cubey_3.yaml",
+		"/home/nathan/projects/sdl2/source/component/render.h",
+		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.h",
+		"/home/nathan/projects/sdl2/source/component/render.cpp",
+		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.cpp",
+		"/home/nathan/projects/sdl2/source/game/renderer.cpp",
 		"/home/nathan/projects/sdl2/resources/entity/cubey_2.yaml",
-		"/home/nathan/projects/sdl2/source/types/stl.hxx",
-		"/home/nathan/projects/sdl2/source/factory/factory.cpp",
+		"/home/nathan/projects/sdl2/source/CMakeLists.txt",
+		"/home/nathan/projects/sdl2/source/CMakeLists.sublime-workspace",
+		"/home/nathan/projects/sdl2/source/CMakeLists.sublime-project",
+		"/home/nathan/projects/sdl2/source/component/location.h",
 		"/home/nathan/projects/sdl2/source/component/location.cpp",
-		"/home/nathan/projects/sdl2/source/yaml_helpers/stream.cpp",
+		"/home/nathan/projects/sdl2/source/log/log.cpp",
+		"/home/nathan/projects/sdl2/source/yaml_helpers/doc.cpp",
+		"/home/nathan/projects/sdl2/source/game/application.cpp",
+		"/home/nathan/projects/sdl2/resources/entity/cubey_3.yaml",
+		"/home/nathan/projects/sdl2/resources/yaml/entity_cubey.yaml",
+		"/home/nathan/projects/sdl2/source/render/item.h",
+		"/home/nathan/projects/sdl2/source/render/item.cpp",
+		"/home/nathan/projects/sdl2/source/component/base.cpp",
+		"/home/nathan/projects/sdl2/source/component/base.h",
+		"/home/nathan/projects/sdl2/source/render/manager.h",
+		"/home/nathan/projects/sdl2/source/component/component_list.h",
+		"/home/nathan/projects/sdl2/source/entity/list.cpp",
+		"/home/nathan/projects/sdl2/source/entity/list.h",
+		"/home/nathan/projects/sdl2/source/game/application.h",
+		"/home/nathan/projects/sdl2/source/entity/source_listing/listing_0000.cpp",
+		"/home/nathan/projects/sdl2/source/entity/entity.cpp",
+		"/home/nathan/projects/sdl2/source/factory/setup.h",
+		"/home/nathan/projects/sdl2/source/component/manager.cpp",
+		"/home/nathan/projects/sdl2/source/types/stl.hxx",
+		"/home/nathan/projects/sdl2/source/entity/entity.h",
+		"/home/nathan/projects/sdl2/source/render/manager.cpp",
+		"/home/nathan/projects/sdl2/source/entity/entity_id.h",
+		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.cpp",
+		"/home/nathan/projects/sdl2/source/command_line/auto_close_timer.cpp",
 		"/home/nathan/projects/sdl2/source/sdl2_engine.cpp",
+		"/home/nathan/projects/sdl2/source/component/manager.h",
+		"/home/nathan/projects/sdl2/source/yaml_helpers/doc.h",
+		"/home/nathan/projects/sdl2/source/camera/manager.cpp",
+		"/home/nathan/projects/sdl2/source/camera/manager.h",
+		"/home/nathan/projects/sdl2/make.bash",
+		"/home/nathan/projects/sdl2/errors.txt",
+		"/home/nathan/projects/sdl2/error.txt",
+		"/home/nathan/projects/sdl2/error",
 		"/home/nathan/projects/sdl2/source/factory/factory.h",
-		"/home/nathan/projects/sdl2/source/passport/identity_factory.h",
 		"/home/nathan/projects/sdl2/source/factory/register.cpp",
 		"/home/nathan/projects/sdl2/source/factory/register.h",
-		"/home/nathan/projects/sdl2/source/factory/setup.h",
+		"/home/nathan/projects/sdl2/source/entity/types.hxx",
 		"/home/nathan/projects/sdl2/source/factory/types.hxx",
+		"/home/nathan/projects/sdl2/source/factory/factory.cpp",
+		"/home/nathan/projects/sdl2/source/render/types.hxx",
 		"/home/nathan/projects/sdl2/source/types/glm.hxx",
+		"/home/nathan/projects/sdl2/source/types/int.hxx",
+		"/usr/include/c++/4.8/functional",
+		"/home/nathan/projects/sdl2/source/passport/passport.h",
+		"/home/nathan/projects/sdl2/source/game/hopper.h",
+		"/home/nathan/projects/sdl2/source/game/hopper.cpp",
+		"/home/nathan/projects/sdl2/source/log/log.h",
+		"/home/nathan/projects/sdl2/source/command_line/cmd_line.cpp",
+		"/home/nathan/projects/sdl2/resources/yaml/config.yaml",
+		"/home/nathan/projects/sdl2/source/camera/source_listing/listing_0000.cpp",
+		"/home/nathan/projects/sdl2/source/passport/identity_factory.h",
+		"/home/nathan/projects/sdl2/source/command_line/i_entry.h",
+		"/home/nathan/projects/sdl2/source/yaml_helpers/stream.cpp",
 		"/home/nathan/projects/sdl2/resources/image/cat.bmp",
-		"/home/nathan/projects/sdl2/source/entity/entity.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/screen_dimensions.h",
 		"/home/nathan/projects/sdl2/source/command_line/cmd_line.h",
-		"/home/nathan/projects/sdl2/source/command_line/cmd_line.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/auto_close_timer.h",
-		"/home/nathan/projects/sdl2/source/command_line/auto_close_timer.cpp",
-		"/home/nathan/projects/sdl2/source/camera/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/camera/manager.h",
 		"/home/nathan/projects/sdl2/source/camera/camera.h",
 		"/home/nathan/projects/sdl2/source/camera/camera.cpp",
-		"/home/nathan/projects/sdl2/source/CMakeLists.sublime-workspace",
-		"/home/nathan/projects/sdl2/source/CMakeLists.sublime-project",
 		"/home/nathan/projects/sdl2/resources/entity/cubey.yaml",
-		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.cpp",
 		"/home/nathan/projects/sdl2/debug.bash",
-		"/home/nathan/projects/sdl2/source/gl_helpers/primitives.h",
-		"/home/nathan/projects/sdl2/source/yaml_helpers/doc.cpp",
-		"/home/nathan/projects/sdl2/source/yaml_helpers/doc.h",
 		"/home/nathan/projects/sdl2/resources/loader/unit_0.yaml",
 		"/home/nathan/projects/sdl2/source/yaml_helpers/stream.h",
-		"/home/nathan/projects/sdl2/source/entity/entity_id.h",
 		"/home/nathan/projects/sdl2/source/yaml_helpers/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/game/hopper.h",
-		"/home/nathan/projects/sdl2/source/game/hopper.cpp",
 		"/home/nathan/projects/sdl2/source/yaml_helpers/streamcpp",
-		"/home/nathan/projects/sdl2/source/component/base.cpp",
 		"/home/nathan/projects/sdl2/source/component/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/factory/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/resources/yaml/config.yaml",
-		"/home/nathan/projects/sdl2/source/game/renderer.cpp",
-		"/home/nathan/projects/sdl2/source/entity/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/entity/types.hxx",
-		"/home/nathan/projects/sdl2/source/passport/passport.h",
 		"/home/nathan/projects/sdl2/source/yaml_helpers/yaml_helpers.cpp",
 		"/home/nathan/projects/sdl2/source/yaml_helpers/yaml_helpers.h",
 		"/home/nathan/projects/sdl2/source/data/yaml_helpers.h",
@@ -403,9 +369,7 @@
 		"/home/nathan/projects/sdl2/source/editor/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/data/yamp_helpers.h",
 		"/home/nathan/projects/sdl2/source/game/renderer.h",
-		"/home/nathan/projects/sdl2/source/types/int.hxx",
 		"/home/nathan/projects/sdl2/install/install_dependencies.bash",
-		"/home/nathan/projects/sdl2/source/render/types.hxx",
 		"/home/nathan/projects/sdl2/source/ladder/ladder.cpp",
 		"/home/nathan/projects/sdl2/source/component/position.h",
 		"/home/nathan/projects/sdl2/source/component/position.cpp",
@@ -417,9 +381,6 @@
 		"/home/nathan/projects/sdl2/CMakeLists.txt",
 		"/home/nathan/projects/sdl2/source/render/source_listing/listing_0000.cpp",
 		"/home/nathan/projects/sdl2/source/game/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/log/log.cpp",
-		"/home/nathan/projects/sdl2/source/log/log.h",
-		"/home/nathan/projects/sdl2/make.bash",
 		"/home/nathan/projects/sdl2/source/passport/passport.hxx",
 		"/home/nathan/projects/sdl2/source/passport/passport.cpp",
 		"/home/nathan/projects/sdl2/source/passport/source_listing/listing_0000.cpp",
@@ -429,7 +390,6 @@
 		"/home/nathan/projects/sdl2/types.hxx",
 		"/home/nathan/projects/sdl2/source/command_line/base.h",
 		"/home/nathan/projects/sdl2/source/command_line/base.cpp",
-		"/home/nathan/projects/sdl2/error.txt",
 		"/home/nathan/projects/sdl2/source/shaders/vertex/vert_0.glvs",
 		"/home/nathan/projects/sdl2/source/command_line/i_entry.cpp",
 		"/home/nathan/projects/sdl2/source/command_line/screen_resolution.cpp",
@@ -449,16 +409,11 @@
 		"/home/nathan/projects/sdl2/cmake/FindSDL2.cmake",
 		"/home/nathan/Downloads/50_SDL_and_opengl_2/50_SDL_and_opengl_2.cpp",
 		"/home/nathan/projects/sdl2/source/entity/base.cpp",
-		"/home/nathan/projects/sdl2/source/log/source_listing/listing_0000.cpp",
-		"/home/nathan/projects/sdl2/source/entity/base.h",
-		"/home/nathan/projects/sdl2/source/ladder/ladder.h",
-		"/home/nathan/projects/sdl2/source/ladder/rung_base.h",
-		"/home/nathan/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
-		"/home/nathan/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
+		"/home/nathan/projects/sdl2/source/log/source_listing/listing_0000.cpp"
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -475,6 +430,19 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Funcs",
+			"Remove",
+			"m_items",
+			"entity",
+			"\n  ",
+			".make(",
+			"->make",
+			"std::forward",
+			"std::move",
+			"std::move(",
+			"pointer",
+			"Got pointer",
+			"got pointer",
 			"yaml_helpers",
 			"getComponentsForEdit",
 			"got lo",
@@ -589,20 +557,7 @@
 			"gluse",
 			"m_ProgramID",
 			"gIBO",
-			"gVBO",
-			"gVertexPos2DLocation",
-			"gProgramID",
-			"gRenderQuad",
-			"gContext",
-			"SCREEN_WIDTH",
-			"m_renderer",
-			"loadTexture",
-			"m_renderer",
-			"loadTexture",
-			"ima",
-			"draw",
-			"m_ren",
-			"render"
+			"gVBO"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -610,6 +565,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"m_components",
 			"SetupNode",
 			"SetupData /*node*/",
 			"SetupData node",
@@ -682,184 +638,16 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "source/component/render.h",
+					"file": "/home/nathan/projects/interface_zero/trigger_finger.yaml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1788,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								965,
-								965
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 208.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "source/render/manager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1301,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								761,
-								761
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "source/CMakeLists.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3382,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								648,
-								648
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 152.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "source/render/manager.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 968,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								754,
-								754
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "source/types/stl.hxx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1000,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								596,
-								596
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "source/component/render.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2528,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1064,
-								1064
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 166.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "source/render/item.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 655,
+						"buffer_size": 1772,
 						"regions":
 						{
 						},
@@ -872,41 +660,14 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"word_wrap": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "source/render/item.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 997,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								640,
-								640
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -963,8 +724,228 @@
 		"selected_items":
 		[
 			[
+				"primi",
+				"source/gl_helpers/primitives.cpp"
+			],
+			[
+				"cube",
+				"resources/entity/cubey_1.yaml"
+			],
+			[
+				"cub",
+				"resources/entity/cubey_2.yaml"
+			],
+			[
+				"",
+				"source/CMakeLists.txt"
+			],
+			[
+				"loca",
+				"source/component/location.h"
+			],
+			[
+				"location",
+				"source/component/location.cpp"
+			],
+			[
+				"render",
+				"source/component/render.cpp"
+			],
+			[
+				"apl",
+				"source/game/application.cpp"
+			],
+			[
 				"item",
 				"source/render/item.cpp"
+			],
+			[
+				"rendman",
+				"source/render/manager.cpp"
+			],
+			[
+				"ent",
+				"source/entity/entity.cpp"
+			],
+			[
+				"entlis",
+				"source/entity/source_listing/listing_0000.cpp"
+			],
+			[
+				"enti",
+				"source/entity/entity.h"
+			],
+			[
+				"en",
+				"source/entity/entity.cpp"
+			],
+			[
+				"set",
+				"source/factory/setup.h"
+			],
+			[
+				"enit",
+				"source/entity/entity.cpp"
+			],
+			[
+				"_lis",
+				"source/component/component_list.h"
+			],
+			[
+				"stl",
+				"source/types/stl.hxx"
+			],
+			[
+				"copmma",
+				"source/component/manager.cpp"
+			],
+			[
+				"entit",
+				"source/entity/entity.cpp"
+			],
+			[
+				"appl",
+				"source/game/application.cpp"
+			],
+			[
+				"base",
+				"source/component/base.h"
+			],
+			[
+				"copmren",
+				"source/component/render.cpp"
+			],
+			[
+				"_list",
+				"source/component/component_list.h"
+			],
+			[
+				"mana",
+				"source/camera/manager.cpp"
+			],
+			[
+				"basec",
+				"source/component/base.cpp"
+			],
+			[
+				"copmman",
+				"source/component/manager.cpp"
+			],
+			[
+				"manager",
+				"source/camera/manager.cpp"
+			],
+			[
+				"rend",
+				"source/component/render.cpp"
+			],
+			[
+				"fac",
+				"source/factory/factory.cpp"
+			],
+			[
+				"facreg",
+				"source/factory/register.cpp"
+			],
+			[
+				"factyp",
+				"source/factory/types.hxx"
+			],
+			[
+				"typ",
+				"source/entity/types.hxx"
+			],
+			[
+				"_li",
+				"source/component/component_list.h"
+			],
+			[
+				"factor",
+				"source/factory/factory.cpp"
+			],
+			[
+				"comp",
+				"source/component/component_list.h"
+			],
+			[
+				"renman",
+				"source/render/manager.cpp"
+			],
+			[
+				"compl",
+				"source/component/component_list.h"
+			],
+			[
+				"cfaco",
+				"source/factory/factory.cpp"
+			],
+			[
+				"hopp",
+				"source/game/hopper.cpp"
+			],
+			[
+				"factory",
+				"source/factory/factory.h"
+			],
+			[
+				"facto",
+				"source/factory/factory.cpp"
+			],
+			[
+				"copmb",
+				"source/component/base.cpp"
+			],
+			[
+				"log",
+				"source/log/log.cpp"
+			],
+			[
+				"co",
+				"source/component/component_list.h"
+			],
+			[
+				"passp",
+				"source/passport/passport.h"
+			],
+			[
+				"passpo",
+				"source/passport/passport.h"
+			],
+			[
+				"entity",
+				"source/entity/entity.cpp"
+			],
+			[
+				"appli",
+				"source/game/application.cpp"
+			],
+			[
+				"setup",
+				"source/factory/setup.h"
+			],
+			[
+				"fact",
+				"source/factory/factory.cpp"
+			],
+			[
+				"ente",
+				"source/entity/entity.cpp"
+			],
+			[
+				"copmonenman",
+				"source/component/manager.cpp"
+			],
+			[
+				"hopper",
+				"source/game/hopper.cpp"
+			],
+			[
+				"renderer",
+				"source/game/renderer.cpp"
+			],
+			[
+				"red",
+				"source/component/render.cpp"
 			],
 			[
 				"c",
@@ -975,48 +956,12 @@
 				"source/render/manager.cpp"
 			],
 			[
-				"stl",
-				"source/types/stl.hxx"
-			],
-			[
-				"render",
-				"source/component/render.h"
-			],
-			[
-				"base",
-				"source/component/base.h"
-			],
-			[
 				"app",
 				"source/game/application.cpp"
 			],
 			[
-				"copmman",
-				"source/component/manager.cpp"
-			],
-			[
-				"mana",
-				"source/camera/manager.cpp"
-			],
-			[
-				"comp",
-				"source/component/component_list.h"
-			],
-			[
-				"loca",
-				"source/component/location.h"
-			],
-			[
-				"fac",
-				"source/factory/factory.cpp"
-			],
-			[
 				"copm",
 				"source/component/manager.cpp"
-			],
-			[
-				"en",
-				"source/entity/entity.h"
 			],
 			[
 				"applo",
@@ -1031,14 +976,6 @@
 				"resources/entity/cubey_3.yaml"
 			],
 			[
-				"cub",
-				"resources/entity/cubey_1.yaml"
-			],
-			[
-				"cube",
-				"resources/yaml/entity_cubey.yaml"
-			],
-			[
 				"prim",
 				"source/gl_helpers/primitives.cpp"
 			],
@@ -1047,16 +984,8 @@
 				"source/CMakeLists.txt"
 			],
 			[
-				"appl",
-				"source/game/application.cpp"
-			],
-			[
 				"uni",
 				"resources/loader/unit_0.yaml"
-			],
-			[
-				"entit",
-				"source/entity/entity.cpp"
 			],
 			[
 				"apploi",
@@ -1067,10 +996,6 @@
 				"source/yaml_helpers/doc.cpp"
 			],
 			[
-				"setup",
-				"source/factory/setup.h"
-			],
-			[
 				"loc",
 				"source/component/location.h"
 			],
@@ -1079,16 +1004,8 @@
 				"source/gl_helpers/primitives.h"
 			],
 			[
-				"rend",
-				"source/component/render.cpp"
-			],
-			[
 				"factoc",
 				"source/factory/factory.cpp"
-			],
-			[
-				"copmren",
-				"source/component/render.h"
 			],
 			[
 				"stream",
@@ -1096,10 +1013,6 @@
 			],
 			[
 				"facttyp",
-				"source/factory/types.hxx"
-			],
-			[
-				"factyp",
 				"source/factory/types.hxx"
 			],
 			[
@@ -1123,20 +1036,8 @@
 				"source/factory/types.hxx"
 			],
 			[
-				"location",
-				"source/component/location.cpp"
-			],
-			[
 				"factr",
 				"source/factory/factory.cpp"
-			],
-			[
-				"hopp",
-				"source/game/hopper.cpp"
-			],
-			[
-				"ent",
-				"source/entity/entity.cpp"
 			],
 			[
 				"aplo",
@@ -1167,14 +1068,6 @@
 				"source/component/manager.h"
 			],
 			[
-				"enti",
-				"source/entity/entity.h"
-			],
-			[
-				"appli",
-				"source/game/application.cpp"
-			],
-			[
 				"base.",
 				"source/component/base.h"
 			],
@@ -1193,10 +1086,6 @@
 			[
 				"factortyp",
 				"source/factory/types.hxx"
-			],
-			[
-				"enit",
-				"source/entity/entity.h"
 			],
 			[
 				"copmm",
@@ -1219,24 +1108,8 @@
 				"source/entity/types.hxx"
 			],
 			[
-				"entity",
-				"source/entity/entity.cpp"
-			],
-			[
-				"passp",
-				"source/passport/passport.h"
-			],
-			[
-				"fact",
-				"source/factory/types.hxx"
-			],
-			[
 				"typst",
 				"source/types/stl.hxx"
-			],
-			[
-				"renderer",
-				"source/game/renderer.cpp"
 			],
 			[
 				"engin",
@@ -1361,42 +1234,6 @@
 			[
 				"a",
 				"game/application.cpp"
-			],
-			[
-				"",
-				"types/glm.hxx"
-			],
-			[
-				"glm",
-				"types/glm.hxx"
-			],
-			[
-				"type",
-				"types/glm.hxx"
-			],
-			[
-				"scre",
-				"command_line/screen_dimensions.cpp"
-			],
-			[
-				"screen",
-				"command_line/screen_dimensions.cpp"
-			],
-			[
-				"red",
-				"game/renderer.h"
-			],
-			[
-				"commandl",
-				"command_line/base.cpp"
-			],
-			[
-				"ladder",
-				"ladder/ladder.cpp"
-			],
-			[
-				"laddla",
-				"ladder/ladder.h"
 			]
 		],
 		"width": 0.0
